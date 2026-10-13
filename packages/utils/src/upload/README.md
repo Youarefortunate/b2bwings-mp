@@ -10,10 +10,10 @@ import { Upload, UploadAggregateError, UploadMode } from "xbd-utils/upload";
 
 ## UploadMode
 
-| 枚举值 | 实际值 | 说明 |
-| :--- | :--- | :--- |
-| `UploadMode.Queue` | `queue` | 队列模式，按 `files` 原始顺序逐个上传。 |
-| `UploadMode.Pool` | `pool` | 并发池模式，最多同时上传 `concurrency` 个文件；这是默认模式。 |
+| 枚举值             | 实际值  | 说明                                                          |
+| :----------------- | :------ | :------------------------------------------------------------ |
+| `UploadMode.Queue` | `queue` | 队列模式，按 `files` 原始顺序逐个上传。                       |
+| `UploadMode.Pool`  | `pool`  | 并发池模式，最多同时上传 `concurrency` 个文件；这是默认模式。 |
 
 ## 创建实例
 
@@ -30,18 +30,18 @@ const upload = Upload.create<UploadResponse>({
 
 ### UploadOptions
 
-| 参数名 | 说明 | 类型 | 默认值 | 是否必填 |
-| :--- | :--- | :--- | :--- | :--- |
-| `baseUrl` | 上传地址基础路径。 | String | `""` | 否 |
-| `defaultUploadUrl` | 默认上传路径。 | String | `""` | 否 |
-| `timeout` | 上传超时时间。 | Number | `6000` | 否 |
-| `header` | 实例默认请求头。 | Object | `{}` | 否 |
-| `name` | 文件字段名。 | String | `file` | 否 |
-| `maxSize` | 文件大小限制；Number 按 MB 处理，也支持带 `m`、`k`、`b` 单位的字符串。 | Number \| String | `3` | 否 |
-| `allowedExts` | 允许上传的文件扩展名。 | String[] | `["jpg", "jpeg", "png"]` | 否 |
-| `autoUpload` | 选择文件后是否立即上传。 | Boolean | `true` | 否 |
-| `mode` | 多文件调度模式。 | UploadMode | `UploadMode.Pool` | 否 |
-| `concurrency` | `pool` 模式并发数；会取整并限制在 1～10，非有限数回退为 3。 | Number | `3` | 否 |
+| 参数名             | 说明                                                                   | 类型             | 默认值                   | 是否必填 |
+| :----------------- | :--------------------------------------------------------------------- | :--------------- | :----------------------- | :------- |
+| `baseUrl`          | 上传地址基础路径。                                                     | String           | `""`                     | 否       |
+| `defaultUploadUrl` | 默认上传路径。                                                         | String           | `""`                     | 否       |
+| `timeout`          | 上传超时时间。                                                         | Number           | `6000`                   | 否       |
+| `header`           | 实例默认请求头。                                                       | Object           | `{}`                     | 否       |
+| `name`             | 文件字段名。                                                           | String           | `file`                   | 否       |
+| `maxSize`          | 文件大小限制；Number 按 MB 处理，也支持带 `m`、`k`、`b` 单位的字符串。 | Number \| String | `3`                      | 否       |
+| `allowedExts`      | 允许上传的文件扩展名。                                                 | String[]         | `["jpg", "jpeg", "png"]` | 否       |
+| `autoUpload`       | 选择文件后是否立即上传。                                               | Boolean          | `true`                   | 否       |
+| `mode`             | 多文件调度模式。                                                       | UploadMode       | `UploadMode.Pool`        | 否       |
+| `concurrency`      | `pool` 模式并发数；会取整并限制在 1～10，非有限数回退为 3。            | Number           | `3`                      | 否       |
 
 调用 `upload`、`chooseMedia` 或 `chooseMessageFile` 时，可以通过同名执行选项覆盖实例的 `url`、`timeout`、`header`、`name`、`maxSize`、`allowedExts`、`autoUpload`、`mode` 与 `concurrency`。
 
@@ -65,13 +65,13 @@ const responses = await upload.upload({
 
 多文件上传会为每个文件单独创建上传任务。以下回调按文件触发，而不是等整个批次结束后只触发一次：
 
-| 回调 | 触发行为 |
-| :--- | :--- |
-| `onStatusChange` | 当前文件状态或进度变化时触发；`file` 是当前文件快照，`files` 是当前批次快照。 |
-| `onTask` | 每个底层 `UploadTask` 创建后触发。 |
-| `onSuccess` | 单个文件成功后触发；`files` 仅包含该文件，`response` 是该文件响应。 |
-| `onError` | 单个文件网络上传失败或取消后触发；`files` 仅包含该文件，`error` 是该文件错误。 |
-| `onBeforeUploadError` | 自定义批次校验失败时携带整批文件；默认大小或扩展名校验失败时按文件触发。 |
+| 回调                  | 触发行为                                                                       |
+| :-------------------- | :----------------------------------------------------------------------------- |
+| `onStatusChange`      | 当前文件状态或进度变化时触发；`file` 是当前文件快照，`files` 是当前批次快照。  |
+| `onTask`              | 每个底层 `UploadTask` 创建后触发。                                             |
+| `onSuccess`           | 单个文件成功后触发；`files` 仅包含该文件，`response` 是该文件响应。            |
+| `onError`             | 单个文件网络上传失败或取消后触发；`files` 仅包含该文件，`error` 是该文件错误。 |
+| `onBeforeUploadError` | 自定义批次校验失败时携带整批文件；默认大小或扩展名校验失败时按文件触发。       |
 
 `onProgress` 由当前文件的底层任务触发，回调中的 `files` 保留整个批次快照。所有通知型回调的同步异常都会被隔离，不会中断上传调度或改变 Promise 结果。
 
@@ -88,11 +88,11 @@ const responses = await upload.upload({
 
 `UploadAggregateError` 继承 `Error`（微信小程序运行环境未提供 `AggregateError`，故自行聚合）：
 
-| 字段 | 说明 | 类型 |
-| :--- | :--- | :--- |
-| `errors` | 所有失败文件的原始错误。 | E[] |
+| 字段      | 说明                                                                          | 类型                  |
+| :-------- | :---------------------------------------------------------------------------- | :-------------------- |
+| `errors`  | 所有失败文件的原始错误。                                                      | E[]                   |
 | `results` | 按传入文件原始顺序排列的全部结果；成功项包含 `response`，失败项包含 `error`。 | UploadSettledResult[] |
-| `message` | 固定错误信息。 | `部分文件上传失败` |
+| `message` | 固定错误信息。                                                                | `部分文件上传失败`    |
 
 ```ts
 try {

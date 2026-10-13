@@ -2,17 +2,17 @@
 
 ## 工具列表
 
-| 工具 | 作用描述 |
-| :--- | :--- |
-| **`request`** | **通用请求方法**：接收完整请求配置，适合需要直接指定 `method`、`data`、`header`、`timeout` 等配置的场景。 |
-| **`get`** | **GET 请求快捷方法**：按 `url`、`data`、`options` 发起 GET 请求。 |
-| **`post`** | **POST 请求快捷方法**：按 `url`、`data`、`options` 发起 POST 请求。 |
-| **`put`** | **PUT 请求快捷方法**：按 `url`、`data`、`options` 发起 PUT 请求。 |
-| **`delete`** | **DELETE 请求快捷方法**：按 `url`、`data`、`options` 发起 DELETE 请求。 |
-| **`interceptors.request`** | **请求前拦截器**：在发起请求前修改或校验最终请求配置。 |
-| **`interceptors.response`** | **响应拦截器**：统一处理后端响应数据，返回业务实际需要的数据结构。 |
-| **`interceptors.end`** | **请求完成拦截器**：请求结束后执行收尾逻辑。 |
-| **`interceptors.error`** | **请求错误拦截器**：统一处理请求错误、超时和业务异常。 |
+| 工具                        | 作用描述                                                                                                  |
+| :-------------------------- | :-------------------------------------------------------------------------------------------------------- |
+| **`request`**               | **通用请求方法**：接收完整请求配置，适合需要直接指定 `method`、`data`、`header`、`timeout` 等配置的场景。 |
+| **`get`**                   | **GET 请求快捷方法**：按 `url`、`data`、`options` 发起 GET 请求。                                         |
+| **`post`**                  | **POST 请求快捷方法**：按 `url`、`data`、`options` 发起 POST 请求。                                       |
+| **`put`**                   | **PUT 请求快捷方法**：按 `url`、`data`、`options` 发起 PUT 请求。                                         |
+| **`delete`**                | **DELETE 请求快捷方法**：按 `url`、`data`、`options` 发起 DELETE 请求。                                   |
+| **`interceptors.request`**  | **请求前拦截器**：在发起请求前修改或校验最终请求配置。                                                    |
+| **`interceptors.response`** | **响应拦截器**：统一处理后端响应数据，返回业务实际需要的数据结构。                                        |
+| **`interceptors.end`**      | **请求完成拦截器**：请求结束后执行收尾逻辑。                                                              |
+| **`interceptors.error`**    | **请求错误拦截器**：统一处理请求错误、超时和业务异常。                                                    |
 
 ## 创建请求实例
 
@@ -36,18 +36,18 @@ request<T = any>(options: RequestInfo): Promise<T>
 
 ### 参数列表
 
-| 参数 | 说明 | 默认值 |
-| :--- | :--- | :--- |
-| `url` | 接口地址，支持 `"METHOD /path"` 前缀写法，例如 `"GET /user/detail"`。 | - |
-| `method` | 请求方法，优先级高于 `url` 前缀中的请求方法；未指定时默认 `POST`。 | `POST` |
-| `data` | 请求参数。 | - |
-| `header` | 请求头。 | - |
-| `timeout` | 超时时间。 | - |
-| `isPrompt` | 请求失败时是否自动提示。 | `true` |
-| `load` | 是否显示 Loading。 | `true` |
-| `loadText` | Loading 文案。 | `加载中` |
-| `isFactory` | 是否使用响应数据工厂处理返回值。 | `true` |
-| `timeoutAbort` | 请求超时时是否主动中断请求任务。 | `true` |
+| 参数           | 说明                                                                  | 默认值   |
+| :------------- | :-------------------------------------------------------------------- | :------- |
+| `url`          | 接口地址，支持 `"METHOD /path"` 前缀写法，例如 `"GET /user/detail"`。 | -        |
+| `method`       | 请求方法，优先级高于 `url` 前缀中的请求方法；未指定时默认 `POST`。    | `POST`   |
+| `data`         | 请求参数。                                                            | -        |
+| `header`       | 请求头。                                                              | -        |
+| `timeout`      | 超时时间。                                                            | -        |
+| `isPrompt`     | 请求失败时是否自动提示。                                              | `true`   |
+| `load`         | 是否显示 Loading。                                                    | `true`   |
+| `loadText`     | Loading 文案。                                                        | `加载中` |
+| `isFactory`    | 是否使用响应数据工厂处理返回值。                                      | `true`   |
+| `timeoutAbort` | 请求超时时是否主动中断请求任务。                                      | `true`   |
 
 ### 基础用法
 
@@ -91,11 +91,11 @@ delete<T = any>(url: string, data?: Record<string, any>, options?: RequestConfig
 
 ### 参数列表
 
-| 参数 | 说明 | 默认值 |
-| :--- | :--- | :--- |
-| `url` | 接口地址，通用请求链路支持 `"METHOD /path"` 前缀写法。 | - |
-| `data` | 请求参数。 | `{}` |
-| `options` | 单次请求配置，可传 Loading、提示、数据工厂、超时中断、`method` 等配置。 | `{}` |
+| 参数      | 说明                                                                    | 默认值 |
+| :-------- | :---------------------------------------------------------------------- | :----- |
+| `url`     | 接口地址，通用请求链路支持 `"METHOD /path"` 前缀写法。                  | -      |
+| `data`    | 请求参数。                                                              | `{}`   |
+| `options` | 单次请求配置，可传 Loading、提示、数据工厂、超时中断、`method` 等配置。 | `{}`   |
 
 ### 基础用法
 
@@ -123,13 +123,13 @@ const result = await request.post(
 
 ## options 配置说明
 
-| 配置 | 说明 | 默认值 |
-| :--- | :--- | :--- |
-| `isPrompt` | 请求失败时是否自动提示。 | `true` |
-| `load` | 是否显示 Loading。 | `true` |
-| `loadText` | Loading 文案。 | `加载中` |
-| `isFactory` | 是否使用响应数据工厂处理返回值。 | `true` |
-| `timeoutAbort` | 请求超时时是否主动中断请求任务。 | `true` |
+| 配置           | 说明                             | 默认值   |
+| :------------- | :------------------------------- | :------- |
+| `isPrompt`     | 请求失败时是否自动提示。         | `true`   |
+| `load`         | 是否显示 Loading。               | `true`   |
+| `loadText`     | Loading 文案。                   | `加载中` |
+| `isFactory`    | 是否使用响应数据工厂处理返回值。 | `true`   |
+| `timeoutAbort` | 请求超时时是否主动中断请求任务。 | `true`   |
 
 ## 请求拦截器
 
