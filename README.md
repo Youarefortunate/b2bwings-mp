@@ -29,7 +29,7 @@ pnpm build
 | `packages/scripts` | 公共构建脚本 |
 | `packages/testing` | 本地测试辅助能力 |
 | `packages/tsconfig` | 共享 TypeScript 配置 |
-| `packages/mp-env` | 原生小程序环境切换工具 |
+| [packages/mp-env](packages/mp-env/README.md) | 原生小程序环境切换工具 |
 
 `apps/*` 已注册为工作区，供后续添加独立应用；仓库不附带业务应用。
 公共工具优先使用具体子模块入口，例如 `xbd-utils/request`、
