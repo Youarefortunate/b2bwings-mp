@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "Popup",
+  "navigationBarBackgroundColor": "#fff",
+  "usingComponents": {
+    "base": "./base/index",
+    "header": "./header/index",
+    "with-title": "./with-title/index",
+    "custom-close": "./custom-close/index",
+    "close-btn": "./close-btn/index",
+    "custom-overlay": "./custom-overlay/index"
+  }
+}

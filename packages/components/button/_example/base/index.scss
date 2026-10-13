@@ -1,0 +1,7 @@
+.button-example {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32rpx;
+  align-items: center;
+  margin: 0 32rpx 32rpx;
+}

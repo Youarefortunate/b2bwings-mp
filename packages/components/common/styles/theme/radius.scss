@@ -1,0 +1,9 @@
+@mixin radius-properties {
+  // 圆角
+  --xbd-radius-small: 6rpx;
+  --xbd-radius-default: 12rpx;
+  --xbd-radius-large: 18rpx;
+  --xbd-radius-extraLarge: 24rpx;
+  --xbd-radius-round: 1998rpx;
+  --xbd-radius-circle: 50%;
+}

@@ -1,0 +1,83 @@
+{
+  "name": "xbd-utils",
+  "version": "1.0.0",
+  "private": true,
+  "description": "通用小程序工具库",
+  "author": "Youfortunate",
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./price": {
+      "types": "./dist/price/index.d.ts",
+      "default": "./dist/price/index.js"
+    },
+    "./navigation": {
+      "types": "./dist/navigation/index.d.ts",
+      "default": "./dist/navigation/index.js"
+    },
+    "./request": {
+      "types": "./dist/request/index.d.ts",
+      "default": "./dist/request/index.js"
+    },
+    "./upload": {
+      "types": "./dist/upload/index.d.ts",
+      "default": "./dist/upload/index.js"
+    },
+    "./transport": {
+      "types": "./dist/transport/index.d.ts",
+      "default": "./dist/transport/index.js"
+    },
+    "./hooks": {
+      "types": "./dist/hooks/index.d.ts",
+      "default": "./dist/hooks/index.js"
+    },
+    "./pageRequest": {
+      "types": "./dist/pageRequest/index.d.ts",
+      "default": "./dist/pageRequest/index.js"
+    },
+    "./verify": {
+      "types": "./dist/verify.d.ts",
+      "default": "./dist/verify.js"
+    },
+    "./utils": {
+      "types": "./dist/utils.d.ts",
+      "default": "./dist/utils.js"
+    }
+  },
+  "scripts": {
+    "dev": "node ../scripts/src/tasks/build-pkg.js --watch",
+    "build": "node ../scripts/src/tasks/build-pkg.js",
+    "type-check": "tsc --noEmit",
+    "test": "vitest run",
+    "lint": "oxlint src",
+    "format": "oxfmt --write \"src/**/*.ts\" \"tests/**/*.ts\" \"vitest.config.ts\" --no-error-on-unmatched-pattern"
+  },
+  "devDependencies": {
+    "cross-env": "catalog:",
+    "miniprogram-api-typings": "catalog:miniprogram",
+    "tsconfig": "workspace:*",
+    "typescript": "catalog:",
+    "xbd-testing": "workspace:*"
+  },
+  "miniprogram": "dist",
+  "xbdBuild": {
+    "entryPoints": {
+      "index": "src/index.ts",
+      "price/index": "src/price/index.ts",
+      "navigation/index": "src/navigation/index.ts",
+      "request/index": "src/request/index.ts",
+      "upload/index": "src/upload/index.ts",
+      "transport/index": "src/transport/index.ts",
+      "hooks/index": "src/hooks/index.ts",
+      "pageRequest/index": "src/pageRequest/index.ts",
+      "verify": "src/verify.ts",
+      "utils": "src/utils.ts"
+    },
+    "outdir": "dist"
+  }
+}

@@ -1,0 +1,33 @@
+Component({
+  data: {
+    cur: {},
+    position: [
+      { value: "top", text: "顶部弹出" },
+      { value: "left", text: "左侧弹出" },
+      { value: "center", text: "中间弹出" },
+      { value: "bottom", text: "底部弹出" },
+      { value: "right", text: "右侧弹出" },
+    ],
+  },
+
+  methods: {
+    handlePopup(event) {
+      const { item } = event.currentTarget.dataset;
+
+      this.setData(
+        {
+          cur: item,
+        },
+        () => {
+          this.setData({ visible: true });
+        },
+      );
+    },
+
+    onVisibleChange(event) {
+      this.setData({
+        visible: event.detail.visible,
+      });
+    },
+  },
+});

@@ -1,0 +1,174 @@
+<view class="wrapper">
+  <xbd-button
+    size="large"
+    theme="primary"
+    variant="outline"
+    data-key="imageOnTop"
+    bind:tap="showModal"
+    block
+  >
+    图片置顶-带标题描述
+  </xbd-button>
+</view>
+
+<xbd-modal
+  visible="{{ imageOnTop }}"
+  title="模态框标题"
+  content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+  confirm-btn="{{ { content: '确定', variant: 'base' } }}"
+  cancel-btn="取消"
+  bind:confirm="closeModal"
+  bind:cancel="closeModal"
+>
+  <image
+    slot="top"
+    class="modal-image"
+    src="{{ imageUrl }}"
+    mode="aspectFill"
+  />
+</xbd-modal>
+
+<view class="wrapper">
+  <xbd-button
+    size="large"
+    theme="primary"
+    variant="outline"
+    data-key="imageOnTopWithContent"
+    bind:tap="showModal"
+    block
+  >
+    图片置顶-无标题
+  </xbd-button>
+</view>
+
+<xbd-modal
+  visible="{{ imageOnTopWithContent }}"
+  content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+  confirm-btn="{{ { content: '确定', variant: 'base' } }}"
+  cancel-btn="取消"
+  bind:confirm="closeModal"
+  bind:cancel="closeModal"
+>
+  <image
+    slot="top"
+    class="modal-image"
+    src="{{ imageUrl }}"
+    mode="aspectFill"
+  />
+</xbd-modal>
+
+<view class="wrapper">
+  <xbd-button
+    size="large"
+    theme="primary"
+    variant="outline"
+    data-key="imageOnTopWithTitle"
+    bind:tap="showModal"
+    block
+  >
+    图片置顶-纯标题
+  </xbd-button>
+</view>
+
+<xbd-modal
+  visible="{{ imageOnTopWithTitle }}"
+  title="模态框标题"
+  confirm-btn="{{ { content: '确定', variant: 'base' } }}"
+  cancel-btn="取消"
+  bind:confirm="closeModal"
+  bind:cancel="closeModal"
+>
+  <image
+    slot="top"
+    class="modal-image"
+    src="{{ imageUrl }}"
+    mode="aspectFill"
+  />
+</xbd-modal>
+
+<view class="wrapper">
+  <xbd-button
+    theme="primary"
+    size="large"
+    variant="outline"
+    data-key="imageOnMiddleWithImage"
+    bind:tap="showModal"
+    block
+  >
+    图片置顶-纯图片
+  </xbd-button>
+</view>
+
+<xbd-modal
+  visible="{{ imageOnMiddleWithImage }}"
+  confirm-btn="{{ { content: '确定', variant: 'base' } }}"
+  cancel-btn="取消"
+  bind:confirm="closeModal"
+  bind:cancel="closeModal"
+>
+  <image
+    slot="top"
+    class="modal-image"
+    src="{{ imageUrl }}"
+    mode="aspectFill"
+  />
+</xbd-modal>
+
+<view class="wrapper">
+  <xbd-button
+    theme="primary"
+    size="large"
+    variant="outline"
+    data-key="imageOnMiddle"
+    bind:tap="showModal"
+    block
+  >
+    图片居中-带标题描述
+  </xbd-button>
+</view>
+
+<xbd-modal
+  visible="{{ imageOnMiddle }}"
+  title="模态框标题"
+  content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+  confirm-btn="{{ { content: '确定', variant: 'base' } }}"
+  cancel-btn="取消"
+  bind:confirm="closeModal"
+  bind:cancel="closeModal"
+>
+  <image
+    slot="middle"
+    class="modal-image image-middle"
+    src="{{ imageUrl }}"
+    mode="aspectFill"
+  />
+</xbd-modal>
+
+<view class="wrapper">
+  <xbd-button
+    theme="primary"
+    size="large"
+    variant="outline"
+    data-key="imageOnMiddleWithTitle"
+    bind:tap="showModal"
+    block
+  >
+    图片居中-纯标题
+  </xbd-button>
+</view>
+
+<xbd-modal
+  visible="{{ imageOnMiddleWithTitle }}"
+  title="模态框标题"
+  confirm-btn="{{ { content: '确定', variant: 'base' } }}"
+  cancel-btn="取消"
+  bind:confirm="closeModal"
+  bind:cancel="closeModal"
+>
+  <image
+    slot="middle"
+    class="modal-image image-middle"
+    src="{{ imageUrl }}"
+    mode="aspectFill"
+  />
+</xbd-modal>

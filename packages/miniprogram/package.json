@@ -1,0 +1,20 @@
+{
+  "name": "xbd-miniprogram",
+  "version": "1.0.0",
+  "private": true,
+  "description": "通用小程序组件库预览与构建产物",
+  "author": "Youfortunate",
+  "files": [
+    "miniprogram_dist"
+  ],
+  "main": "miniprogram_dist/index.js",
+  "devDependencies": {
+    "miniprogram-api-typings": "catalog:miniprogram",
+    "tsconfig": "workspace:*"
+  },
+  "peerDependencies": {
+    "xbd-utils": "workspace:*"
+  },
+  "miniprogram": "miniprogram_dist",
+  "title": "miniprogram"
+}

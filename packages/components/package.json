@@ -1,0 +1,20 @@
+{
+  "name": "xbd-components",
+  "version": "1.0.0",
+  "private": true,
+  "description": "通用小程序定制组件库",
+  "author": "Youfortunate",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development gulp dev --gulpfile ../scripts/src/gulp/gulpfile.js --cwd ../../",
+    "build": "cross-env NODE_ENV=production gulp build --gulpfile ../scripts/src/gulp/gulpfile.js --cwd ../../",
+    "build:dist": "cross-env NODE_ENV=production gulp build --gulpfile ../scripts/src/gulp/gulpfile.dist.js --cwd ../../",
+    "build:example": "gulp --gulpfile ../scripts/src/gulp/gulpfile.example.js --cwd ../../",
+    "type-check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "cross-env": "catalog:",
+    "gulp": "catalog:",
+    "miniprogram-api-typings": "catalog:miniprogram",
+    "tsconfig": "workspace:*"
+  }
+}

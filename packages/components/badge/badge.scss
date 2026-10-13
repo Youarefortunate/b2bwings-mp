@@ -1,0 +1,208 @@
+@use "../common/styles/variables.scss" as var;
+
+$badge-text-color: var(--xbd-badge-text-color, var.$font-white-1); // 徽标文字颜色
+$badge-content-text-color: var(
+  --xbd-badge-content-text-color,
+  var.$font-gray-1
+); // 内容文字颜色
+$badge-content-text-font: var(
+  --xbd-badge-content-text-font,
+  var.$font-body-large
+); // 内容文字字体
+$badge-color: var(--xbd-badge-bg-color, var.$error-color-6); // 徽标背景色
+$badge-font: var(--xbd-badge-font, var.$font-mark-extraSmall); // 徽标字体
+$badge-basic-height: var(--xbd-badge-basic-height, 32rpx); // 默认徽标高度
+$badge-basic-width: var(--xbd-badge-basic-width, 32rpx); // 默认徽标最小宽度
+$badge-basic-padding: var(--xbd-badge-basic-padding, 8rpx); // 默认徽标内边距
+$badge-border-radius: var(--xbd-badge-border-radius, 4rpx); // 默认徽标圆角
+$badge-bubble-border-radius: var(
+  --xbd-badge-bubble-border-radius,
+  20rpx 20rpx 20rpx 2rpx
+); // 气泡徽标圆角
+$badge-dot-size: var(--xbd-badge-dot-size, 16rpx); // 红点尺寸
+$badge-large-font: var(--xbd-badge-large-font, var.$font-mark-small); // 大尺寸徽标字体
+$badge-large-height: var(--xbd-badge-large-height, 40rpx); // 大尺寸徽标高度
+$badge-large-padding: var(--xbd-badge-large-padding, 10rpx); // 大尺寸徽标内边距
+
+$prefix: var.$prefix; // 组件库类名前缀
+$badge: "#{$prefix}-badge"; // 徽标组件类名
+
+.#{$badge} {
+  position: relative;
+  display: inline-flex;
+  align-items: flex-start;
+}
+
+.#{$badge}--basic {
+  z-index: 100;
+  box-sizing: border-box;
+  height: $badge-basic-height;
+  padding: 0 $badge-basic-padding;
+  font: $badge-font;
+  color: $badge-text-color;
+  text-align: center;
+  background-color: $badge-color;
+  border-radius: $badge-border-radius;
+}
+
+.#{$badge}--dot {
+  min-width: $badge-dot-size;
+  height: $badge-dot-size;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.#{$badge}--count {
+  min-width: $badge-basic-width;
+  white-space: nowrap;
+}
+
+.#{$badge}--circle {
+  border-radius: calc($badge-basic-height / 2);
+}
+
+.#{$badge}__ribbon-outer,
+.#{$badge}__ribbon-right-outer,
+.#{$badge}__triangle-right-outer,
+.#{$badge}__ribbon-left-outer,
+.#{$badge}__triangle-left-outer {
+  position: absolute;
+  top: 0;
+}
+
+.#{$badge}__ribbon-outer,
+.#{$badge}__ribbon-right-outer,
+.#{$badge}__triangle-right-outer {
+  right: 0;
+}
+
+.#{$badge}__ribbon-left-outer,
+.#{$badge}__triangle-left-outer {
+  left: 0;
+}
+
+.#{$badge}--bubble {
+  border-radius: $badge-bubble-border-radius;
+}
+
+// 角标形态使用固定方形区域绘制渐变边角
+.#{$badge}--ribbon,
+.#{$badge}--ribbon-right,
+.#{$badge}--ribbon-left,
+.#{$badge}--triangle-left,
+.#{$badge}--triangle-right {
+  position: absolute;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc($badge-basic-height * 2);
+  height: calc($badge-basic-height * 2);
+  padding: 0;
+  overflow: hidden;
+  border-radius: 0;
+}
+
+.#{$badge}--ribbon,
+.#{$badge}--ribbon-right {
+  right: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 50%,
+    $badge-color 50%,
+    $badge-color 85%,
+    transparent 85%
+  );
+}
+
+.#{$badge}--triangle-right {
+  right: 0;
+  background: linear-gradient(45deg, transparent 50%, $badge-color 50%);
+}
+
+.#{$badge}--ribbon-left {
+  left: 0;
+  background: linear-gradient(
+    -45deg,
+    transparent 50%,
+    $badge-color 50%,
+    $badge-color 85%,
+    transparent 85%
+  );
+}
+
+.#{$badge}--triangle-left {
+  left: 0;
+  background: linear-gradient(-45deg, transparent 50%, $badge-color 50%);
+}
+
+.#{$badge}--ribbon .#{$badge}__count,
+.#{$badge}--ribbon-right .#{$badge}__count,
+.#{$badge}--triangle-right .#{$badge}__count {
+  transform: rotate(45deg)
+    translateY(
+      calc(-1 * var(--xbd-line-height-mark-extraSmall, 32rpx) / 2 + 1rpx)
+    );
+}
+
+.#{$badge}--ribbon-left .#{$badge}__count,
+.#{$badge}--triangle-left .#{$badge}__count {
+  transform: rotate(-45deg)
+    translateY(
+      calc(-1 * var(--xbd-line-height-mark-extraSmall, 32rpx) / 2 + 1rpx)
+    );
+}
+
+.#{$badge}--large {
+  min-width: $badge-large-height;
+  height: $badge-large-height;
+  padding: 0 $badge-large-padding;
+  font: $badge-large-font;
+}
+
+.#{$badge}--large.#{$badge}--circle {
+  border-radius: calc($badge-large-height / 2);
+}
+
+.#{$badge}--large.#{$badge}--ribbon,
+.#{$badge}--large.#{$badge}--ribbon-right,
+.#{$badge}--large.#{$badge}--ribbon-left,
+.#{$badge}--large.#{$badge}--triangle-right,
+.#{$badge}--large.#{$badge}--triangle-left {
+  width: calc($badge-large-height * 2);
+  height: calc($badge-large-height * 2);
+  padding: 0;
+}
+
+.#{$badge}--large.#{$badge}--ribbon .#{$badge}__count,
+.#{$badge}--large.#{$badge}--ribbon-right .#{$badge}__count,
+.#{$badge}--large.#{$badge}--triangle-right .#{$badge}__count {
+  transform: rotate(45deg)
+    translateY(calc(-1 * var(--xbd-line-height-mark-small, 40rpx) / 2 + 3rpx));
+}
+
+.#{$badge}--large.#{$badge}--ribbon-left .#{$badge}__count,
+.#{$badge}--large.#{$badge}--triangle-left .#{$badge}__count {
+  transform: rotate(-45deg)
+    translateY(calc(-1 * var(--xbd-line-height-mark-small, 40rpx) / 2 + 3rpx));
+}
+
+.#{$badge}__content:not(:empty) + .#{$badge}--bubble.#{$prefix}-has-count,
+.#{$badge}__content:not(:empty) + .#{$badge}--circle.#{$prefix}-has-count,
+.#{$badge}__content:not(:empty) + .#{$badge}--square.#{$prefix}-has-count {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  transform: translate(-50%, -50%);
+  transform-origin: center center;
+}
+
+.#{$badge}__content-text {
+  display: block;
+  font: $badge-content-text-font;
+  color: $badge-content-text-color;
+}
+
+.#{$badge}__count:empty {
+  display: none;
+}

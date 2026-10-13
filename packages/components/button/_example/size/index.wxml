@@ -1,0 +1,6 @@
+<view class="button-example">
+  <xbd-button theme="primary" size="large" content="按钮48" />
+  <xbd-button theme="primary" content="按钮40" />
+  <xbd-button theme="primary" size="small" content="按钮32" />
+  <xbd-button theme="primary" size="extra-small" content="按钮28" />
+</view>

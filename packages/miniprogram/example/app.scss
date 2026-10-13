@@ -1,0 +1,29 @@
+@use "../../components/common/styles/variables.scss";
+@use "../../components/common/styles/theme/index.scss";
+@import url("./styles/unocss.wxss");
+
+page {
+  background-color: var(--xbd-bg-color-page, #f5f5f5);
+
+  --bg-color-demo-desc: var(--xbd-text-color-secondary, rgba(0, 0, 0, 0.6));
+  --bg-color-demo-title: var(--xbd-text-color-primary, rgba(0, 0, 0, 0.9));
+}
+
+.demo {
+  padding-bottom: 56rpx;
+
+  &-title {
+    font-size: 48rpx;
+    font-weight: 700;
+    line-height: 64rpx;
+    margin: 48rpx 32rpx 0;
+    color: var(--bg-color-demo-title);
+  }
+
+  &-desc {
+    font-size: 28rpx;
+    color: var(--bg-color-demo-desc);
+    margin: 16rpx 32rpx 0;
+    line-height: 44rpx;
+  }
+}

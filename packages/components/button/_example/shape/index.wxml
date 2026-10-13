@@ -1,0 +1,28 @@
+<view class="button-example button-example--shape">
+  <xbd-button theme="primary" size="large" content="填充按钮" />
+  <xbd-button
+    theme="primary"
+    size="large"
+    icon="close-linear"
+    shape="square"
+    aria-label="搜索"
+  />
+  <xbd-button theme="primary" size="large" shape="round" content="填充按钮" />
+  <xbd-button
+    theme="primary"
+    size="large"
+    icon="close-linear"
+    shape="circle"
+    aria-label="搜索"
+  />
+</view>
+
+<view class="button-example button-example--block-shape">
+  <xbd-button
+    theme="primary"
+    size="large"
+    block
+    xbd-class="button-example__block-button"
+    content="填充按钮"
+  />
+</view>

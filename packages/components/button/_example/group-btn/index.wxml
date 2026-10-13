@@ -1,0 +1,16 @@
+<view class="button-example button-example--group">
+  <xbd-button
+    theme="light"
+    block
+    size="large"
+    custom-style="border-radius: 0;"
+    content="填充按钮"
+  />
+  <xbd-button
+    theme="primary"
+    block
+    size="large"
+    custom-style="border-radius: 0;"
+    content="填充按钮"
+  />
+</view>

@@ -1,0 +1,168 @@
+<xbd-popup
+  visible="{{ visible }}"
+  bind:visible-change="onVisibleChange"
+  placement="bottom"
+  show-header
+  close-btn="{{ mode !== 'noClose' && mode !== 'custom' }}"
+  header-title="{{ titleMap[mode] }}"
+  header-subtitle="{{ subtitleMap[mode] }}"
+  header-align="{{ mode === 'left' || mode === 'subtitleLeft' ? 'left' : mode === 'right' ? 'right' : 'center' }}"
+  header-close-position="{{ mode === 'reverse' ? 'left' : 'right' }}"
+  custom-header="{{ mode === 'custom' }}"
+  custom-header-title="{{ mode === 'customTitle' }}"
+  custom-header-close="{{ mode === 'customClose' }}"
+>
+  <view wx:if="{{ mode === 'custom' }}" slot="header" class="custom-header">
+    <view class="custom-header__main">
+      <view class="custom-header__title">完全自定义头部</view>
+      <view class="custom-header__subtitle">
+        外部可完全控制标题、操作区与布局
+      </view>
+    </view>
+    <view class="custom-header__action" bind:tap="handleClose">完成</view>
+  </view>
+
+  <view
+    wx:if="{{ mode === 'customTitle' }}"
+    slot="header-title"
+    class="custom-title"
+  >
+    <view class="custom-title__label">自定义标题内容</view>
+    <view class="custom-title__desc">支持任意标题结构</view>
+  </view>
+
+  <view
+    wx:if="{{ mode === 'customClose' }}"
+    slot="header-close"
+    class="custom-close"
+  >
+    <xbd-icon name="close-linear" size="40rpx" color="inherit" />
+  </view>
+
+  <view class="block">
+    <view class="block__text">{{ titleMap[mode] }}</view>
+  </view>
+</xbd-popup>
+
+<view class="demo-section">
+  <view class="demo-section__title">基础标题</view>
+  <view class="button-grid">
+    <xbd-button
+      size="large"
+      variant="outline"
+      theme="primary"
+      data-mode="left"
+      bind:tap="handlePopup"
+    >
+      左侧标题
+    </xbd-button>
+    <xbd-button
+      size="large"
+      variant="outline"
+      theme="primary"
+      data-mode="center"
+      bind:tap="handlePopup"
+    >
+      居中标题
+    </xbd-button>
+    <xbd-button
+      size="large"
+      variant="outline"
+      theme="primary"
+      data-mode="right"
+      bind:tap="handlePopup"
+    >
+      右侧标题
+    </xbd-button>
+  </view>
+</view>
+
+<view class="demo-section">
+  <view class="demo-section__title">标题与副标题</view>
+  <view class="button-grid">
+    <xbd-button
+      size="large"
+      variant="outline"
+      theme="light"
+      data-mode="subtitleLeft"
+      bind:tap="handlePopup"
+    >
+      左侧标题副标题
+    </xbd-button>
+    <xbd-button
+      size="large"
+      variant="outline"
+      theme="light"
+      data-mode="subtitleCenter"
+      bind:tap="handlePopup"
+    >
+      居中标题副标题
+    </xbd-button>
+  </view>
+</view>
+
+<view class="demo-section">
+  <view class="demo-section__title">关闭图标与长文本</view>
+  <view class="button-grid">
+    <xbd-button
+      size="large"
+      variant="outline"
+      theme="primary"
+      data-mode="long"
+      bind:tap="handlePopup"
+    >
+      长标题省略
+    </xbd-button>
+    <xbd-button
+      size="large"
+      variant="outline"
+      theme="primary"
+      data-mode="noClose"
+      bind:tap="handlePopup"
+    >
+      无关闭图标
+    </xbd-button>
+    <xbd-button
+      size="large"
+      variant="outline"
+      theme="primary"
+      data-mode="reverse"
+      bind:tap="handlePopup"
+    >
+      图标在左侧
+    </xbd-button>
+  </view>
+</view>
+
+<view class="demo-section">
+  <view class="demo-section__title">自定义能力</view>
+  <view class="button-grid">
+    <xbd-button
+      size="large"
+      variant="outline"
+      theme="primary"
+      data-mode="customTitle"
+      bind:tap="handlePopup"
+    >
+      自定义标题
+    </xbd-button>
+    <xbd-button
+      size="large"
+      variant="outline"
+      theme="primary"
+      data-mode="customClose"
+      bind:tap="handlePopup"
+    >
+      自定义图标
+    </xbd-button>
+    <xbd-button
+      size="large"
+      variant="outline"
+      theme="primary"
+      data-mode="custom"
+      bind:tap="handlePopup"
+    >
+      完全自定义
+    </xbd-button>
+  </view>
+</view>

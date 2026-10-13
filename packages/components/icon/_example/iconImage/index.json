@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "xbd-icon": "xbd-miniprogram/icon/icon"
+  }
+}

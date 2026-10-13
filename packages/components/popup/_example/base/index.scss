@@ -1,0 +1,32 @@
+.block {
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.block--top,
+.block--bottom {
+  width: 100vw;
+  height: 480rpx;
+}
+
+.block--left,
+.block--right {
+  width: 560rpx;
+  height: 100%;
+}
+
+.block--center {
+  width: 480rpx;
+  height: 480rpx;
+  border-radius: 16rpx;
+}
+
+.wrapper {
+  margin-bottom: 32rpx;
+}
+
+.wrapper:last-child {
+  margin-bottom: 0;
+}

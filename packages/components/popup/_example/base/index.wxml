@@ -1,0 +1,21 @@
+<xbd-popup
+  visible="{{ visible }}"
+  bind:visible-change="onVisibleChange"
+  placement="{{ cur.value || 'top' }}"
+>
+  <view class="block block--{{ cur.value }}">{{ cur.text }}</view>
+</xbd-popup>
+
+<xbd-button
+  wx:for="{{ position }}"
+  wx:key="index"
+  block
+  size="large"
+  variant="outline"
+  theme="primary"
+  bind:tap="handlePopup"
+  data-item="{{ item }}"
+  xbd-class="wrapper"
+>
+  {{ item.text }}
+</xbd-button>

@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "styleIsolation": "apply-shared",
+  "usingComponents": {
+    "xbd-button": "xbd-miniprogram/button/button",
+    "xbd-input": "xbd-miniprogram/input/input",
+    "xbd-modal": "xbd-miniprogram/modal/modal"
+  }
+}

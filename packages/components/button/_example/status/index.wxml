@@ -1,0 +1,10 @@
+<view class="button-example">
+  <xbd-button theme="primary" size="large" loading content="圆圈加载" />
+  <xbd-button
+    theme="primary"
+    size="large"
+    loading
+    loading-type="spinner"
+    content="菊花加载"
+  />
+</view>

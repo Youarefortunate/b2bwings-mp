@@ -1,0 +1,42 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+
+  // Oxfmt 当前为 Beta 版本并精确锁定 稳定版发布后评估差异再手动升级
+  "printWidth": 80, // 单行最大字符数
+  "tabWidth": 2, // 每级缩进使用两个空格
+  "useTabs": false, // 使用空格而不是 Tab 缩进
+  "semi": true, // 语句末尾保留分号
+  "singleQuote": false, // 字符串统一使用双引号
+  "trailingComma": "all", // 支持的位置统一保留尾随逗号
+  "bracketSpacing": true, // 对象花括号内侧保留空格
+  "bracketSameLine": false, // 多行标签的右尖括号单独换行
+  "arrowParens": "always", // 箭头函数参数始终使用圆括号
+  "endOfLine": "lf", // 文件换行符统一使用 LF
+
+  // 排除生成文件 工具目录和由其他格式化器负责的文件
+  "ignorePatterns": [
+    "**/*.{wxml,wxs,wxss}", // 微信小程序特殊文件由 Prettier 及 WXML 插件处理以避免双重格式化
+    "**/*.md",
+    "packages/common",
+    "node_modules",
+    "**/miniprogram_npm",
+    "**/miniprogram_dist",
+    "package-lock.json",
+    "pnpm-lock.yaml",
+    ".trae",
+    ".agents",
+    ".vscode",
+    ".idea",
+    ".history",
+    "**/project.private.config.json",
+    "*.log",
+    "**/coverage",
+    "**/dist",
+    ".stitch",
+    ".baoyu-skills",
+    "**/project.config.json",
+    "**/unocss.wxss",
+    "**/echarts.js",
+    "**/echarts.d.ts",
+  ],
+}

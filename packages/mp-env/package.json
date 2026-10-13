@@ -1,0 +1,25 @@
+{
+  "name": "xbd-mp-env",
+  "version": "1.0.0",
+  "private": true,
+  "description": "原生微信小程序多环境切换工具",
+  "author": "Youfortunate",
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "env": "tsx src/cli.ts",
+    "test": "vitest run --passWithNoTests",
+    "type-check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "tsconfig": "workspace:*",
+    "tsx": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
+  }
+}

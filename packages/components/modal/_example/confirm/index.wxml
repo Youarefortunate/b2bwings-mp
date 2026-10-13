@@ -1,0 +1,66 @@
+<view class="wrapper">
+  <xbd-button
+    theme="primary"
+    size="large"
+    variant="outline"
+    data-key="showConfirm"
+    bind:tap="showModal"
+    block
+  >
+    确认类-带标题
+  </xbd-button>
+</view>
+
+<xbd-modal
+  visible="{{ showConfirm }}"
+  title="模态框标题"
+  content="告知当前状态、信息和解决方法，描述文案尽可能控制在三行内"
+  confirm-btn="{{ confirmBtn }}"
+  cancel-btn="取消"
+  bind:confirm="closeModal"
+  bind:cancel="closeModal"
+/>
+
+<view class="wrapper">
+  <xbd-button
+    theme="primary"
+    size="large"
+    variant="outline"
+    data-key="showWarnConfirm"
+    bind:tap="showModal"
+    block
+  >
+    确认类-无标题
+  </xbd-button>
+</view>
+
+<xbd-modal
+  visible="{{ showWarnConfirm }}"
+  content="告知当前状态、信息和解决方法，描述文案尽可能控制在三行内"
+  confirm-btn="{{ { content: '警示操作', variant: 'base', theme: 'danger' } }}"
+  cancel-btn="取消"
+  bind:confirm="closeModal"
+  bind:cancel="closeModal"
+/>
+
+<view class="wrapper">
+  <xbd-button
+    theme="primary"
+    size="large"
+    variant="outline"
+    data-key="showLightConfirm"
+    bind:tap="showModal"
+    block
+  >
+    确认类-纯标题
+  </xbd-button>
+</view>
+
+<xbd-modal
+  visible="{{ showLightConfirm }}"
+  title="模态框标题"
+  confirm-btn="{{ { content: '确定', variant: 'base', theme: 'light' } }}"
+  cancel-btn="取消"
+  bind:confirm="closeModal"
+  bind:cancel="closeModal"
+/>

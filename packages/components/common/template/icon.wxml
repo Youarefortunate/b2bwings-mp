@@ -1,0 +1,13 @@
+<template name="icon">
+  <xbd-icon
+    style="{{ style || '' }}"
+    xbd-class="{{ xbdClass }}"
+    prefix="{{ prefix || '' }}"
+    name="{{ name || '' }}"
+    size="{{ size || '' }}"
+    color="{{ color || '' }}"
+    aria-hidden="{{ ariaHidden || '' }}"
+    aria-label="{{ ariaLabel || '' }}"
+    aria-role="{{ ariaRole || '' }}"
+  />
+</template>

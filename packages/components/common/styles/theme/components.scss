@@ -1,0 +1,7 @@
+// 部分特殊处理的组件级 token
+@mixin components-properties {
+  --xbd-picker-transparent-color: rgba(255, 255, 255, 0);
+
+  --xbd-switch-dot-disabled-color: var(--xbd-font-white-1);
+  --xbd-switch-loading-color: var(--xbd-brand-color);
+}

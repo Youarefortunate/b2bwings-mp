@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "pull-down-list": "../../components/pull-down-list",
+    "component-grid": "../../components/component-grid",
+    "xbd-tabs": "xbd-miniprogram/tabs/tabs",
+    "xbd-tab-item": "xbd-miniprogram/tab-item/tab-item"
+  },
+  "navigationBarTitleText": "B2B Wings UI"
+}

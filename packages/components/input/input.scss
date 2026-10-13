@@ -1,0 +1,274 @@
+@use "../common/styles/variables.scss" as var;
+
+$prefix: var.$prefix;
+
+$input-vertical-padding: var(--xbd-input-vertical-padding, 32rpx); // 输入框垂直方向内间距
+
+$input-default-text-color: var(
+  --xbd-input-default-text-color,
+  var.$text-color-primary
+); // 'default' 状态输入框文本颜色
+$input-success-text-color: var(
+  --xbd-input-success-text-color,
+  var.$success-color
+); // 'success' 状态输入框文本颜色
+$input-warning-text-color: var(
+  --xbd-input-warning-text-color,
+  var.$warning-color
+); // 'warning' 状态输入框文本颜色
+$input-error-text-color: var(--xbd-input-error-text-color, var.$error-color); // 'error' 状态输入框文本颜色
+
+$input-default-tips-color: var(
+  --xbd-input-default-tips-color,
+  var.$text-color-placeholder
+); // 'default' 状态辅助提示文本颜色
+$input-success-tips-color: var(
+  --xbd-input-success-tips-color,
+  var.$success-color
+); // 'success' 状态辅助提示文本颜色
+$input-warning-tips-color: var(
+  --xbd-input-warning-tips-color,
+  var.$warning-color
+); // 'warning' 状态辅助提示文本颜色
+$input-error-tips-color: var(--xbd-input-error-tips-color, var.$error-color); // 'error' 状态辅助提示文本颜色
+
+$input-bg-color: var(--xbd-input-bg-color, var.$bg-color-container); // 输入框背景颜色
+$input-border-color: var(--xbd-input-border-color, var.$component-stroke); // 输入框分割线颜色
+$input-border-left-space: var(--xbd-input-border-left-space, 32rpx); // 底部边框分割线左边距
+$input-border-right-space: var(--xbd-input-border-right-space, 0); // 底部边框分割线右边距
+$input-placeholder-text-color: var(
+  --xbd-input-placeholder-text-color,
+  var.$text-color-placeholder
+); // 输入框占位符文本颜色
+$input-placeholder-text-font: var(
+  --xbd-input-placeholder-text-font,
+  var.$font-body-large
+); // 输入框占位符文本字体大小
+$input-prefix-icon-color: var(
+  --xbd-input-prefix-icon-color,
+  var.$text-color-primary
+); // 输入框前缀图标颜色
+$input-suffix-icon-color: var(
+  --xbd-input-suffix-icon-color,
+  var.$text-color-placeholder
+); // 输入框后缀图标颜色
+$input-label-text-color: var(
+  --xbd-input-label-text-color,
+  var.$text-color-primary
+); // 左侧标签文本颜色
+$input-label-text-font: var(--xbd-input-label-text-font, var.$font-body-large); // 左侧标签文本字体大小
+$input-label-min-width: var(--xbd-input-label-min-width, 2em); // 左侧标签最小宽度限制
+$input-label-max-width: var(--xbd-input-label-max-width, 5em); // 左侧标签最大宽度限制
+$input-suffix-text-color: var(
+  --xbd-input-suffix-text-color,
+  var.$text-color-primary
+); // 后置内容文本颜色
+$input-disabled-text-color: var(
+  --xbd-input-disabled-text-color,
+  var.$text-color-disabled
+); // 输入框禁用态文本颜色
+
+$input-align-items: var(--xbd-input-align-items, center); // 内容对齐方式
+
+// 输入框组件根选择器
+.#{$prefix}-input {
+  background-color: $input-bg-color;
+  display: flex;
+  align-items: $input-align-items;
+  flex: 1;
+  padding: $input-vertical-padding;
+  overflow: hidden;
+
+  // 底部有分割边框的修饰符状态
+  &--border {
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      left: $input-border-left-space;
+      right: $input-border-right-space;
+      bottom: 0;
+      height: 1rpx;
+      background-color: $input-border-color;
+    }
+  }
+
+  // 垂直布局修饰符状态
+  &--layout-vertical {
+    flex-direction: column;
+    align-items: start;
+  }
+
+  // 前缀图标外包裹层
+  &__wrap--prefix {
+    display: flex;
+  }
+
+  // 前缀图标样式
+  &__icon--prefix {
+    font-size: 48rpx;
+    color: $input-prefix-icon-color;
+  }
+
+  // 左侧标签容器样式，支持垂直和水平对齐
+  &__label:not(:empty) {
+    min-width: $input-label-min-width;
+    max-width: $input-label-max-width;
+    font: $input-label-text-font;
+    color: $input-label-text-color;
+    margin-right: var.$spacer-2;
+    word-wrap: break-word;
+
+    // 垂直布局模式下标签在上方且下间距微调
+    .#{$prefix}-input--layout-vertical & {
+      font-size: var.$font-size-base;
+      padding-bottom: 8rpx;
+    }
+  }
+
+  // 当标签前存在图标时的位置微调
+  &__icon--prefix:not(:empty) + &__label:not(:empty) {
+    padding-left: 8rpx;
+  }
+
+  // 标签与主体输入区域的间距控制
+  &__label:not(:empty) + &__wrap {
+    margin-left: var.$spacer-2;
+  }
+
+  // 纯图标前缀下的右间距微调
+  &__icon--prefix:not(:empty) + &__label:empty {
+    margin-right: var.$spacer-2;
+  }
+
+  // 主体输入包裹区域
+  &__wrap {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-shrink: 1;
+    flex: 1;
+
+    // 包含 input 元素的主体内容行
+    .#{$prefix}-input__content {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      font: var.$font-body-large;
+    }
+
+    // 清空图标、后缀图标和后缀文本的外容器
+    &--clearable-icon,
+    &--suffix-icon,
+    &--suffix {
+      flex: 0 0 auto;
+      padding-left: var.$spacer-1;
+
+      &:empty {
+        display: none;
+      }
+    }
+
+    // 后缀和清空按钮图标大小与颜色
+    &--clearable-icon,
+    &--suffix-icon {
+      font-size: 48rpx;
+      color: $input-suffix-icon-color;
+    }
+
+    // 后缀文本样式
+    &--suffix {
+      font-size: var.$font-size-m;
+      color: $input-suffix-text-color;
+    }
+  }
+
+  // 隐藏为空的元素以避免外间距污染
+  &__icon--prefix,
+  &__tips,
+  &__wrap--clearable-icon,
+  &__wrap--suffix-icon,
+  &__wrap--suffix {
+    &:empty {
+      display: none;
+    }
+  }
+
+  // 原生 input 输入控件样式
+  &__control {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    min-height: 48rpx;
+    margin: 0;
+    padding: 0;
+    color: $input-default-text-color;
+    line-height: inherit;
+    background-color: transparent;
+    border: 0;
+    resize: none;
+    font-size: inherit;
+
+    // 禁用状态下的文本与手势样式
+    &--disabled {
+      color: $input-disabled-text-color;
+      cursor: not-allowed;
+      opacity: 1;
+      -webkit-text-fill-color: currentColor;
+    }
+
+    // 只读状态下的手势样式
+    &--read-only {
+      cursor: default;
+    }
+  }
+
+  // 输入对齐方向修饰符：左对齐
+  &--left {
+    text-align: left;
+  }
+
+  // 输入对齐方向修饰符：右对齐
+  &--right {
+    text-align: right;
+  }
+
+  // 输入对齐方向修饰符：居中对齐
+  &--center {
+    text-align: center;
+  }
+
+  // 输入框占位符样式
+  &__placeholder {
+    color: $input-placeholder-text-color;
+    font: $input-placeholder-text-font;
+
+    // 禁用态占位符样式
+    &--disabled {
+      color: $input-disabled-text-color;
+    }
+  }
+
+  // 底部提示辅助说明文本的公共布局
+  &__tips {
+    font: var.$font-body-small;
+    padding-top: 8rpx;
+  }
+
+  // 根据输入框的不同状态映射提示文本颜色
+  &--default + &__tips {
+    color: $input-default-tips-color;
+  }
+  &--success + &__tips {
+    color: $input-success-tips-color;
+  }
+  &--warning + &__tips {
+    color: $input-warning-tips-color;
+  }
+  &--error + &__tips {
+    color: $input-error-tips-color;
+  }
+}

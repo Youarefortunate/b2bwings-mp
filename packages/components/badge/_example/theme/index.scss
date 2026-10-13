@@ -1,0 +1,27 @@
+.demo-wrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 56rpx;
+  margin-bottom: 48rpx;
+  margin-left: 32rpx;
+}
+
+.demo-desc {
+  margin-bottom: 24rpx;
+}
+
+.demo-card {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 96rpx;
+  margin-bottom: 24rpx;
+  padding: 28rpx 32rpx;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.demo-card__title {
+  color: rgba(0, 0, 0, 0.9);
+  font-size: 32rpx;
+}

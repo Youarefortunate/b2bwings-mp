@@ -1,0 +1,9 @@
+<xbd-tabs defaultValue="{{ 0 }}">
+  <xbd-tab-item
+    wx:for="{{ 3 }}"
+    wx:key="index"
+    icon="phone"
+    label="选项"
+    value="{{ index }}"
+  />
+</xbd-tabs>

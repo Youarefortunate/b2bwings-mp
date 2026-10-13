@@ -1,0 +1,16 @@
+<view class="button-example button-example--icon">
+  <xbd-button
+    theme="primary"
+    size="large"
+    icon="close-fill"
+    content="图标按钮"
+  />
+  <xbd-button theme="primary" size="large" loading content="加载中" />
+  <xbd-button
+    theme="primary"
+    size="large"
+    icon="{{ whiteIcon }}"
+    shape="square"
+    aria-label="搜索"
+  />
+</view>

@@ -1,0 +1,8 @@
+<xbd-sticky
+  offset-top="{{ navbarHeight }}"
+  xbd-class-content="sticky-content"
+>
+  <xbd-button size="large" theme="primary" xbd-class="button-class">
+    基础吸顶
+  </xbd-button>
+</xbd-sticky>

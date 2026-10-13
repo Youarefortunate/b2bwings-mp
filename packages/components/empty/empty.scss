@@ -1,0 +1,61 @@
+@use "../common/styles/variables.scss" as var;
+
+$prefix: var.$prefix; // 组件库类名前缀
+$empty-icon-size: var(--xbd-empty-icon-size, 192rpx); // 空状态图标尺寸
+$empty-description-color: var(--xbd-empty-description-color, var.$font-gray-3); // 描述内容颜色
+$empty-icon-color: var(--xbd-empty-icon-color, var.$font-gray-3); // 图标颜色
+$empty-description-font: var(
+  --xbd-empty-description-font,
+  var.$font-body-medium
+); // 描述内容字体
+$empty-description-margin-top: var(
+  --xbd-empty-description-margin-top,
+  var.$spacer-1
+); // 描述内容顶部间距
+$empty-action-margin-top: var(--xbd-empty-action-margin-top, var.$spacer-4); // 操作内容顶部间距
+
+.#{$prefix}-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  // 图片区域
+  &__thumb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__image {
+    width: $empty-icon-size;
+    height: $empty-icon-size;
+  }
+
+  &__icon {
+    font-size: $empty-icon-size;
+    color: $empty-icon-color;
+  }
+
+  // 描述内容
+  &__description {
+    color: $empty-description-color;
+    font: $empty-description-font;
+    text-align: center;
+    white-space: pre-wrap;
+  }
+
+  &__thumb + &__description:not(:empty) {
+    margin-top: $empty-description-margin-top;
+  }
+
+  // 操作内容
+  &__actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__description + &__actions:not(:empty) {
+    margin-top: $empty-action-margin-top;
+  }
+}

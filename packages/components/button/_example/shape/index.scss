@@ -1,0 +1,15 @@
+.button-example {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 32rpx 32rpx;
+
+  &__block-button {
+    border-radius: 0 !important;
+  }
+}
+
+.button-example--block-shape {
+  display: block;
+  margin-top: 0;
+}

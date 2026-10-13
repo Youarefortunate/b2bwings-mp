@@ -1,0 +1,86 @@
+<import src="../common/template/button.wxml" />
+<import src="../common/template/icon.wxml" />
+<wxs src="../common/wxs/utils.wxs" module="_" />
+<wxs src="./commons/modal.wxs" module="modal" />
+
+<xbd-popup
+  name="fade"
+  style="{{ _._style([style, customStyle]) }}"
+  class="class"
+  xbd-class="{{ classPrefix }}__wrapper"
+  visible="{{ visible }}"
+  showOverlay="{{ showOverlay }}"
+  closeOnOverlayClick="{{ closeOnOverlayClick }}"
+  preventScrollThrough="{{ preventScrollThrough }}"
+  overlayProps="{{ overlayProps }}"
+  zIndex="{{ zIndex }}"
+  placement="center"
+  usingCustomNavbar="{{ usingCustomNavbar }}"
+  bind:visible-change="overlayClick"
+>
+  <view slot="content" class="{{ classPrefix }} {{ prefix }}-class">
+    <slot name="top" />
+
+    <!-- 关闭按钮 -->
+    <view
+      wx:if="{{ closeBtn }}"
+      class="{{ classPrefix }}__close-btn"
+      bind:tap="onClose"
+    >
+      <template
+        wx:if="{{ _.isObject(closeBtn) }}"
+        is="icon"
+        data="{{ name: 'close', size: 22, ...closeBtn }}"
+      />
+      <xbd-icon wx:else name="close" size="44rpx" />
+    </view>
+
+    <!-- 内容容器 -->
+    <view class="{{ classPrefix }}__content {{ prefix }}-class-content">
+      <!-- 标题内容 -->
+      <view wx:if="{{ title }}" class="{{ classPrefix }}__header">
+        {{ title }}
+      </view>
+      <slot name="title" />
+
+      <!-- 正文内容 -->
+      <view wx:if="{{ content }}" class="{{ classPrefix }}__body">
+        <text class="{{ classPrefix }}__body-text">{{ content }}</text>
+      </view>
+      <slot name="content" />
+    </view>
+
+    <!-- 底部按钮区 -->
+    <slot name="middle" />
+
+    <view
+      class="{{ _.cls(classPrefix + '__footer', [ ['column', buttonLayout === 'vertical'], ['full', buttonVariant == 'text' && actions.length == 0] ]) }}"
+    >
+      <!-- 自定义操作按钮 -->
+      <block wx:if="{{ actions }}">
+        <block wx:for="{{ actions }}" wx:key="index">
+          <template
+            is="button"
+            data="{{ block: true, type: 'action', extra: index, xbdClass: prefix + '-class-action', rootClass: modal.getActionClass(classPrefix, buttonLayout), ...item }}"
+          />
+        </block>
+      </block>
+      <slot name="actions" />
+
+      <!-- 取消按钮 -->
+      <block wx:if="{{ _cancel }}">
+        <template is="button" data="{{ type: 'cancel', ..._cancel }}" />
+      </block>
+      <slot name="cancel-btn" />
+
+      <!-- 确认按钮 -->
+      <block wx:if="{{ _confirm }}">
+        <template
+          is="button"
+          data="{{ type: 'confirm', theme: 'primary', ..._confirm }}"
+        />
+      </block>
+      <slot name="confirm-btn" />
+    </view>
+  </view>
+</xbd-popup>

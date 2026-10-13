@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "styleIsolation": "apply-shared",
+  "usingComponents": {},
+  "commentedUsingComponents": {
+    "xbd-notice-bar": "xbd-miniprogram/notice-bar/notice-bar"
+  }
+}

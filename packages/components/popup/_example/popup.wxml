@@ -1,0 +1,25 @@
+<view class="demo">
+  <xbd-demo-header
+    title="Popup 弹出层"
+    desc="由其他控件触发，从屏幕边缘或中心弹出一块自定义内容区域"
+  />
+  <xbd-demo title="01 组件类型" desc="基础弹出层" padding>
+    <base />
+  </xbd-demo>
+
+  <xbd-demo title="02 自定义遮罩" desc="遮罩层配置" padding>
+    <custom-overlay />
+  </xbd-demo>
+
+  <xbd-demo title="03 内置头部" desc="头部标题、操作区与自定义头部" padding>
+    <header />
+  </xbd-demo>
+
+  <xbd-demo title="04 组件示例" desc="应用示例" padding>
+    <view class="demo-list">
+      <with-title />
+      <close-btn />
+      <custom-close />
+    </view>
+  </xbd-demo>
+</view>

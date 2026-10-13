@@ -1,0 +1,15 @@
+<view class="demo">
+  <xbd-demo-header title="Empty 空状态" desc="用于空状态时的占位提示" />
+
+  <xbd-demo title="01 类型" desc="图标空状态">
+    <base />
+  </xbd-demo>
+
+  <xbd-demo desc="自定义图片空状态">
+    <imageEmpty />
+  </xbd-demo>
+
+  <xbd-demo desc="带操作空状态">
+    <buttonEmpty />
+  </xbd-demo>
+</view>

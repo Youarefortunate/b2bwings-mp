@@ -1,0 +1,34 @@
+<view class="demo">
+  <xbd-demo-header
+    title="Modal 模态框"
+    desc="用于显示重要提示或请求用户进行重要操作，是一种打断当前操作的模态视图"
+  />
+
+  <xbd-demo title="01 组件类型" desc="反馈类模态框" padding>
+    <base />
+  </xbd-demo>
+
+  <xbd-demo desc="确认类模态框" padding>
+    <confirm />
+  </xbd-demo>
+
+  <xbd-demo title="02 组件状态" padding>
+    <status />
+  </xbd-demo>
+
+  <xbd-demo title="03 组件用法" desc="命令式调用" padding>
+    <command />
+  </xbd-demo>
+
+  <xbd-demo desc="自定义按钮" padding>
+    <buttonDemo />
+  </xbd-demo>
+
+  <xbd-demo desc="带图片" padding>
+    <withImage />
+  </xbd-demo>
+
+  <xbd-demo desc="带输入框" padding>
+    <withInput />
+  </xbd-demo>
+</view>

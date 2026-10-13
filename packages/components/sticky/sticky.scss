@@ -1,0 +1,7 @@
+@use "../common/styles/variables.scss" as var;
+
+$prefix: var.$prefix; // 组件类名前缀
+
+.#{$prefix}-sticky {
+  position: relative;
+}

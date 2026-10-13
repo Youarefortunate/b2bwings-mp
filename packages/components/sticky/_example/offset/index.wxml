@@ -1,0 +1,8 @@
+<xbd-sticky
+  offset-top="{{ 40 + navbarHeight }}"
+  xbd-class-content="sticky-content"
+>
+  <xbd-button size="large" theme="danger" xbd-class="button-class">
+    吸顶距离
+  </xbd-button>
+</xbd-sticky>

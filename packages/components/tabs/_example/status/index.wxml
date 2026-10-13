@@ -1,0 +1,9 @@
+<xbd-tabs
+  value="{{ value }}"
+  bind:change="onTabsChange"
+  bind:click="onTabsClick"
+>
+  <xbd-tab-item label="{{ value === '0' ? '选中' : '默认' }}" value="0" />
+  <xbd-tab-item label="{{ value === '1' ? '选中' : '默认' }}" value="1" />
+  <xbd-tab-item label="禁用" value="2" disabled />
+</xbd-tabs>

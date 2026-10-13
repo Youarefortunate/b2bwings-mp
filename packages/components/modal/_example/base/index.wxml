@@ -1,0 +1,81 @@
+<xbd-button
+  xbd-class="wrapper"
+  theme="primary"
+  size="large"
+  variant="outline"
+  data-key="showTextAndTitle"
+  bind:tap="showModal"
+  block
+>
+  反馈类-带标题
+</xbd-button>
+<xbd-modal
+  visible="{{ showTextAndTitle }}"
+  title="模态框标题"
+  content="告知当前状态、信息和解决方法，描述文案尽可能控制在三行内"
+  confirm-btn="{{ confirmBtn }}"
+  bind:confirm="closeModal"
+/>
+
+<xbd-button
+  xbd-class="wrapper"
+  theme="primary"
+  size="large"
+  variant="outline"
+  data-key="showContentOnly"
+  bind:tap="showModal"
+  block
+>
+  反馈类-无标题
+</xbd-button>
+<xbd-modal
+  visible="{{ showContentOnly }}"
+  content="告知当前状态、信息和解决方法，描述文案尽可能控制在三行内"
+  confirm-btn="{{ confirmBtn }}"
+  bind:confirm="closeModal"
+/>
+
+<xbd-button
+  xbd-class="wrapper"
+  theme="primary"
+  size="large"
+  variant="outline"
+  data-key="showTitleOnly"
+  bind:tap="showModal"
+  block
+>
+  反馈类-纯标题
+</xbd-button>
+<xbd-modal
+  visible="{{ showTitleOnly }}"
+  title="模态框标题"
+  confirm-btn="{{ confirmBtn }}"
+  bind:confirm="closeModal"
+/>
+
+<xbd-button
+  xbd-class="wrapper"
+  theme="primary"
+  size="large"
+  variant="outline"
+  data-key="showLongContent"
+  bind:tap="showModal"
+  block
+>
+  反馈类-内容超长
+</xbd-button>
+<xbd-modal
+  visible="{{ showLongContent }}"
+  title="模态框标题"
+  confirm-btn="{{ confirmBtn }}"
+  bind:confirm="closeModal"
+>
+  <scroll-view slot="content" scroll-y class="long-content">
+    <view class="content-container">
+      这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+      这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+      这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+      这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+    </view>
+  </scroll-view>
+</xbd-modal>

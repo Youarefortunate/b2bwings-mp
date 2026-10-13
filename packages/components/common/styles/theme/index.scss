@@ -1,0 +1,14 @@
+@use "./light.scss" as light;
+@use "./radius.scss" as radius;
+@use "./font.scss" as font;
+@use "./spacer.scss" as spacer;
+@use "./components.scss" as components;
+
+page,
+.page {
+  @include light.light-properties;
+  @include radius.radius-properties;
+  @include font.font-properties;
+  @include spacer.spacer-properties;
+  @include components.components-properties;
+}

@@ -1,0 +1,156 @@
+@use "../common/styles/variables.scss" as var;
+
+// 基础命名与尺寸变量
+$prefix: var.$prefix; // 组件库类名前缀
+$modal-width: var(--xbd-modal-width, 622rpx); // 弹窗宽度
+$modal-border-radius: var(--xbd-modal-border-radius, var.$radius-extraLarge); // 弹窗圆角
+$modal-body-max-height: var(--xbd-modal-body-max-height, 912rpx); // 内容最大高度
+
+// 内容色彩与字体变量
+$modal-title-font: var(--xbd-modal-title-font, var.$font-title-large); // 标题字体
+$modal-title-color: var(--xbd-modal-title-color, var.$text-color-primary); // 标题文字色
+$modal-content-font: var(--xbd-modal-content-font, var.$font-body-large); // 正文字体
+$modal-content-color: var(--xbd-modal-content-color, var.$text-color-secondary); // 正文文字色
+$modal-close-color: var(--xbd-modal-close-color, var.$text-color-placeholder); // 关闭按钮颜色
+$modal-footer-border-color: var(
+  --xbd-modal-footer-border-color,
+  var.$border-level-1-color
+); // 底部按钮分割线色
+$modal-button-height: var(--xbd-modal-button-height, 100rpx); // 底部按钮高度
+
+// 弹窗主体样式
+.#{$prefix}-modal {
+  overflow: hidden;
+  width: $modal-width;
+  border-radius: $modal-border-radius;
+  background-color: var.$bg-color-container;
+
+  // 弹窗外层
+  &__wrapper {
+    --xbd-popup-border-radius: #{$modal-border-radius};
+  }
+
+  // 关闭按钮
+  &__close-btn {
+    position: absolute;
+    top: var.$spacer;
+    right: var.$spacer;
+    z-index: 1;
+    color: $modal-close-color;
+  }
+
+  // 内容容器
+  &__content {
+    display: flex;
+    box-sizing: border-box;
+    max-height: $modal-body-max-height;
+    padding: var.$spacer-3 var.$spacer-3 0;
+    flex-direction: column;
+    justify-content: center;
+    font-size: var.$font-size-m;
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  // 标题内容
+  &__header {
+    color: $modal-title-color;
+    font: $modal-title-font;
+    text-align: center;
+  }
+
+  // 标题后正文间距
+  &__header + &__body {
+    margin-top: var.$spacer;
+  }
+
+  // 正文内容
+  &__body {
+    overflow-y: scroll;
+    color: $modal-content-color;
+    font: $modal-content-font;
+    text-align: center;
+    -webkit-overflow-scrolling: touch;
+
+    &-text {
+      word-wrap: break-word;
+    }
+
+    &--left {
+      text-align: left;
+    }
+
+    &--right {
+      text-align: right;
+    }
+  }
+
+  // 底部按钮区
+  &__footer {
+    display: flex;
+    padding: var.$spacer-3;
+  }
+
+  // 按钮列排布样式
+  &__footer--column {
+    flex-flow: column-reverse;
+  }
+
+  // 按钮列排布宽度
+  &__footer--column &__button {
+    width: 100%;
+  }
+
+  // 铺满排布样式
+  &__footer--full {
+    padding: var.$spacer-4 0 0;
+  }
+
+  // 按钮项
+  &__button {
+    position: relative;
+    overflow: hidden;
+    flex: 1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  // 横向按钮相邻间距
+  &__button--horizontal {
+    & + & {
+      margin-left: var.$spacer-1;
+    }
+  }
+
+  // 纵向按钮相邻间距
+  &__button--vertical {
+    & + & {
+      margin-bottom: var.$spacer-1;
+    }
+  }
+
+  // 文本类型按钮
+  &__button--text {
+    --xbd-button-border-radius: 0; // 按钮圆角重置为0
+    --xbd-button-medium-height: #{$modal-button-height}; // 传递高度变量至按钮组件
+    flex: 1;
+    border-radius: 0;
+
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      box-sizing: border-box;
+      width: 200%;
+      height: 200%;
+      border-top: 1rpx solid $modal-footer-border-color;
+      border-left: 1rpx solid $modal-footer-border-color;
+      border-radius: 0;
+      content: " ";
+      transform: scale(0.5);
+      transform-origin: 0 0;
+    }
+  }
+}

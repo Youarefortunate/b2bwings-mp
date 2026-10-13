@@ -1,0 +1,73 @@
+// 神奇动画效果
+@mixin generate-warp($dir, $track-radius) {
+  $multiplier: 1;
+  $border-radius-25: 14rpx 36rpx 36rpx 14rpx;
+  $border-radius-60: 36rpx 14rpx 14rpx 36rpx;
+
+  @if $dir == "right" {
+    $multiplier: -1;
+    $border-radius-25: 36rpx 14rpx 14rpx 36rpx;
+    $border-radius-60: 14rpx 36rpx 36rpx 14rpx;
+  }
+
+  @keyframes magical-warp-#{$dir} {
+    0% {
+      transform: perspective(250rpx) rotateY(0deg) skewX(0deg) scaleX(1)
+        scaleY(1);
+      border-radius: $track-radius;
+    }
+    25% {
+      // 头部钻入瓶口：直角圆角收窄为漏斗尖端，3D 倾斜拉长，保持在容器高度内
+      transform: perspective(250rpx) rotateY($multiplier * 42deg)
+        skewX($multiplier * 14deg) scaleX(1.32) scaleY(0.82);
+      border-radius: $border-radius-25;
+    }
+    60% {
+      // 尾部吸入收尾：尾部被拉扯收窄变细，头部舒展还原，平滑过度无闪动
+      transform: perspective(250rpx) rotateY($multiplier * 14deg)
+        skewX($multiplier * 5deg) scaleX(1.12) scaleY(0.92);
+      border-radius: $border-radius-60;
+    }
+    100% {
+      // 精灵入瓶完毕：无缝恢复平整圆角长方形
+      transform: perspective(250rpx) rotateY(0deg) skewX(0deg) scaleX(1)
+        scaleY(1);
+      border-radius: $track-radius;
+    }
+  }
+}
+
+@mixin magical-theme($tabs, $track-radius) {
+  // 生成右滑和左滑关键帧
+  @include generate-warp("right", $track-radius);
+  @include generate-warp("left", $track-radius);
+
+  // 限制所有神奇过渡效果与动画仅对分段器样式生效，避免污染全局默认下划线主题
+  .#{$tabs}__wrapper--segment {
+    .#{$tabs}__track--magical {
+      background-color: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      opacity: 1;
+      transition-property: transform, width;
+      transition-duration: 0.52s !important; // 丝滑缓动过渡时长，延长以使形变充分可见
+      transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1); // 丝滑缓动曲线，平滑吸附降落
+    }
+
+    .#{$tabs}__track-inner {
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+      transform-origin: center center;
+      will-change: transform;
+
+      &--animating-right {
+        animation: magical-warp-right 0.52s linear both; // 右滑精灵吸瓶动画
+      }
+
+      &--animating-left {
+        animation: magical-warp-left 0.52s linear both; // 左滑精灵吸瓶动画
+      }
+    }
+  }
+}

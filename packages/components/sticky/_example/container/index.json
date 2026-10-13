@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "styleIsolation": "shared",
+  "usingComponents": {
+    "xbd-sticky": "xbd-miniprogram/sticky/sticky",
+    "xbd-button": "xbd-miniprogram/button/button"
+  }
+}

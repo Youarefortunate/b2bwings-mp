@@ -1,0 +1,91 @@
+.pullDownList {
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 20rpx;
+  overflow: hidden;
+  border: 1rpx solid rgba(226, 232, 240, 0.88);
+  border-radius: 24rpx;
+  background-color: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 12rpx 30rpx rgba(15, 23, 42, 0.04);
+  transition:
+    box-shadow 0.28s ease,
+    transform 0.28s ease;
+}
+
+.pullDownList.actived {
+  box-shadow: 0 18rpx 40rpx rgba(15, 23, 42, 0.08);
+  transform: translateY(-2rpx);
+}
+
+.switchBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 112rpx;
+  padding: 0 32rpx;
+  color: #334155;
+  font-size: 32rpx;
+  font-weight: 650;
+  line-height: 48rpx;
+}
+
+.name,
+.icon {
+  transition:
+    opacity 0.28s ease,
+    transform 0.28s ease;
+}
+
+.name {
+  opacity: 0.96;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44rpx;
+  height: 44rpx;
+  border-radius: 14rpx;
+  color: #0052d9;
+  font-size: 24rpx;
+  background-color: rgba(0, 82, 217, 0.08);
+}
+
+.pullDownList.actived .name {
+  opacity: 0.72;
+}
+
+.pullDownList.actived .icon {
+  opacity: 0.9;
+  transform: rotate(180deg);
+}
+
+.childBox {
+  transition: height 0.28s ease;
+}
+
+.child {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 112rpx;
+  box-sizing: border-box;
+  margin-right: 32rpx;
+  margin-left: 32rpx;
+  border-top: 1rpx solid rgba(226, 232, 240, 0.86);
+  color: #0f172a;
+  font-size: 30rpx;
+  line-height: 44rpx;
+  opacity: 0.92;
+}
+
+.child-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.child:last-of-type {
+  border-bottom-color: transparent;
+}

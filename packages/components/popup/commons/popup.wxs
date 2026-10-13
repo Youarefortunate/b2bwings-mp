@@ -1,0 +1,93 @@
+/**
+ * 获取浮层主体的动态样式
+ * @param {number} zIndex 层级
+ * @param {number} distanceTop 距离顶部距离(px)
+ * @param {string} placement 浮层出现位置
+ * @param {number} duration 动画过渡时间
+ * @returns {string} 样式字符串
+ */
+function getPopupStyles(zIndex, distanceTop, placement, duration) {
+  var styles = zIndex ? "z-index:" + zIndex + ";" : "";
+  if (
+    (placement === "top" || placement === "left" || placement === "right") &&
+    distanceTop
+  ) {
+    styles =
+      styles +
+      "top:" +
+      distanceTop +
+      "px;--xbd-popup-distance-top:" +
+      distanceTop +
+      "px;";
+  }
+  if (duration) {
+    styles = styles + "--xbd-popup-transition:all " + duration + "ms ease;";
+  }
+  return styles;
+}
+
+/**
+ * 拼接样式字符串，确保以分号结尾
+ * @param {string} styles 基础样式
+ * @param {string} style 待追加的样式
+ * @returns {string} 拼接后的样式
+ */
+function appendStyle(styles, style) {
+  if (!style) return styles;
+  return styles + style + (style.slice(-1) === ";" ? "" : ";");
+}
+
+/**
+ * 获取遮罩层的动态样式
+ * @param {number} zIndex 基础层级
+ * @param {number} duration 默认动画时长
+ * @param {object} overlayProps 遮罩层配置对象
+ * @returns {string} 样式字符串
+ */
+function getOverlayStyles(zIndex, duration, overlayProps) {
+  var props = overlayProps || {};
+  var overlayZIndex = props.zIndex != null ? props.zIndex : zIndex - 1;
+  var styles = "z-index:" + overlayZIndex + ";";
+  styles =
+    styles +
+    "--xbd-popup-overlay-duration:" +
+    (props.duration || duration || 240) +
+    "ms;";
+  if (props.backgroundColor) {
+    styles = styles + "background-color:" + props.backgroundColor + ";";
+  }
+  styles = appendStyle(styles, props.style);
+  styles = appendStyle(styles, props.customStyle);
+  return styles;
+}
+
+/**
+ * 判断是否需要阻止背景滚动
+ * @param {boolean} preventScrollThrough 是否阻止滚动
+ * @param {object} overlayProps 遮罩层配置对象
+ * @returns {boolean} 是否阻止
+ */
+function getPreventScroll(preventScrollThrough, overlayProps) {
+  return (
+    preventScrollThrough ||
+    !!(overlayProps && overlayProps.preventScrollThrough)
+  );
+}
+
+/**
+ * 触摸移动事件回调，用于在需要时阻止页面滚动
+ * @param {object} e 事件对象
+ * @returns {boolean|undefined} 返回 false 阻止默认行为
+ */
+function onContentTouchMove(e) {
+  if (e.target && e.target.dataset.prevention) {
+    return false;
+  }
+}
+
+module.exports = {
+  getPopupStyles: getPopupStyles,
+  getOverlayStyles: getOverlayStyles,
+  getPreventScroll: getPreventScroll,
+  onContentTouchMove: onContentTouchMove,
+};

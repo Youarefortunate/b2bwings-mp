@@ -1,0 +1,112 @@
+<import src="../common/template/icon.wxml" />
+<wxs src="../common/wxs/utils.wxs" module="_" />
+<wxs src="./commons/popup.wxs" module="popup" />
+
+<!-- 遮罩层 -->
+<view
+  wx:if="{{ showOverlay && realVisible }}"
+  class="{{ classPrefix }}__overlay {{ transitionClass }}"
+  style="{{ popup.getOverlayStyles(zIndex, duration, overlayProps) }}"
+  data-prevention="{{ popup.getPreventScroll(preventScrollThrough, overlayProps) }}"
+  bind:touchmove="{{ popup.onContentTouchMove }}"
+  bind:tap="handleOverlayClick"
+></view>
+
+<!-- 浮层主体 -->
+<view
+  wx:if="{{ realVisible }}"
+  style="{{ _._style([popup.getPopupStyles(zIndex, distanceTop, placement, duration), style, customStyle]) }}"
+  class="{{ _.cls(classPrefix, [placement]) }} {{ transitionClass }} class {{ prefix }}-class"
+  bind:transitionend="onTransitionEnd"
+>
+  <view
+    data-prevention="{{ popup.getPreventScroll(preventScrollThrough, overlayProps) }}"
+    bind:touchmove="{{ popup.onContentTouchMove }}"
+    class="{{ classPrefix }}__content {{ prefix }}-class-content"
+  >
+    <!-- 头部区域 -->
+    <view
+      wx:if="{{ showHeader }}"
+      class="{{ _.cls(classPrefix + '__header', [headerBorder ? 'border' : '']) }} {{ prefix }}-class-header"
+    >
+      <!-- 完全自定义头部（通过指定 customHeader 使用传入的 header 插槽） -->
+      <block wx:if="{{ customHeader }}">
+        <slot name="header" />
+      </block>
+      <block wx:else>
+        <!-- 左侧关闭按钮：仅在开启 closeBtn 且位置指定为 left 时展示 -->
+        <view
+          wx:if="{{ closeBtn && headerClosePosition === 'left' }}"
+          class="{{ classPrefix }}__header-close {{ prefix }}-class-header-close"
+          bind:tap="handleClose"
+        >
+          <block wx:if="{{ customHeaderClose }}">
+            <slot name="header-close" />
+          </block>
+          <template
+            wx:else
+            is="icon"
+            data="{{ name: 'close-linear', size: '50rpx', color: 'inherit', ...closeIconProps }}"
+          />
+        </view>
+
+        <!-- 头部主体内容区：动态计算标题对齐方式 (headerAlign) 与关闭按钮占位 -->
+        <view
+          class="{{ _.cls(classPrefix + '__header-body', [headerAlign, closeBtn ? 'with-close' : 'without-close', closeBtn ? 'close-' + headerClosePosition : '']) }} {{ prefix }}-class-header-body"
+        >
+          <!-- 支持完全自定义标题区域 -->
+          <block wx:if="{{ customHeaderTitle }}">
+            <slot name="header-title" />
+          </block>
+          <!-- 默认标题与副标题渲染 -->
+          <block wx:else>
+            <view
+              class="{{ classPrefix }}__header-title {{ prefix }}-class-header-title"
+            >
+              <block wx:if="{{ headerTitle }}">{{ headerTitle }}</block>
+            </view>
+            <view
+              wx:if="{{ headerSubtitle }}"
+              class="{{ classPrefix }}__header-subtitle {{ prefix }}-class-header-subtitle"
+            >
+              {{ headerSubtitle }}
+            </view>
+          </block>
+        </view>
+
+        <!-- 右侧/默认关闭按钮：开启 closeBtn 且位置不为 left 时展示（通常位于右上角） -->
+        <view
+          wx:if="{{ closeBtn && headerClosePosition !== 'left' }}"
+          class="{{ classPrefix }}__header-close {{ prefix }}-class-header-close"
+          bind:tap="handleClose"
+        >
+          <block wx:if="{{ customHeaderClose }}">
+            <slot name="header-close" />
+          </block>
+          <template
+            wx:else
+            is="icon"
+            data="{{ name: 'close-linear', size: '50rpx', color: 'inherit', ...closeIconProps }}"
+          />
+        </view>
+      </block>
+    </view>
+
+    <slot name="content" />
+    <block wx:if="{{ content }}">{{ content }}</block>
+
+    <slot />
+
+    <view
+      wx:if="{{ closeBtn && !showHeader }}"
+      class="{{ classPrefix }}__close"
+      bind:tap="handleClose"
+    >
+      <template
+        is="icon"
+        data="{{ name: 'close-linear', size: '50rpx', color: 'inherit', ...closeIconProps }}"
+      />
+      <slot name="close-btn" />
+    </view>
+  </view>
+</view>

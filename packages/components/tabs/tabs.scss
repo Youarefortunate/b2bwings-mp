@@ -1,0 +1,281 @@
+@use "../common/styles/variables.scss" as var;
+@use "./styles/magical";
+
+$prefix: var.$prefix;
+$tabs: #{$prefix}-tabs;
+$item: #{$tabs}__item;
+// ============================ 1. 全局/容器基础变量 ============================
+$tab-font: var(--xbd-tab-font, var.$font-body-medium); // 选项卡字体
+$tab-nav-bg-color: var(--xbd-tab-nav-bg-color, var.$bg-color-container); // 导航栏背景色
+$tab-border-color: var(--xbd-tab-border-color, var.$border-color); // 分割线颜色
+$tab-wrapper-padding-bottom: var(--xbd-tab-wrapper-padding-bottom, 0); // 导航栏容器底部内边距
+
+// ============================ 2. 选项节点基础变量 ============================
+$tab-item-height: var(--xbd-tab-item-height, 96rpx); // 选项卡高度
+$tab-item-color: var(--xbd-tab-item-color, var.$font-gray-1); // 选项卡默认颜色
+$tab-item-active-color: var(--xbd-tab-item-active-color, var.$primary-color-6); // 选项卡激活颜色
+$tab-item-disabled-color: var(--xbd-tab-item-disabled-color, var.$font-gray-4); // 选项卡禁用颜色
+
+// ============================= 3. 图标与微标变量 =============================
+$tab-icon-size: var(--xbd-tab-icon-size, 36rpx); // 图标尺寸
+
+// ========================== 4. 胶囊主题 (Tag) 变量 ==========================
+$tab-item-tag-height: var(--xbd-tab-item-tag-height, 64rpx); // 胶囊高度
+$tab-item-tag-bg: var(--xbd-tab-item-tag-bg, var.$bg-color-secondarycontainer); // 胶囊默认背景色
+$tab-item-tag-active-bg: var(
+  --xbd-tab-item-tag-active-bg,
+  var.$primary-color-1
+); // 胶囊激活背景色
+
+// ========================= 5. 下划线主题 (Line) 变量 =========================
+$tab-track-color: var(--xbd-tab-track-color, var.$primary-color-6); // 下划线颜色
+$tab-track-thickness: var(--xbd-tab-track-thickness, 6rpx); // 下划线厚度
+$tab-track-width: var(--xbd-tab-track-width, 32rpx); // 下划线宽度
+$tab-track-radius: var(--xbd-tab-track-radius, 8rpx); // 下划线圆角
+
+// ======================== 6. 分段器主题(Segment) 变量 ========================
+$tab-segment-bg: var(--xbd-tab-segment-bg, #ffffff); // 分段器容器背景色
+$tab-segment-border-color: var(--xbd-tab-segment-border-color, #e3e3e3); // 分段器边框色
+$tab-segment-radius: var(--xbd-tab-segment-radius, 12rpx); // 分段器容器圆角
+$tab-segment-padding: var(--xbd-tab-segment-padding, 8rpx); // 分段器内边距
+$tab-segment-height: var(--xbd-tab-segment-height, 80rpx); // 分段器内容高度
+$tab-segment-item-radius: var(--xbd-tab-segment-item-radius, 8rpx); // 分段器选项圆角
+$tab-segment-track-bg: var(--xbd-tab-segment-track-bg, #ffffff); // 激活滑块背景色
+$tab-segment-track-border-color: var(
+  --xbd-tab-segment-track-border-color,
+  #e3e3e3
+); // 激活滑块边框色
+$tab-segment-track-radius: var(--xbd-tab-segment-track-radius, 8rpx); // 激活滑块圆角
+$tab-segment-track-shadow: var(
+  --xbd-tab-segment-track-shadow,
+  0 6rpx 16rpx rgba(0, 0, 0, 0.08),
+  0 2rpx 4rpx rgba(0, 0, 0, 0.02)
+); // 激活滑块 3D 投影
+$tab-segment-track-height: var(--xbd-tab-segment-track-height, 72rpx); // 激活滑块高度
+$tab-segment-track-top: var(--xbd-tab-segment-track-top, 8rpx); // 激活滑块顶部间距
+
+.#{$tabs} {
+  position: relative;
+  flex-wrap: wrap;
+  font: $tab-font;
+  background: $tab-nav-bg-color;
+
+  &__sticky {
+    display: block;
+  }
+
+  &__wrapper {
+    display: flex;
+    overflow: hidden;
+    background: $tab-nav-bg-color;
+    padding-bottom: $tab-wrapper-padding-bottom;
+  }
+
+  &__scroll {
+    position: relative;
+    height: $tab-item-height;
+  }
+
+  &__nav {
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    user-select: none;
+  }
+
+  &__content {
+    width: 100%;
+    overflow: hidden;
+  }
+}
+
+// 分段器主题样式
+.#{$tabs}__wrapper--segment {
+  padding: $tab-segment-padding;
+  background-color: $tab-segment-bg;
+  border: 1rpx solid $tab-segment-border-color;
+  border-radius: $tab-segment-radius;
+  box-sizing: border-box;
+
+  .#{$tabs}__scroll {
+    height: $tab-segment-height;
+  }
+
+  .#{$tabs}__scroll--split {
+    border-bottom: none; // 禁用分割线以防与分段器外边框重叠
+  }
+
+  .#{$tabs}__item {
+    height: $tab-segment-height;
+    border-radius: $tab-segment-item-radius;
+  }
+
+  .#{$tabs}__track--segment {
+    top: $tab-segment-track-top;
+    bottom: $tab-segment-track-top; // 覆盖默认定位到下方的样式，使上下间距保持一致
+    height: auto; // 覆盖默认高度，通过 top/bottom 的间距自动拉伸撑开
+
+    &:not(.#{$tabs}__track--magical) {
+      background-color: $tab-segment-track-bg;
+      border: 1rpx solid $tab-segment-track-border-color;
+      border-radius: $tab-segment-track-radius;
+      box-shadow: $tab-segment-track-shadow; // 激活滑块 3D 投影，在白色背景下突出选中项
+      opacity: 1; // 强制显示滑块
+      box-sizing: border-box;
+    }
+  }
+
+  .#{$tabs}__track--segment.#{$tabs}__track--magical {
+    .#{$tabs}__track-inner {
+      background-color: $tab-segment-track-bg;
+      border: 1rpx solid $tab-segment-track-border-color;
+      border-radius: $tab-segment-track-radius;
+      box-shadow: $tab-segment-track-shadow;
+    }
+  }
+}
+
+.#{$tabs}__scroll--split {
+  border-bottom: 1rpx solid $tab-border-color;
+}
+
+.#{$tabs}__scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.#{$tabs}__nav--evenly {
+  width: 100%;
+}
+
+.#{$tabs}__item {
+  position: relative;
+  z-index: 2; // 置于滑块背景上方
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  height: $tab-item-height;
+  padding: 0 var.$spacer-2;
+  overflow: hidden;
+  font-weight: 400;
+  color: $tab-item-color;
+  white-space: nowrap;
+  transition: color 0.15s ease; // 颜色平滑过渡
+}
+
+.#{$tabs}__item--active {
+  font-weight: 600;
+  color: $tab-item-active-color;
+}
+
+.#{$tabs}__item--disabled {
+  color: $tab-item-disabled-color;
+}
+
+.#{$tabs}__item--evenly {
+  flex: 1 0 auto;
+}
+
+.#{$tabs}__item-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.#{$tabs}__item-inner--tag {
+  width: 100%;
+  padding: 0 var.$spacer-2;
+  line-height: $tab-item-tag-height;
+  text-align: center;
+  background-color: $tab-item-tag-bg;
+  border-radius: calc($tab-item-tag-height / 2);
+}
+
+.#{$tabs}__item-inner--active.#{$tabs}__item-inner--tag {
+  background-color: $tab-item-tag-active-bg;
+}
+
+.#{$tabs}__item--tag {
+  padding: 0 var.$spacer;
+}
+
+.#{$tabs}__item--tag:not(.#{$tabs}__item--evenly) {
+  padding: 0 calc(var.$spacer / 2);
+}
+
+.#{$tabs}__item--tag:not(.#{$tabs}__item--evenly):first-child {
+  margin-left: var.$spacer;
+}
+
+.#{$tabs}__item--tag:not(.#{$tabs}__item--evenly):last-child {
+  padding-right: var.$spacer-1;
+}
+
+.#{$tabs}__item--segment.#{$item}--active {
+  background-color: transparent; // 保持透明以显露下方的滑块
+  color: $tab-item-active-color;
+  font-weight: 600;
+  border: none;
+  box-shadow: none;
+}
+
+.#{$tabs}__badge {
+  --xbd-badge-content-text-font: #{$tab-font};
+}
+
+.#{$tabs}__badge--active {
+  --xbd-badge-content-text-font: #{var.$font-mark-medium};
+  --xbd-badge-content-text-color: #{$tab-item-active-color};
+}
+
+.#{$tabs}__badge--disabled {
+  --xbd-badge-content-text-color: #{$tab-item-disabled-color};
+}
+
+.#{$tabs}__icon {
+  margin-right: calc(var.$spacer / 4);
+  font-size: $tab-icon-size;
+}
+
+.#{$tabs}__track {
+  position: absolute;
+  bottom: 1rpx;
+  z-index: 1;
+  width: $tab-track-width;
+  height: $tab-track-thickness;
+  font-weight: 600;
+  background-color: $tab-track-color;
+  border-radius: $tab-track-radius;
+  opacity: 0;
+  transition-property: transform, width;
+  transition-timing-function: cubic-bezier(0.38, 0, 0.24, 1);
+}
+
+// 独立出 track-inner 以满足不超过 3 层的嵌套规范
+.#{$tabs}__track-inner {
+  width: 100%;
+  height: 100%;
+  background-color: $tab-track-color;
+  border-radius: $tab-track-radius;
+  box-sizing: border-box;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.#{$tabs}__content-inner {
+  display: block;
+}
+
+.#{$tabs}__content--animated .#{$tabs}__content-inner {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition-property: transform;
+  will-change: left;
+}
+
+// 神奇效果
+@include magical.magical-theme($tabs, $tab-segment-track-radius);

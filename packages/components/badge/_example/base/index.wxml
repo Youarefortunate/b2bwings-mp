@@ -1,0 +1,33 @@
+<view class="demo-desc">红点徽标</view>
+<view class="demo-wrapper">
+  <xbd-badge dot class="wrapper" content="消息" />
+  <xbd-badge dot offset="{{ [2, -2] }}" class="wrapper">
+    <xbd-icon name="chevron-right" size="48rpx" aria-label="通知" />
+  </xbd-badge>
+  <xbd-badge dot offset="{{ [2, 2] }}" class="wrapper">
+    <xbd-button content="按钮" />
+  </xbd-badge>
+</view>
+
+<view class="demo-desc">数字徽标</view>
+<view class="demo-wrapper">
+  <xbd-badge count="8" content="消息" offset="{{ [4] }}" class="wrapper" />
+  <xbd-badge count="2" offset="{{ [2, -2] }}" class="wrapper">
+    <xbd-icon name="chevron-right" size="48rpx" aria-label="通知" />
+  </xbd-badge>
+  <xbd-badge count="8" offset="{{ [2, 2] }}" class="wrapper">
+    <xbd-button content="按钮" />
+  </xbd-badge>
+</view>
+
+<view class="demo-desc">自定义徽标</view>
+<view class="demo-wrapper">
+  <xbd-badge count="NEW" offset="{{ [0, 2] }}" aria-role="button">
+    <xbd-button
+      icon="chevron-right"
+      aria-label="通知"
+      shape="square"
+      size="large"
+    />
+  </xbd-badge>
+</view>

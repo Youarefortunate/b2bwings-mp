@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "xbd-popup": "xbd-miniprogram/popup/popup",
+    "xbd-button": "xbd-miniprogram/button/button"
+  }
+}

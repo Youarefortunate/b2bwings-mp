@@ -1,0 +1,226 @@
+@use "../common/styles/variables.scss" as var;
+
+$prefix: var.$prefix; // 组件类名前缀
+$popup-bg-color: var(--xbd-popup-bg-color, var.$font-white-1) !default; // 浮层背景色
+$popup-border-radius: var(
+  --xbd-popup-border-radius,
+  var.$radius-extraLarge
+) !default; // 浮层圆角
+$popup-close-btn-color: var(
+  --xbd-popup-close-btn-color,
+  var.$font-gray-1
+) !default; // 关闭按钮颜色
+$popup-header-height: var(--xbd-popup-header-height, 112rpx) !default; // 头部高度
+$popup-header-horizontal-padding: var(
+  --xbd-popup-header-horizontal-padding,
+  32rpx
+) !default; // 头部水平间距
+$popup-header-close-width: var(--xbd-popup-header-close-width, 96rpx) !default; // 头部关闭图标区域宽度
+$popup-header-title-color: var(
+  --xbd-popup-header-title-color,
+  var.$font-gray-1
+) !default; // 头部标题颜色
+$popup-header-title-font-size: var(
+  --xbd-popup-header-title-font-size,
+  32rpx
+) !default; // 头部标题字号
+$popup-header-subtitle-color: var(
+  --xbd-popup-header-subtitle-color,
+  var.$font-gray-2
+) !default; // 头部副标题颜色
+$popup-header-subtitle-font-size: var(
+  --xbd-popup-header-subtitle-font-size,
+  24rpx
+) !default; // 头部副标题字号
+$popup-header-border-color: var(
+  --xbd-popup-header-border-color,
+  var.$border-level-1-color
+) !default; // 头部分割线颜色
+$popup-overlay-bg-color: var(
+  --xbd-popup-overlay-bg-color,
+  rgba(0, 0, 0, 0.6)
+) !default; // 遮罩背景色
+
+// 浮层主体与遮罩层样式
+.#{$prefix}-popup {
+  position: fixed;
+  z-index: 11500;
+  max-height: calc(100vh - var(--xbd-popup-distance-top, 0px));
+  transition: var(--xbd-popup-transition, all 240ms ease);
+  background-color: $popup-bg-color;
+
+  &__overlay {
+    position: fixed;
+    inset: 0;
+    background-color: $popup-overlay-bg-color;
+    opacity: 1;
+    transition: opacity var(--xbd-popup-overlay-duration, 240ms) ease;
+  }
+
+  &__overlay.#{$prefix}-fade-enter,
+  &__overlay.#{$prefix}-fade-leave-to {
+    opacity: 0;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+  }
+
+  // 弹出层头部样式
+  &__header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: $popup-header-height;
+    box-sizing: border-box;
+  }
+
+  &__header--border {
+    border-bottom: 1rpx solid $popup-header-border-color;
+  }
+
+  &__header-body {
+    flex: 1;
+    min-width: 0;
+    padding: 0 $popup-header-horizontal-padding;
+    overflow: hidden;
+  }
+
+  &__header-body--with-close.#{$prefix}-popup__header-body--close-right {
+    padding-right: 0;
+  }
+
+  &__header-body--with-close.#{$prefix}-popup__header-body--close-left {
+    padding-left: 0;
+  }
+
+  &__header-body--center.#{$prefix}-popup__header-body--with-close.#{$prefix}-popup__header-body--close-right {
+    padding-left: $popup-header-close-width;
+  }
+
+  &__header-body--center.#{$prefix}-popup__header-body--with-close.#{$prefix}-popup__header-body--close-left {
+    padding-right: $popup-header-close-width;
+  }
+
+  &__header-body--left {
+    text-align: left;
+  }
+
+  &__header-body--center {
+    text-align: center;
+  }
+
+  &__header-body--right {
+    text-align: right;
+  }
+
+  &__header-title,
+  &__header-subtitle {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__header-title {
+    color: $popup-header-title-color;
+    font-size: $popup-header-title-font-size;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  &__header-subtitle {
+    margin-top: 8rpx;
+    color: $popup-header-subtitle-color;
+    font-size: $popup-header-subtitle-font-size;
+    line-height: 1.4;
+  }
+
+  &__header-close {
+    display: flex;
+    flex: 0 0 $popup-header-close-width;
+    align-items: center;
+    justify-content: center;
+    align-self: stretch;
+    color: $popup-close-btn-color;
+  }
+
+  &__close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 20rpx;
+    line-height: 1;
+    color: $popup-close-btn-color;
+  }
+}
+
+// 不同弹出方向
+.#{$prefix}-popup {
+  &--top {
+    top: 0;
+    left: 0;
+    width: 100%;
+    border-bottom-left-radius: $popup-border-radius;
+    border-bottom-right-radius: $popup-border-radius;
+  }
+
+  &--bottom {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-top-left-radius: $popup-border-radius;
+    border-top-right-radius: $popup-border-radius;
+    padding-bottom: constant(safe-area-inset-bottom);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  &--left {
+    top: 0;
+    left: 0;
+    height: 100%;
+  }
+
+  &--right {
+    top: 0;
+    right: 0;
+    height: 100%;
+  }
+
+  &--center {
+    top: 50%;
+    left: 50%;
+    transform: scale(1) translate3d(-50%, -50%, 0);
+    transform-origin: 0% 0%;
+    border-radius: $popup-border-radius;
+  }
+}
+
+// 进出场动效
+.#{$prefix}-popup {
+  &.#{$prefix}-fade-enter,
+  &.#{$prefix}-fade-leave-to {
+    &.#{$prefix}-popup--top {
+      transform: translateY(-100%);
+      transform-origin: 0% 0%;
+    }
+
+    &.#{$prefix}-popup--bottom {
+      transform: translateY(100%);
+    }
+
+    &.#{$prefix}-popup--left {
+      transform: translateX(-100%);
+    }
+
+    &.#{$prefix}-popup--right {
+      transform: translateX(100%);
+    }
+
+    &.#{$prefix}-popup--center {
+      transform: scale(0.6) translate3d(-50%, -50%, 0);
+      opacity: 0;
+    }
+  }
+}

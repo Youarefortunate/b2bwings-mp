@@ -1,0 +1,48 @@
+<xbd-tabs
+  defaultValue="{{ 0 }}"
+  bind:change="onTabsChange"
+  bind:click="onTabsClick"
+  xbd-class="custom-tabs"
+>
+  <xbd-tab-item label="选项" value="0" />
+  <xbd-tab-item label="选项" value="1" />
+</xbd-tabs>
+
+<xbd-tabs
+  defaultValue="{{ 0 }}"
+  bind:change="onTabsChange"
+  bind:click="onTabsClick"
+  xbd-class="custom-tabs"
+>
+  <xbd-tab-item label="选项" value="0" />
+  <xbd-tab-item label="选项" value="1" />
+  <xbd-tab-item label="上限六个文字" value="2" />
+</xbd-tabs>
+
+<xbd-tabs
+  defaultValue="{{ 0 }}"
+  bind:change="onTabsChange"
+  bind:click="onTabsClick"
+  xbd-class="custom-tabs"
+>
+  <xbd-tab-item label="选项" value="0" />
+  <xbd-tab-item label="选项" value="1" />
+  <xbd-tab-item label="选项" value="2" />
+  <xbd-tab-item label="上限四字" value="3" />
+</xbd-tabs>
+
+<xbd-tabs
+  defaultValue="{{ 0 }}"
+  sticky
+  stickyProps="{{ stickyProps }}"
+  bind:change="onTabsChange"
+  bind:click="onTabsClick"
+  bind:scroll="onStickyScroll"
+  xbd-class="custom-tabs"
+>
+  <xbd-tab-item label="粘性tab" value="0" />
+  <xbd-tab-item label="选项" value="1" />
+  <xbd-tab-item label="选项" value="2" />
+  <xbd-tab-item label="选项" value="3" />
+  <xbd-tab-item label="上限四字" value="4" />
+</xbd-tabs>

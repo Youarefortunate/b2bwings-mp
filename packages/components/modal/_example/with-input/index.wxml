@@ -1,0 +1,62 @@
+<view class="wrapper">
+  <xbd-button
+    size="large"
+    theme="primary"
+    variant="outline"
+    data-key="showWithInput"
+    bind:tap="showModal"
+    block
+  >
+    输入类-无描述
+  </xbd-button>
+</view>
+
+<xbd-modal
+  visible="{{ showWithInput }}"
+  title="带输入框模态框"
+  confirm-btn="确定"
+  cancel-btn="取消"
+  bind:confirm="closeModal"
+  bind:cancel="closeModal"
+>
+  <xbd-input
+    slot="content"
+    xbd-class="modal-input"
+    borderless
+    clearable
+    placeholder="输入12文案"
+    placeholder-class="placeholder"
+  />
+</xbd-modal>
+
+<view class="wrapper">
+  <xbd-button
+    theme="primary"
+    size="large"
+    variant="outline"
+    data-key="showTextAndTitleWithInput"
+    bind:tap="showModal"
+    block
+  >
+    输入类-带描述
+  </xbd-button>
+</view>
+
+<xbd-modal
+  visible="{{ showTextAndTitleWithInput }}"
+  title="带输入框模态框"
+  content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+  confirm-btn="确定"
+  cancel-btn="取消"
+  bind:confirm="closeModal"
+  bind:cancel="closeModal"
+>
+  <xbd-input
+    slot="content"
+    xbd-class="modal-input"
+    borderless
+    clearable
+    placeholder="输入12文案"
+    placeholder-class="placeholder"
+  />
+</xbd-modal>

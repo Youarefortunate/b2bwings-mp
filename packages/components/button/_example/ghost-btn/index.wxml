@@ -1,0 +1,5 @@
+<view class="button-example button-example--ghost">
+  <xbd-button theme="primary" ghost size="large" content="幽灵按钮" />
+  <xbd-button theme="danger" ghost size="large" content="幽灵按钮" />
+  <xbd-button ghost size="large" content="幽灵按钮" />
+</view>

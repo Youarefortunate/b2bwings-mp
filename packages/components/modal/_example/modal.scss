@@ -1,0 +1,10 @@
+page {
+  background-color: #ffffff;
+}
+
+.demo {
+  box-sizing: border-box;
+  min-height: 100vh;
+  padding-bottom: env(safe-area-inset-bottom);
+  background-color: #ffffff;
+}

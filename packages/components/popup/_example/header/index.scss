@@ -1,0 +1,112 @@
+.block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 360rpx;
+}
+
+.block__text {
+  width: 560rpx;
+  overflow: hidden;
+  color: #666;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.custom-title {
+  overflow: hidden;
+  text-align: center;
+}
+
+.custom-title__label {
+  overflow: hidden;
+  color: #1f2329;
+  font-size: 32rpx;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.custom-title__desc {
+  margin-top: 8rpx;
+  overflow: hidden;
+  color: #86909c;
+  font-size: 24rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.custom-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56rpx;
+  height: 56rpx;
+  color: #0052d9;
+  border-radius: 50%;
+  background-color: #eef4ff;
+}
+
+.custom-header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0 32rpx;
+  height: 112rpx;
+  box-sizing: border-box;
+}
+
+.custom-header__main {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.custom-header__title {
+  overflow: hidden;
+  color: #1f2329;
+  font-size: 32rpx;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.custom-header__subtitle {
+  margin-top: 8rpx;
+  overflow: hidden;
+  color: #86909c;
+  font-size: 24rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.custom-header__action {
+  flex: 0 0 auto;
+  margin-left: 32rpx;
+  color: #0052d9;
+  font-size: 30rpx;
+}
+
+.demo-section + .demo-section {
+  margin-top: 32rpx;
+}
+
+.demo-section__title {
+  margin-bottom: 24rpx;
+  color: #1f2329;
+  font-size: 28rpx;
+  font-weight: 600;
+}
+
+.button-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20rpx;
+}
+
+.button-grid xbd-button {
+  flex: 1 1 300rpx;
+  min-width: 0;
+}

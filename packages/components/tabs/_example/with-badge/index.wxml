@@ -1,0 +1,13 @@
+<xbd-tabs defaultValue="{{ 0 }}">
+  <xbd-tab-item
+    label="选项"
+    value="0"
+    badge-props="{{ { dot: true, offset: [0, 1] } }}"
+  />
+  <xbd-tab-item
+    label="选项"
+    value="1"
+    badge-props="{{ { count: 8, offset: [0, 1] } }}"
+  />
+  <xbd-tab-item label="选项" value="2" />
+</xbd-tabs>

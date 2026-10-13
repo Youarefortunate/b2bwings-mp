@@ -1,0 +1,25 @@
+<xbd-popup
+  visible="{{ visible }}"
+  bind:visible-change="onVisibleChange"
+  placement="bottom"
+  closeBtn="{{ true }}"
+>
+  <view class="block">
+    <view class="header">
+      <view class="title">带关闭按钮的弹出层</view>
+    </view>
+    <view class="content">
+      这里是弹出层的内容区域。右上角展示了组件内置的关闭按钮。
+    </view>
+  </view>
+</xbd-popup>
+
+<xbd-button
+  block
+  size="large"
+  variant="outline"
+  theme="primary"
+  bind:tap="handlePopup"
+>
+  底部弹出层-带内置关闭按钮
+</xbd-button>

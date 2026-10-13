@@ -1,0 +1,181 @@
+@mixin light-properties {
+  --xbd-brand-color-1: #f2f3ff;
+  --xbd-brand-color-2: #d9e1ff;
+  --xbd-brand-color-3: #b5c7ff;
+  --xbd-brand-color-4: #8eabff;
+  --xbd-brand-color-5: #618dff;
+  --xbd-brand-color-6: #1e74f3;
+  --xbd-brand-color-7: #0052d9;
+  --xbd-brand-color-8: #003cab;
+  --xbd-brand-color-9: #002a7c;
+  --xbd-brand-color-10: #001a57;
+
+  --xbd-primary-color-1: var(--xbd-brand-color-1);
+  --xbd-primary-color-2: var(--xbd-brand-color-2);
+  --xbd-primary-color-3: var(--xbd-brand-color-3);
+  --xbd-primary-color-4: var(--xbd-brand-color-4);
+  --xbd-primary-color-5: var(--xbd-brand-color-5);
+  --xbd-primary-color-6: var(--xbd-brand-color-6); // 当前应用主题色
+  --xbd-primary-color-7: var(--xbd-brand-color-7);
+  --xbd-primary-color-8: var(--xbd-brand-color-8);
+  --xbd-primary-color-9: var(--xbd-brand-color-9);
+  --xbd-primary-color-10: var(--xbd-brand-color-10);
+
+  --xbd-warning-color-1: #fff1e9;
+  --xbd-warning-color-2: #ffd9c2;
+  --xbd-warning-color-3: #ffb98c;
+  --xbd-warning-color-4: #fa9550;
+  --xbd-warning-color-5: #e37318;
+  --xbd-warning-color-6: #be5a00;
+  --xbd-warning-color-7: #954500;
+  --xbd-warning-color-8: #713300;
+  --xbd-warning-color-9: #532300;
+  --xbd-warning-color-10: #3b1700;
+
+  --xbd-error-color-1: #fff0ed;
+  --xbd-error-color-2: #ffd8d2;
+  --xbd-error-color-3: #ffb9b0;
+  --xbd-error-color-4: #ff9285;
+  --xbd-error-color-5: #f6685d;
+  --xbd-error-color-6: #d54941;
+  --xbd-error-color-7: #ad352f;
+  --xbd-error-color-8: #881f1c;
+  --xbd-error-color-9: #68070a;
+  --xbd-error-color-10: #490002;
+
+  --xbd-success-color-1: #e3f9e9;
+  --xbd-success-color-2: #c6f3d7;
+  --xbd-success-color-3: #92dab2;
+  --xbd-success-color-4: #56c08d;
+  --xbd-success-color-5: #2ba471;
+  --xbd-success-color-6: #008858;
+  --xbd-success-color-7: #006c45;
+  --xbd-success-color-8: #005334;
+  --xbd-success-color-9: #003b23;
+  --xbd-success-color-10: #002515;
+
+  --xbd-gray-color-1: #f3f3f3;
+  --xbd-gray-color-2: #eeeeee;
+  --xbd-gray-color-3: #e7e7e7;
+  --xbd-gray-color-4: #dcdcdc;
+  --xbd-gray-color-5: #c5c5c5;
+  --xbd-gray-color-6: #a6a6a6;
+  --xbd-gray-color-7: #8b8b8b;
+  --xbd-gray-color-8: #777777;
+  --xbd-gray-color-9: #5e5e5e;
+  --xbd-gray-color-10: #4b4b4b;
+  --xbd-gray-color-11: #383838;
+  --xbd-gray-color-12: #2c2c2c;
+  --xbd-gray-color-13: #242424;
+  --xbd-gray-color-14: #181818;
+
+  // 文字 & 图标 颜色
+  --xbd-font-white-1: rgba(255, 255, 255, 1);
+  --xbd-font-white-2: rgba(255, 255, 255, 0.55);
+  --xbd-font-white-3: rgba(255, 255, 255, 0.35);
+  --xbd-font-white-4: rgba(255, 255, 255, 0.22);
+  --xbd-font-gray-1: rgba(0, 0, 0, 0.9);
+  --xbd-font-gray-2: rgba(0, 0, 0, 0.6);
+  --xbd-font-gray-3: rgba(0, 0, 0, 0.4);
+  --xbd-font-gray-4: rgba(0, 0, 0, 0.26);
+
+  // 基础颜色
+  --xbd-brand-color: var(--xbd-primary-color-6);
+  --xbd-warning-color: var(--xbd-warning-color-5);
+  --xbd-error-color: var(--xbd-error-color-6);
+  --xbd-success-color: var(--xbd-success-color-5);
+
+  // 基础颜色的扩展 用于 聚焦 / 禁用 / 点击 等状态
+  --xbd-brand-color-focus: var(--xbd-primary-color-1);
+  --xbd-brand-color-active: var(--xbd-primary-color-7);
+  --xbd-brand-color-disabled: var(--xbd-primary-color-3);
+  --xbd-brand-color-light: var(--xbd-primary-color-1);
+  --xbd-brand-color-light-active: var(--xbd-primary-color-2);
+
+  // 警告色扩展
+  --xbd-warning-color-active: var(--xbd-warning-color-6);
+  --xbd-warning-color-disabled: var(--xbd-warning-color-3);
+  --xbd-warning-color-focus: var(--xbd-warning-color-2);
+  --xbd-warning-color-light: var(--xbd-warning-color-1);
+  --xbd-warning-color-light-active: var(--xbd-warning-color-2);
+
+  // 失败/错误色扩展
+  --xbd-error-color-focus: var(--xbd-error-color-2);
+  --xbd-error-color-active: var(--xbd-error-color-7);
+  --xbd-error-color-disabled: var(--xbd-error-color-3);
+  --xbd-error-color-light: var(--xbd-error-color-1);
+  --xbd-error-color-light-active: var(--xbd-error-color-2);
+
+  // 成功色扩展
+  --xbd-success-color-focus: var(--xbd-success-color-2);
+  --xbd-success-color-active: var(--xbd-success-color-6);
+  --xbd-success-color-disabled: var(--xbd-success-color-3);
+  --xbd-success-color-light: var(--xbd-success-color-1);
+  --xbd-success-color-light-active: var(--xbd-success-color-2);
+
+  // 遮罩
+  --xbd-mask-active: rgba(0, 0, 0, 60%); // 遮罩-弹出
+  --xbd-mask-disabled: rgba(255, 255, 255, 60%); // 遮罩-禁用
+  --xbd-mask-background: rgba(255, 255, 255, 96%); // 二维码遮罩
+
+  // 背景色
+  --xbd-bg-color-page: var(--xbd-gray-color-1);
+  --xbd-bg-color-container: var(--xbd-font-white-1);
+  --xbd-bg-color-container-active: var(--xbd-gray-color-3);
+  --xbd-bg-color-secondarycontainer: var(--xbd-gray-color-1);
+  --xbd-bg-color-secondarycontainer-active: var(--xbd-gray-color-4);
+  --xbd-bg-color-component: var(--xbd-gray-color-3);
+  --xbd-bg-color-component-active: var(--xbd-gray-color-6);
+  --xbd-bg-color-component-disabled: var(--xbd-gray-color-2);
+  --xbd-bg-color-secondarycomponent: var(--xbd-gray-color-4);
+  --xbd-bg-color-secondarycomponent-active: var(--xbd-gray-color-6);
+
+  // 特殊组件背景色，目前只用于 button、input 组件多主题场景，浅色主题下固定为白色，深色主题下为 transparent 适配背景颜色
+  --xbd-bg-color-specialcomponent: #fff;
+
+  // 文本颜色
+  --xbd-text-color-primary: var(--xbd-font-gray-1);
+  --xbd-text-color-secondary: var(--xbd-font-gray-2);
+  --xbd-text-color-placeholder: var(--xbd-font-gray-3);
+  --xbd-text-color-disabled: var(--xbd-font-gray-4);
+  --xbd-text-color-anti: var(--xbd-font-white-1);
+  --xbd-text-color-brand: var(--xbd-brand-color);
+  --xbd-text-color-link: var(--xbd-brand-color);
+
+  // 分割线
+  --xbd-border-level-1-color: var(--xbd-gray-color-3);
+  --xbd-component-stroke: var(--xbd-gray-color-3);
+  // 边框
+  --xbd-border-level-2-color: var(--xbd-gray-color-4);
+  --xbd-component-border: var(--xbd-gray-color-4);
+
+  // 基础/下层 投影 hover 使用的组件包括：表格 /
+  --xbd-shadow-1:
+    0 2rpx 20rpx rgba(0, 0, 0, 5%), 0 8rpx 10rpx rgba(0, 0, 0, 8%),
+    0 4rpx 8rpx -2rpx rgba(0, 0, 0, 12%);
+  // 中层投影 下拉 使用的组件包括：下拉菜单 / 气泡确认框 / 选择器 /
+  --xbd-shadow-2:
+    0 6rpx 28rpx 4rpx rgba(0, 0, 0, 5%), 0 16rpx 20rpx 2rpx rgba(0, 0, 0, 6%),
+    0 10rpx 10rpx -6rpx rgba(0, 0, 0, 10%);
+  // 上层投影（警示/弹窗）使用的组件包括：全局提示 / 消息通知
+  --xbd-shadow-3:
+    0 12rpx 60rpx 10rpx rgba(0, 0, 0, 5%), 0 32rpx 48rpx 4rpx rgba(0, 0, 0, 4%),
+    0 16rpx 20rpx -10rpx rgba(0, 0, 0, 8%);
+  --xbd-shadow-4: 0 4rpx 16rpx 0 rgba(0, 0, 0, 0.06);
+
+  // 内投影 用于弹窗类组件（气泡确认框 / 全局提示 / 消息通知）的内描边
+  --xbd-shadow-inset-top: inset 0 1rpx 0 #dcdcdc;
+  --xbd-shadow-inset-right: inset 1rpx 0 0 #dcdcdc;
+  --xbd-shadow-inset-bottom: inset 0 -1rpx 0 #dcdcdc;
+  --xbd-shadow-inset-left: inset -1rpx 0 0 #dcdcdc;
+
+  // table 特定阴影
+  --xbd-table-shadow-color: rgba(0, 0, 0, 8%);
+
+  // 滚动条颜色
+  --xbd-scrollbar-color: rgba(0, 0, 0, 10%);
+  // 滚动条悬浮颜色（ hover ）
+  --xbd-scrollbar-hover-color: rgba(0, 0, 0, 30%);
+  // 滚动条轨道颜色，不能是带透明度，否则纵向滚动时，横向滚动条会穿透
+  --xbd-scroll-track-color: #fff;
+}

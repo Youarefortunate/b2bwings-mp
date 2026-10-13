@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "Badge 徽标",
+  "usingComponents": {
+    "base": "./base/index",
+    "theme": "./theme/index",
+    "size": "./size/index"
+  }
+}

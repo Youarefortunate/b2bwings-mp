@@ -1,0 +1,11 @@
+.input-example {
+  padding-bottom: 48rpx;
+}
+
+.custom-theme {
+  --xbd-input-bg-color: rgba(44, 44, 44, 1);
+  --xbd-input-border-color: rgba(75, 75, 75, 1);
+  --xbd-input-default-text-color: rgba(255, 255, 255, 1);
+  --xbd-input-placeholder-text-color: rgba(255, 255, 255, 0.35);
+  --xbd-input-label-text-color: rgba(255, 255, 255, 1);
+}

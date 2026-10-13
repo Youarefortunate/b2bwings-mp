@@ -1,0 +1,16 @@
+<template name="badge">
+  <xbd-badge
+    color="{{ color || '' }}"
+    content="{{ content || '' }}"
+    count="{{ count || 0 }}"
+    dot="{{ dot || false }}"
+    max-count="{{ maxCount || 99 }}"
+    offset="{{ offset || [] }}"
+    shape="{{ shape || 'circle' }}"
+    show-zero="{{ showZero || false }}"
+    size="{{ size || 'medium' }}"
+    xbd-class="{{ xbdClass }}"
+    xbd-class-content="{{ xbdClassContent }}"
+    xbd-class-count="{{ xbdClassCount }}"
+  />
+</template>

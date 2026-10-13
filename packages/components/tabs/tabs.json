@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "styleIsolation": "apply-shared",
+  "usingComponents": {
+    "xbd-sticky": "../sticky/sticky",
+    "xbd-badge": "../badge/badge",
+    "xbd-icon": "../icon/icon"
+  }
+}

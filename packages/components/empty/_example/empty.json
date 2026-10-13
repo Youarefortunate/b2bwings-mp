@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "Empty 空状态",
+  "usingComponents": {
+    "base": "./base/index",
+    "imageEmpty": "./image-empty/index",
+    "buttonEmpty": "./button-empty/index"
+  }
+}

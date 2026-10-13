@@ -1,0 +1,10 @@
+@mixin spacer-properties {
+  // Spacer
+  --xbd-spacer: 16rpx;
+  --xbd-spacer-1: 24rpx; // 间距-小-x
+  --xbd-spacer-2: 32rpx; // 间距-小
+  --xbd-spacer-3: 48rpx; // 间距-中
+  --xbd-spacer-4: 64rpx; // 间距-大
+  --xbd-spacer-5: 96rpx; // 间距-大-x
+  --xbd-spacer-6: 160rpx; // 间距-大-xx
+}

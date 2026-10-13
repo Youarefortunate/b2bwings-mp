@@ -1,0 +1,51 @@
+{
+  "name": "b2bwings-mp",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev:u": "turbo run dev --filter xbd-utils",
+    "dev:c": "turbo run dev --filter xbd-components",
+    "env:switch": "pnpm --filter xbd-mp-env run env",
+    "unocss:dev": "turbo run unocss",
+    "unocss:build": "turbo run unocss:build",
+    "build": "turbo run build",
+    "build:c": "turbo run build:dist --filter xbd-components",
+    "build:ce": "turbo run build:example --filter xbd-components",
+    "test": "turbo run test",
+    "type-check": "turbo run type-check",
+    "format": "oxfmt --write . && prettier --write \"**/*.{wxml,wxs,wxss}\" --no-error-on-unmatched-pattern",
+    "format:check": "oxfmt --check . && prettier --check \"**/*.{wxml,wxs,wxss}\" --no-error-on-unmatched-pattern",
+    "prepare": "husky",
+    "lint": "oxlint .",
+    "lint:fix": "oxlint . --fix"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "catalog:",
+    "@commitlint/config-conventional": "catalog:",
+    "@tofrankie/prettier-plugin-wxml": "catalog:",
+    "@types/node": "catalog:",
+    "husky": "catalog:",
+    "lint-staged": "catalog:",
+    "miniprogram-api-typings": "catalog:miniprogram",
+    "oxfmt": "catalog:",
+    "oxlint": "catalog:",
+    "prettier": "catalog:",
+    "tslib": "catalog:",
+    "turbo": "catalog:",
+    "typescript": "catalog:",
+    "unocss": "catalog:",
+    "unocss-preset-weapp": "catalog:",
+    "vitest": "catalog:"
+  },
+  "packageManager": "pnpm@10.27.0",
+  "pnpm": {
+    "peerDependencyRules": {
+      "allowAny": [
+        "vite"
+      ],
+      "ignoreMissing": [
+        "vite"
+      ]
+    }
+  }
+}

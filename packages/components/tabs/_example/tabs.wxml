@@ -1,0 +1,42 @@
+<view class="demo">
+  <xbd-demo-header title="Tabs 选项卡" desc="用于内容分类后的展示切换" />
+
+  <xbd-demo title="01 组件类型" desc="基础选项卡">
+    <base />
+  </xbd-demo>
+
+  <xbd-demo desc="等距选项卡，超出部分可点击跟随滚动">
+    <scroll />
+  </xbd-demo>
+
+  <xbd-demo desc="带图标选项卡">
+    <with-icon />
+  </xbd-demo>
+
+  <xbd-demo desc="带徽标选项卡">
+    <with-badge />
+  </xbd-demo>
+
+  <xbd-demo desc="带内容区选项卡">
+    <with-content />
+  </xbd-demo>
+
+  <xbd-demo title="02 组件状态" desc="选项卡状态">
+    <status />
+  </xbd-demo>
+
+  <xbd-demo title="03 组件样式" desc="选项卡尺寸">
+    <size />
+  </xbd-demo>
+
+  <xbd-demo desc="选项卡样式">
+    <theme />
+  </xbd-demo>
+
+  <xbd-demo
+    title="04 神奇效果"
+    desc="神奇效果（注：仅在分段器样式 theme='segment' 下生效，超屏可滚动）"
+  >
+    <magical />
+  </xbd-demo>
+</view>

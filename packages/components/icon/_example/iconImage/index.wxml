@@ -1,0 +1,10 @@
+<view class="demo__list">
+  <view class="demo__card" wx:for="{{ imageIconList }}" wx:key="index">
+    <xbd-icon
+      name="{{ item }}"
+      size="48rpx"
+      data-name="{{ item }}"
+      bind:click="onIconTap"
+    />
+  </view>
+</view>

@@ -1,0 +1,3 @@
+<view class="button-example button-example--block">
+  <xbd-button theme="primary" size="large" block content="填充按钮" />
+</view>

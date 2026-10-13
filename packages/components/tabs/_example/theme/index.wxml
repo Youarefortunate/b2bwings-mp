@@ -1,0 +1,24 @@
+<xbd-tabs defaultValue="{{ 0 }}" theme="tag">
+  <xbd-tab-item
+    wx:for="{{ 4 }}"
+    wx:key="index"
+    label="选项"
+    value="{{ index }}"
+  />
+</xbd-tabs>
+
+<view style="height: 32rpx" />
+
+<xbd-tabs
+  defaultValue="{{ 0 }}"
+  theme="segment"
+  spaceEvenly="{{ false }}"
+  split="{{ false }}"
+>
+  <xbd-tab-item
+    wx:for="{{ 12 }}"
+    wx:key="index"
+    label="{{ '选项' + (index + 1) }}"
+    value="{{ index }}"
+  />
+</xbd-tabs>

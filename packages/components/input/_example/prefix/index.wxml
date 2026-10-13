@@ -1,0 +1,7 @@
+<xbd-input
+  prefixIcon="chevron-down"
+  label="标签文字"
+  placeholder="请输入文字"
+/>
+
+<xbd-input prefixIcon="chevron-down" placeholder="请输入文字" />

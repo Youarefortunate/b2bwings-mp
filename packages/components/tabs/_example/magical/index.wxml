@@ -1,0 +1,16 @@
+<xbd-tabs
+  defaultValue="{{ 0 }}"
+  theme="segment"
+  space-evenly="{{ false }}"
+  split="{{ false }}"
+  magical="{{ true }}"
+  bind:change="onTabsChange"
+  bind:click="onTabsClick"
+>
+  <xbd-tab-item
+    wx:for="{{ 10 }}"
+    wx:key="index"
+    label="{{ '神奇选项 ' + (index + 1) }}"
+    value="{{ index }}"
+  />
+</xbd-tabs>

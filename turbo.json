@@ -1,0 +1,76 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  // 影响所有任务缓存的全局环境变量依赖文件
+  "globalDependencies": ["**/.env.*local"],
+  "tasks": {
+    // 通用全局构建命令，用于初始化或整体打包构建
+    "build": {
+      // 依赖于下游被依赖子包的 build 命令优先执行完毕
+      "dependsOn": ["^build"],
+      // 需要被打包缓存的输出文件夹范围
+      "outputs": ["dist/**", "miniprogram_dist/**", "_example/**"]
+    },
+    // 针对组件库包 (xbd-components) 的具体构建任务细则
+    "xbd-components#build": {
+      // xbd-components 在进行打包构建时，需要
+      "dependsOn": ["^build"],
+      // 除了默认输入源，额外监听公共构建脚本的变化，脚本更新即让缓存失效
+      "inputs": ["$TURBO_DEFAULT$", "../scripts/src/**"],
+      // 构建后产生的输出位置：包括编译产物包、模板页面目录以及根目录组件库示例模板项目
+      "outputs": [
+        "../miniprogram/miniprogram_dist/**",
+        "../miniprogram/example/pages/**",
+        "../../_example/**"
+      ]
+    },
+    // 构建组件库 components 包的产物 miniprogram_dist
+    "build:dist": {
+      // 正式产物输出在 miniprogram_dist 文件夹下并进行缓存
+      "outputs": ["miniprogram_dist/**"]
+    },
+    // 针对组件库包 (xbd-components) 编译出正式产物的具体输出规则
+    "xbd-components#build:dist": {
+      // 将打包编译后的正式组件库产物输出至调试模板目录并缓存
+      "outputs": ["../miniprogram/miniprogram_dist/**"]
+    },
+    // 仅编译和构建小程序调试预览模板的全局指令
+    "build:example": {
+      // 将编译后的小程序调试预览模板产物输出至项目根目录的 _example 文件夹并缓存
+      "outputs": ["_example/**"]
+    },
+    // 针对组件库包 (xbd-components) 示例预览工程的具体构建输出规则
+    "xbd-components#build:example": {
+      // 将打包编译后组件的示例页面输出到调试模板及根目录预览工程并缓存
+      "outputs": ["../miniprogram/example/pages/**", "../../_example/**"]
+    },
+    // 启动热更新和开发监听的持久化服务命令
+    "dev": {
+      // 依赖于下游子包预先 build 成功后再开启监听
+      "dependsOn": ["^build"],
+      // 开发监听模式禁止使用缓存，保证调试的实时性
+      "cache": false,
+      // 声明为持久化的常驻监听进程，保证多个 watch 进程能并行被 Turbo 管理而不会卡死
+      "persistent": true
+    },
+    // 启动 UnoCSS 样式开发的监听任务
+    "unocss": {
+      // 开发监听状态下禁止缓存，以确保代码变动时样式同步重新计算
+      "cache": false,
+      // 标记为持久化监听服务，指示 Turbo 将其作为后台 watch 服务进行调度
+      "persistent": true
+    },
+    // 静态打包构建所有包下 UnoCSS 样式文件的指令
+    "unocss:build": {
+      // 将生成的静态样式文件输出到 styles/unocss.wxss 并缓存
+      "outputs": ["styles/unocss.wxss"]
+    },
+    // 运行测试用例任务
+    "test": {
+      // 执行测试前需保证依赖包已先编译构建
+      "dependsOn": ["^build"]
+    },
+    "type-check": {
+      "dependsOn": ["^build"]
+    }
+  }
+}

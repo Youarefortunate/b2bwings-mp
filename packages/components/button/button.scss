@@ -1,0 +1,532 @@
+@use "../common/styles/variables.scss" as var;
+
+// 基础命名与结构变量
+$prefix: var.$prefix; // 组件库类名前缀
+$button: "#{$prefix}-button"; // 按钮组件类名
+$button-border-width: var(--xbd-button-border-width, 2rpx); // 按钮边框宽度
+$button-border-radius: var(--xbd-button-border-radius, 8rpx); // 按钮默认圆角
+$button-font-weight: var(--xbd-button-font-weight, 600); // 按钮文字字重
+$button-content-gap: var(--xbd-button-content-gap, 8rpx); // 图标与内容间距
+
+// 默认按钮色彩变量
+$button-default-color: var(--xbd-button-default-color, var.$font-gray-1); // 默认按钮文字色
+$button-default-bg-color: var(--xbd-button-default-bg-color, var.$gray-color-3); // 默认按钮背景色
+$button-default-border-color: var(
+  --xbd-button-default-border-color,
+  var.$gray-color-3
+); // 默认按钮边框色
+$button-default-active-bg: var(
+  --xbd-button-default-active-bg,
+  var.$gray-color-4
+); // 默认按钮点击态背景色
+$button-default-disabled-border-color: var(
+  --xbd-button-default-disabled-border-color,
+  var.$gray-color-2
+); // 默认按钮禁用边框色
+$button-default-disabled-color: var(
+  --xbd-button-default-disabled-color,
+  var.$font-gray-4
+); // 默认按钮禁用文字色
+$button-default-disabled-bg: var(
+  --xbd-button-default-disabled-bg,
+  var.$gray-color-2
+); // 默认按钮禁用背景色
+
+// 主要按钮色彩变量
+$button-primary-color: var(--xbd-button-primary-color, var.$font-white-1); // 主要按钮文字色
+$button-primary-bg-color: var(--xbd-button-primary-bg-color, var.$brand-color); // 主要按钮背景色
+$button-primary-border-color: var(
+  --xbd-button-primary-border-color,
+  var.$brand-color
+); // 主要按钮边框色
+$button-primary-active-color: var(
+  --xbd-button-primary-active-color,
+  var.$brand-color-active
+); // 主要按钮点击态背景色
+$button-primary-disabled-bg: var(
+  --xbd-button-primary-disabled-bg,
+  var.$brand-color-disabled
+); // 主要按钮禁用背景色
+
+// 危险按钮色彩变量
+$button-danger-color: var(--xbd-button-danger-color, var.$font-white-1); // 危险按钮文字色
+$button-danger-bg-color: var(--xbd-button-danger-bg-color, var.$error-color-6); // 危险按钮背景色
+$button-danger-border-color: var(
+  --xbd-button-danger-border-color,
+  var.$error-color-6
+); // 危险按钮边框色
+$button-danger-active-color: var(
+  --xbd-button-danger-active-color,
+  var.$error-color-7
+); // 危险按钮点击态背景色
+$button-danger-disabled-bg: var(
+  --xbd-button-danger-disabled-bg,
+  var.$error-color-3
+); // 危险按钮禁用背景色
+
+// 轻量、描边、文字与幽灵按钮变量
+$button-light-color: var(--xbd-button-light-color, var.$brand-color); // 轻量按钮文字色
+$button-light-bg-color: var(
+  --xbd-button-light-bg-color,
+  var.$brand-color-light
+); // 轻量按钮背景色
+$button-light-border-color: var(
+  --xbd-button-light-border-color,
+  var.$brand-color-light
+); // 轻量按钮边框色
+$button-light-active-bg: var(
+  --xbd-button-light-active-bg,
+  var.$brand-color-light-active
+); // 轻量按钮点击态背景色
+$button-outline-border-color: var(
+  --xbd-button-outline-border-color,
+  var.$border-color
+); // 描边按钮边框色
+$button-outline-active-bg: var(
+  --xbd-button-outline-active-bg,
+  var.$font-white-1
+); // 描边按钮点击态背景色
+$button-outline-disabled-bg: var(
+  --xbd-button-outline-disabled-bg,
+  var.$font-white-1
+); // 描边按钮禁用背景色
+$button-text-active-bg: var(--xbd-button-text-active-bg, var.$gray-color-3); // 文字按钮点击态背景色
+$button-ghost-color: var(--xbd-button-ghost-color, var.$font-white-1); // 幽灵按钮文字色
+$button-ghost-disabled-color: var(
+  --xbd-button-ghost-disabled-color,
+  var.$font-white-4
+); // 幽灵按钮禁用文字色
+
+// 加载态变量
+$button-loading-size: var(--xbd-button-loading-size, 30rpx); // 加载图标尺寸
+$button-loading-border-width: var(--xbd-button-loading-border-width, 2rpx); // 加载图标边框宽度
+$button-spinner-dot-width: var(--xbd-button-spinner-dot-width, 5rpx); // 菊花小块宽度
+$button-spinner-dot-height: var(--xbd-button-spinner-dot-height, 11rpx); // 菊花小块高度
+
+@mixin button-size($size, $height, $font-size, $padding, $icon-size) {
+  .#{$button}--size-#{$size} {
+    height: var(--xbd-button-#{$size}-height, $height);
+    padding-right: $padding;
+    padding-left: $padding;
+    font-size: $font-size;
+    line-height: var(--xbd-button-#{$size}-height, $height);
+  }
+
+  .#{$button}--size-#{$size} .#{$button}__icon {
+    font-size: $icon-size;
+  }
+}
+
+@mixin button-theme(
+  $theme,
+  $color,
+  $bg-color,
+  $border-color,
+  $active-color,
+  $disabled-bg,
+  $disabled-color: var.$font-white-1
+) {
+  .#{$button}--#{$theme} {
+    color: $color;
+    background-color: $bg-color;
+  }
+
+  .#{$button}--#{$theme}::after {
+    border-width: $button-border-width;
+    border-color: $border-color;
+  }
+
+  .#{$button}--#{$theme}.#{$button}--hover {
+    background-color: $active-color;
+  }
+
+  .#{$button}--#{$theme}.#{$button}--hover::after {
+    border-color: $active-color;
+  }
+
+  .#{$button}--#{$theme}.#{$button}--disabled {
+    color: $disabled-color;
+    background-color: $disabled-bg;
+  }
+
+  .#{$button}--#{$theme}.#{$button}--disabled::after {
+    border-color: $disabled-bg;
+  }
+}
+
+@include button-size(extra-small, 56rpx, var.$font-size-base, 16rpx, 36rpx);
+@include button-size(small, 64rpx, var.$font-size-base, 24rpx, 36rpx);
+@include button-size(medium, 80rpx, var.$font-size-m, 32rpx, 40rpx);
+@include button-size(large, 96rpx, var.$font-size-m, 40rpx, 48rpx);
+
+@include button-theme(
+  default,
+  $button-default-color,
+  $button-default-bg-color,
+  $button-default-border-color,
+  $button-default-active-bg,
+  $button-default-disabled-bg,
+  $button-default-disabled-color
+);
+@include button-theme(
+  primary,
+  $button-primary-color,
+  $button-primary-bg-color,
+  $button-primary-border-color,
+  $button-primary-active-color,
+  $button-primary-disabled-bg
+);
+@include button-theme(
+  danger,
+  $button-danger-color,
+  $button-danger-bg-color,
+  $button-danger-border-color,
+  $button-danger-active-color,
+  $button-danger-disabled-bg
+);
+@include button-theme(
+  light,
+  $button-light-color,
+  $button-light-bg-color,
+  $button-light-border-color,
+  $button-light-active-bg,
+  $button-light-bg-color,
+  $button-primary-disabled-bg
+);
+
+// 按钮基础结构
+.#{$button} {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  margin: 0;
+  border: 0;
+  border-radius: $button-border-radius;
+  outline: none;
+  font-family: var.$font-family;
+  font-weight: $button-font-weight;
+  text-align: center;
+  vertical-align: top;
+  white-space: nowrap;
+  background-image: none;
+  transition: all 0.3s;
+  -webkit-appearance: none;
+}
+
+.#{$button}::after {
+  position: absolute;
+  inset: 0;
+  width: auto;
+  height: auto;
+  box-sizing: border-box;
+  border: $button-border-width solid transparent;
+  border-radius: $button-border-radius;
+  transform: none;
+  transform-origin: center;
+  pointer-events: none;
+}
+
+.#{$button}--block {
+  display: flex;
+  width: 100%;
+}
+
+.#{$button}--disabled {
+  cursor: not-allowed;
+}
+
+// 按钮形态
+.#{$button}--outline,
+.#{$button}--dashed {
+  background-color: var.$font-white-1;
+}
+
+.#{$button}--outline.#{$button}--default,
+.#{$button}--dashed.#{$button}--default {
+  color: $button-default-color;
+}
+
+.#{$button}--outline.#{$button}--default::after,
+.#{$button}--dashed.#{$button}--default::after {
+  border-color: $button-outline-border-color;
+}
+
+.#{$button}--outline.#{$button}--primary,
+.#{$button}--outline.#{$button}--light,
+.#{$button}--dashed.#{$button}--primary,
+.#{$button}--dashed.#{$button}--light {
+  color: $button-primary-bg-color;
+}
+
+.#{$button}--outline.#{$button}--primary::after,
+.#{$button}--outline.#{$button}--light::after,
+.#{$button}--dashed.#{$button}--primary::after,
+.#{$button}--dashed.#{$button}--light::after {
+  border-color: $button-primary-border-color;
+}
+
+.#{$button}--outline.#{$button}--danger,
+.#{$button}--dashed.#{$button}--danger {
+  color: $button-danger-bg-color;
+}
+
+.#{$button}--outline.#{$button}--danger::after,
+.#{$button}--dashed.#{$button}--danger::after {
+  border-color: $button-danger-border-color;
+}
+
+.#{$button}--outline.#{$button}--hover,
+.#{$button}--dashed.#{$button}--hover {
+  background-color: $button-outline-active-bg;
+}
+
+.#{$button}--outline.#{$button}--default.#{$button}--hover::after,
+.#{$button}--dashed.#{$button}--default.#{$button}--hover::after {
+  border-color: $button-outline-border-color;
+}
+
+.#{$button}--outline.#{$button}--primary.#{$button}--hover::after,
+.#{$button}--outline.#{$button}--light.#{$button}--hover::after,
+.#{$button}--dashed.#{$button}--primary.#{$button}--hover::after,
+.#{$button}--dashed.#{$button}--light.#{$button}--hover::after {
+  border-color: $button-primary-border-color;
+}
+
+.#{$button}--outline.#{$button}--danger.#{$button}--hover::after,
+.#{$button}--dashed.#{$button}--danger.#{$button}--hover::after {
+  border-color: $button-danger-border-color;
+}
+
+.#{$button}--outline.#{$button}--disabled,
+.#{$button}--dashed.#{$button}--disabled {
+  color: $button-default-disabled-color;
+  background-color: $button-outline-disabled-bg;
+}
+
+.#{$button}--outline.#{$button}--disabled::after,
+.#{$button}--dashed.#{$button}--disabled::after {
+  border-color: $button-default-disabled-border-color;
+}
+
+.#{$button}--outline.#{$button}--primary.#{$button}--disabled,
+.#{$button}--dashed.#{$button}--primary.#{$button}--disabled {
+  color: $button-primary-disabled-bg;
+}
+
+.#{$button}--outline.#{$button}--primary.#{$button}--disabled::after,
+.#{$button}--dashed.#{$button}--primary.#{$button}--disabled::after {
+  border-color: $button-primary-disabled-bg;
+}
+
+.#{$button}--outline.#{$button}--danger.#{$button}--disabled,
+.#{$button}--dashed.#{$button}--danger.#{$button}--disabled {
+  color: $button-danger-disabled-bg;
+}
+
+.#{$button}--outline.#{$button}--danger.#{$button}--disabled::after,
+.#{$button}--dashed.#{$button}--danger.#{$button}--disabled::after {
+  border-color: $button-danger-disabled-bg;
+}
+
+.#{$button}--dashed::after {
+  border-style: dashed;
+}
+
+.#{$button}--text {
+  color: $button-default-color;
+  background-color: transparent;
+  border: 0;
+}
+
+.#{$button}--text::after {
+  border: 0;
+}
+
+.#{$button}--text.#{$button}--primary,
+.#{$button}--text.#{$button}--light {
+  color: $button-primary-bg-color;
+}
+
+.#{$button}--text.#{$button}--danger {
+  color: $button-danger-bg-color;
+}
+
+.#{$button}--text.#{$button}--hover {
+  background-color: $button-text-active-bg;
+}
+
+.#{$button}--text.#{$button}--disabled {
+  color: $button-default-disabled-color;
+  background-color: var.$font-white-1;
+}
+
+.#{$button}--text.#{$button}--primary.#{$button}--disabled,
+.#{$button}--text.#{$button}--light.#{$button}--disabled {
+  color: $button-primary-disabled-bg;
+}
+
+.#{$button}--text.#{$button}--danger.#{$button}--disabled {
+  color: $button-danger-disabled-bg;
+}
+
+.#{$button}--ghost {
+  color: $button-ghost-color;
+  background-color: transparent;
+}
+
+.#{$button}--ghost::after {
+  border-color: $button-ghost-color;
+}
+
+.#{$button}--ghost.#{$button}--primary {
+  color: $button-primary-bg-color;
+}
+
+.#{$button}--ghost.#{$button}--primary::after {
+  border-color: $button-primary-border-color;
+}
+
+.#{$button}--ghost.#{$button}--danger {
+  color: $button-danger-bg-color;
+}
+
+.#{$button}--ghost.#{$button}--danger::after {
+  border-color: $button-danger-border-color;
+}
+
+.#{$button}--ghost.#{$button}--hover {
+  background-color: transparent;
+}
+
+.#{$button}--ghost.#{$button}--disabled {
+  color: $button-ghost-disabled-color;
+  background-color: transparent;
+}
+
+.#{$button}--ghost.#{$button}--disabled::after {
+  border-color: $button-ghost-disabled-color;
+}
+
+// 按钮形状
+.#{$button}--round {
+  border-radius: 999rpx;
+}
+
+.#{$button}--round::after {
+  border-radius: 999rpx;
+}
+
+.#{$button}--square {
+  padding: 0;
+  min-width: 0;
+}
+
+.#{$button}--circle {
+  padding: 0;
+  min-width: 0;
+  border-radius: 50%;
+}
+
+.#{$button}--circle::after {
+  border-radius: 50%;
+}
+
+.#{$button}--square.#{$button}--size-large,
+.#{$button}--circle.#{$button}--size-large {
+  width: 96rpx;
+  min-width: 96rpx;
+}
+
+.#{$button}--square.#{$button}--size-medium,
+.#{$button}--circle.#{$button}--size-medium {
+  width: 80rpx;
+  min-width: 80rpx;
+}
+
+.#{$button}--square.#{$button}--size-small,
+.#{$button}--circle.#{$button}--size-small {
+  width: 64rpx;
+  min-width: 64rpx;
+}
+
+.#{$button}--square.#{$button}--size-extra-small,
+.#{$button}--circle.#{$button}--size-extra-small {
+  width: 56rpx;
+  min-width: 56rpx;
+}
+
+// 图标与加载态
+.#{$button}__icon + .#{$button}__content,
+.#{$button}__loading + .#{$button}__content {
+  margin-left: $button-content-gap;
+}
+
+.#{$button}__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 8rpx;
+  color: inherit;
+}
+
+.#{$button}__icon .#{$prefix}-icon,
+.#{$button}__icon .#{$prefix}-icon-base {
+  color: inherit;
+}
+
+.#{$button}__loading {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  width: $button-loading-size;
+  min-width: $button-loading-size;
+  height: $button-loading-size;
+  min-height: $button-loading-size;
+  box-sizing: border-box;
+  color: inherit;
+}
+
+.#{$button}__loading--circle {
+  border: $button-loading-border-width solid currentcolor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  opacity: 0.88;
+  animation: #{$button}-loading-rotate 0.8s linear infinite;
+}
+
+.#{$button}__loading--spinner view {
+  position: absolute;
+  top: 2rpx;
+  left: 50%;
+  width: $button-spinner-dot-width;
+  height: $button-spinner-dot-height;
+  margin-left: calc(#{$button-spinner-dot-width} / -2);
+  border-radius: 999rpx;
+  background-color: currentcolor;
+  opacity: 0.18;
+  transform-origin: center calc(#{$button-loading-size} / 2 - 2rpx);
+}
+
+@for $index from 1 through 8 {
+  .#{$button}__loading--spinner view:nth-child(#{$index}) {
+    opacity: calc(0.18 + #{$index} * 0.09);
+    transform: rotate(#{($index - 1) * 45}deg);
+  }
+}
+
+.#{$button}__loading--spinner {
+  animation: #{$button}-loading-rotate 1s steps(8) infinite;
+}
+
+@keyframes #{$button}-loading-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

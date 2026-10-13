@@ -1,0 +1,18 @@
+.header {
+  padding: 32rpx;
+  // 留出右上角关闭按钮的空间，防止重叠
+  padding-right: 96rpx;
+  border-bottom: 2rpx solid #eee;
+
+  .title {
+    font-size: 32rpx;
+    font-weight: bold;
+  }
+}
+
+.content {
+  padding: 40rpx;
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.5;
+}

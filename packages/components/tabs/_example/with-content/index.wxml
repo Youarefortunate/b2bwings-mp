@@ -1,0 +1,21 @@
+<xbd-tabs
+  animation="{{ { duration: 0.6 } }}"
+  defaultValue="{{ 0 }}"
+  bind:change="onTabsChange"
+  bind:click="onTabsClick"
+  xbd-class="custom-tabs"
+  xbd-class-content="custom-panel"
+>
+  <xbd-tab-item label="选项一" value="0">
+    <view class="custom-panel__content">选项一内容</view>
+  </xbd-tab-item>
+  <xbd-tab-item label="选项二" value="1">
+    <view class="custom-panel__content">选项二内容</view>
+  </xbd-tab-item>
+  <xbd-tab-item label="选项三" value="2">
+    <view class="custom-panel__content">选项三内容</view>
+  </xbd-tab-item>
+  <xbd-tab-item label="选项四" value="3">
+    <view class="custom-panel__content">选项四内容</view>
+  </xbd-tab-item>
+</xbd-tabs>

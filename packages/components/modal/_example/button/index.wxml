@@ -1,0 +1,10 @@
+<xbd-button
+  size="large"
+  theme="primary"
+  variant="outline"
+  bind:tap="showModal"
+  block
+>
+  开放能力按钮
+</xbd-button>
+<xbd-modal id="xbd-modal" />

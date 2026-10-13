@@ -1,0 +1,8 @@
+<block>
+  <view wx:if="{{ notice }}" class="demo-header__notice">{{ notice }}</view>
+  <view class="demo-title">{{ title }}</view>
+  <view class="demo-desc">
+    {{ desc }}
+    <slot name="desc" />
+  </view>
+</block>

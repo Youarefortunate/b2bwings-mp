@@ -1,0 +1,109 @@
+<view class="demo-desc">文字按钮</view>
+<xbd-button
+  xbd-class="wrapper"
+  theme="primary"
+  size="large"
+  variant="outline"
+  data-key="showConfirm"
+  bind:tap="showModal"
+  block
+>
+  文字按钮
+</xbd-button>
+<xbd-modal
+  visible="{{ showConfirm }}"
+  title="模态框标题"
+  content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+  confirm-btn="确定"
+  cancel-btn="取消"
+  bind:confirm="closeModal"
+  bind:cancel="closeModal"
+/>
+
+<view class="demo-desc">水平基础按钮</view>
+<xbd-button
+  xbd-class="wrapper"
+  theme="primary"
+  size="large"
+  variant="outline"
+  data-key="showWarnConfirm"
+  bind:tap="showModal"
+  block
+>
+  水平基础按钮
+</xbd-button>
+<xbd-modal
+  visible="{{ showWarnConfirm }}"
+  content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+  confirm-btn="{{ { content: '确定', variant: 'base' } }}"
+  cancel-btn="取消"
+  bind:confirm="closeModal"
+  bind:cancel="closeModal"
+/>
+
+<view class="demo-desc">垂直基础按钮</view>
+<xbd-button
+  xbd-class="wrapper"
+  theme="primary"
+  size="large"
+  variant="outline"
+  data-key="showTooLongBtnContent"
+  bind:tap="showModal"
+  block
+>
+  垂直基础按钮
+</xbd-button>
+<xbd-modal
+  visible="{{ showTooLongBtnContent }}"
+  title="模态框标题"
+  content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+  confirm-btn="{{ confirmBtn }}"
+  cancel-btn="取消"
+  button-layout="vertical"
+  bind:confirm="closeModal"
+  bind:cancel="closeModal"
+/>
+
+<view class="demo-desc">多按钮</view>
+<xbd-button
+  xbd-class="wrapper"
+  theme="primary"
+  size="large"
+  variant="outline"
+  data-key="showMultiBtn"
+  bind:tap="showModal"
+  block
+>
+  多按钮
+</xbd-button>
+<xbd-modal
+  visible="{{ showMultiBtn }}"
+  title="模态框标题"
+  content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+  button-layout="vertical"
+  actions="{{ multiBtnList }}"
+  bind:action="closeModal"
+/>
+
+<view class="demo-desc">带关闭按钮的模态框</view>
+<xbd-button
+  xbd-class="wrapper"
+  theme="primary"
+  size="large"
+  variant="outline"
+  data-key="showCloseBtn"
+  bind:tap="showModal"
+  block
+>
+  带关闭按钮的模态框
+</xbd-button>
+<xbd-modal
+  visible="{{ showCloseBtn }}"
+  title="模态框标题"
+  content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+  close-btn
+  confirm-btn="{{ { content: '警示操作', variant: 'base', theme: 'danger' } }}"
+  cancel-btn="取消"
+  bind:confirm="closeModal"
+  bind:cancel="closeModal"
+/>

@@ -1,0 +1,13 @@
+function getActionClass(prefix, buttonLayout) {
+  var cls = [prefix + "__button", prefix + "__button--action"];
+
+  if (buttonLayout) {
+    cls.push(prefix + "__button--" + buttonLayout);
+  }
+
+  return cls.join(" ");
+}
+
+module.exports = {
+  getActionClass: getActionClass,
+};

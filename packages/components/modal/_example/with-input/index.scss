@@ -1,0 +1,21 @@
+.wrapper {
+  margin-bottom: 32rpx;
+}
+
+.placeholder {
+  display: flex;
+  height: 96rpx !important;
+  align-items: center;
+  color: var(--xbd-text-color-placeholder);
+  line-height: 96rpx;
+}
+
+.modal-input {
+  box-sizing: border-box;
+  margin-top: 32rpx;
+  padding-top: 24rpx;
+  padding-bottom: 24rpx;
+  text-align: left;
+  background-color: var(--xbd-bg-color-page);
+  border-radius: 8rpx;
+}

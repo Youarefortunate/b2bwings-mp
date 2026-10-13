@@ -1,0 +1,8 @@
+<view class="input-example">
+  <xbd-input
+    style="{{ style }}"
+    label="标签文字"
+    placeholder="请输入文字"
+    borderless
+  />
+</view>

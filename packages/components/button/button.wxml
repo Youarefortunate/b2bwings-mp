@@ -1,0 +1,64 @@
+<import src="../common/template/icon.wxml" />
+<wxs src="../common/wxs/utils.wxs" module="_" />
+
+<button
+  id="{{ id }}"
+  class="class {{ className }}"
+  style="{{ _._style([style, customStyle]) }}"
+  data-custom="{{ customDataset }}"
+  activity-type="{{ activityType ? activityType : '' }}"
+  entrance-path="{{ entrancePath }}"
+  form-type="{{ disabled || loading ? '' : type }}"
+  open-type="{{ disabled || loading ? '' : openType }}"
+  hover-stop-propagation="{{ hoverStopPropagation }}"
+  hover-start-time="{{ hoverStartTime }}"
+  hover-stay-time="{{ hoverStayTime }}"
+  lang="{{ lang }}"
+  need-show-entrance="{{ needShowEntrance }}"
+  session-from="{{ sessionFrom }}"
+  hover-class="{{ disabled || loading ? '' : hoverClass || classPrefix + '--hover' }}"
+  send-message-title="{{ sendMessageTitle }}"
+  send-message-path="{{ sendMessagePath }}"
+  send-message-img="{{ sendMessageImg }}"
+  app-parameter="{{ appParameter }}"
+  show-message-card="{{ showMessageCard }}"
+  phone-number-no-quota-toast="{{ phoneNumberNoQuotaToast }}"
+  catch:tap="handleTap"
+  bind:getuserinfo="getuserinfo"
+  bind:contact="contact"
+  bind:createliveactivity="createliveactivity"
+  bind:getphonenumber="getphonenumber"
+  bind:getrealtimephonenumber="getrealtimephonenumber"
+  bind:error="error"
+  bind:opensetting="opensetting"
+  bind:launchapp="launchapp"
+  bind:chooseavatar="chooseavatar"
+  bind:agreeprivacyauthorization="agreeprivacyauthorization"
+  bind:phoneoneclicklogin="phoneoneclicklogin"
+  aria-label="{{ ariaLabel }}"
+>
+  <template
+    wx:if="{{ _icon }}"
+    is="icon"
+    data="{{ xbdClass: classPrefix + '__icon ' + prefix + '-class-icon', ariaHidden: true, ..._icon }}"
+  />
+
+  <view
+    wx:if="{{ loading }}"
+    class="{{ classPrefix }}__loading {{ classPrefix }}__loading--{{ loadingType }} {{ prefix }}-class-loading }}"
+  >
+    <view
+      wx:if="{{ loadingType === 'spinner' }}"
+      wx:for="{{ loadingIndexes }}"
+      wx:key="*this"
+    ></view>
+  </view>
+
+  <view class="{{ classPrefix }}__content">
+    <slot name="content" />
+    <block wx:if="{{ content }}">{{ content }}</block>
+    <slot />
+  </view>
+
+  <slot name="suffix" />
+</button>

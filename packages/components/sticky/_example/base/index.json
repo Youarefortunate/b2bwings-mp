@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "xbd-sticky": "xbd-miniprogram/sticky/sticky",
+    "xbd-button": "xbd-miniprogram/button/button"
+  }
+}

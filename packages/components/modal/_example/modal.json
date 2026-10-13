@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "Modal 模态框",
+  "usingComponents": {
+    "base": "./base/index",
+    "confirm": "./confirm/index",
+    "status": "./status/index",
+    "command": "./command/index",
+    "buttonDemo": "./button/index",
+    "withImage": "./with-image/index",
+    "withInput": "./with-input/index"
+  }
+}

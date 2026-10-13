@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "styleIsolation": "apply-shared",
+  "usingComponents": {
+    "xbd-badge": "xbd-miniprogram/badge/badge",
+    "xbd-button": "xbd-miniprogram/button/button",
+    "xbd-icon": "xbd-miniprogram/icon/icon"
+  }
+}

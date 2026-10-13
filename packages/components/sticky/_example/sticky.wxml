@@ -1,0 +1,18 @@
+<view class="demo xbd-demo-sticky-base">
+  <xbd-demo-header
+    title="Sticky 吸顶容器"
+    desc="用于常驻页面顶部的信息、操作展示"
+  />
+
+  <xbd-demo title="01 类型" desc="基础吸顶" padding>
+    <base navbar-height="{{ navbarHeight }}" />
+  </xbd-demo>
+
+  <xbd-demo title="" desc="吸顶距离">
+    <offset navbar-height="{{ navbarHeight }}" />
+  </xbd-demo>
+
+  <xbd-demo title="" desc="指定容器">
+    <container navbar-height="{{ navbarHeight }}" />
+  </xbd-demo>
+</view>

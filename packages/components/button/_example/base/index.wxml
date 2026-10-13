@@ -1,0 +1,20 @@
+<view class="button-example">
+  <xbd-button theme="primary" size="large" content="填充按钮" />
+  <xbd-button theme="light" size="large" content="填充按钮" />
+  <xbd-button size="large" content="填充按钮" />
+</view>
+
+<view class="button-example">
+  <xbd-button
+    theme="primary"
+    size="large"
+    variant="outline"
+    content="描边按钮"
+  />
+  <xbd-button
+    theme="primary"
+    size="large"
+    variant="text"
+    content="文字按钮"
+  />
+</view>

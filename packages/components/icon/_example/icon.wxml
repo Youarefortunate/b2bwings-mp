@@ -1,0 +1,15 @@
+<view class="demo">
+  <xbd-demo-header
+    title="Icon 图标"
+    desc="Icon 作为 UI 构成中重要的元素，一定程度上影响 UI 界面整体呈现出的风格。"
+  />
+  <xbd-demo title="01 基础组件图标">
+    <base />
+  </xbd-demo>
+  <xbd-demo title="02 自定义组件图标">
+    <custom />
+  </xbd-demo>
+  <xbd-demo title="03 图片链接">
+    <iconImage />
+  </xbd-demo>
+</view>

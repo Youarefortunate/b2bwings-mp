@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "styleIsolation": "apply-shared",
+  "usingComponents": {
+    "xbd-popup": "../popup/popup",
+    "xbd-icon": "../icon/icon",
+    "xbd-button": "../button/button"
+  }
+}

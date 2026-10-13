@@ -1,0 +1,15 @@
+<view class="wrapper">
+  <xbd-sticky
+    container="{{ container }}"
+    offset-top="{{ navbarHeight }}"
+    xbd-class-content="sticky-content"
+  >
+    <xbd-button
+      size="large"
+      xbd-class="button-class green-button"
+      hover-class="hover-class"
+    >
+      指定容器
+    </xbd-button>
+  </xbd-sticky>
+</view>

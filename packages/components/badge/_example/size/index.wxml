@@ -1,0 +1,13 @@
+<view class="demo-desc">Large</view>
+<view class="block">
+  <xbd-badge count="8" size="large" offset="{{ [8, 8] }}">
+    <xbd-button icon="phone" shape="square" size="large" aria-label="通知" />
+  </xbd-badge>
+</view>
+
+<view class="demo-desc">Medium</view>
+<view class="block">
+  <xbd-badge count="8" offset="{{ [6, 6] }}">
+    <xbd-button icon="phone" shape="square" aria-label="通知" />
+  </xbd-badge>
+</view>

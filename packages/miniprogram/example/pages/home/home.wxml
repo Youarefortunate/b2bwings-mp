@@ -1,0 +1,59 @@
+<view class="home-page">
+  <view class="home-page__hero">
+    <view class="home-page__title">B2B Wings UI</view>
+    <view class="home-page__desc">
+      公司小程序组件库预览，沉淀稳定、轻量、可复用的业务基础组件。
+    </view>
+  </view>
+
+  <!-- 视图模式切换分段选择器吸顶锚点 -->
+  <view class="home-page__sticky-anchor"></view>
+
+  <view class="home-page__switch-wrap {{ isSticky ? 'is-sticky' : '' }}">
+    <xbd-tabs
+      id="homeTabs"
+      class="home-page__tabs"
+      xbd-class="home-page__tabs"
+      style="width: {{ isSticky ? '100%' : tabsWidth }};"
+      space-evenly="{{ isSticky }}"
+      value="{{ viewMode }}"
+      theme="segment"
+      magical
+      bind:change="onTabsChange"
+    >
+      <xbd-tab-item label="网格模式" value="grid" />
+      <xbd-tab-item label="列表模式" value="list" />
+    </xbd-tabs>
+  </view>
+
+  <view
+    class="home-page__panel {{ viewMode === 'grid' ? 'home-page__panel--grid' : '' }}"
+  >
+    <view class="home-page__panel-header">
+      <view class="home-page__panel-title">组件总览</view>
+      <view class="home-page__panel-subtitle">Components</view>
+    </view>
+
+    <!-- 列表模式展示 -->
+    <view wx:if="{{ viewMode === 'list' }}" class="home-page__list">
+      <view
+        class="home-page__list-item"
+        wx:for="{{ list }}"
+        wx:key="name"
+        style="--i: {{ index }};"
+      >
+        <pull-down-list
+          name="{{ item.name }}"
+          icon="{{ item.icon }}"
+          childArr="{{ item.childArr }}"
+          bind:click="clickHandle"
+        />
+      </view>
+    </view>
+
+    <!-- 网格模式展示 -->
+    <view wx:else class="home-page__grid-container">
+      <component-grid list="{{ list }}" bind:click="onCardTap" />
+    </view>
+  </view>
+</view>

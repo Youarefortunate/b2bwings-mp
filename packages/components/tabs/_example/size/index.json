@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "xbd-tabs": "xbd-miniprogram/tabs/tabs",
+    "xbd-tab-item": "xbd-miniprogram/tab-item/tab-item"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "name": "xbd-testing",
+  "version": "1.0.0",
+  "private": true,
+  "description": "小程序 monorepo 公共测试包",
+  "author": "Youfortunate",
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "typesVersions": {
+    "*": {
+      "vitest": [
+        "src/vitest/index.ts"
+      ],
+      "vitest/setup/miniprogram": [
+        "src/vitest/setup/miniprogram.ts"
+      ]
+    }
+  },
+  "exports": {
+    ".": "./src/index.ts",
+    "./vitest": "./src/vitest/index.ts",
+    "./vitest/setup/miniprogram": "./src/vitest/setup/miniprogram.ts"
+  },
+  "scripts": {
+    "type-check": "tsc --noEmit",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "format": "oxfmt --write \"src/**/*.ts\" \"tests/**/*.ts\" \"vitest.config.ts\" --no-error-on-unmatched-pattern"
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "catalog:",
+    "miniprogram-api-typings": "catalog:miniprogram",
+    "tsconfig": "workspace:*",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
+  }
+}

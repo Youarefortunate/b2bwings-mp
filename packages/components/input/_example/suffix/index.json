@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "xbd-button": "xbd-miniprogram/button/button",
+    "xbd-input": "xbd-miniprogram/input/input"
+  }
+}

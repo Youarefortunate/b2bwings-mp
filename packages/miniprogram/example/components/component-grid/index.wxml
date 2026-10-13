@@ -1,0 +1,45 @@
+<view class="component-grid">
+  <block
+    wx:for="{{ formattedList }}"
+    wx:for-item="group"
+    wx:for-index="parentIndex"
+    wx:key="name"
+  >
+    <view class="component-grid__group">
+      <view class="component-grid__group-header">
+        <view class="component-grid__group-name">{{ group.name }}</view>
+        <view class="component-grid__group-count">
+          {{ group.childArr.length }}
+        </view>
+      </view>
+
+      <view class="component-grid__list">
+        <view
+          class="component-grid__item grid-item-observer-{{ parentIndex }}-{{ index }} {{ visibleMap[parentIndex + '_' + index] ? 'is-visible' : '' }}"
+          wx:for="{{ group.childArr }}"
+          wx:for-item="child"
+          wx:key="name"
+          bind:tap="onCardTap"
+          data-item="{{ child }}"
+          style="--i: {{ index }};"
+        >
+          <view class="component-grid__illustration">
+            <image
+              class="component-grid__illus-img"
+              src="{{ child.svgUrl }}"
+              binderror="onImageError"
+              data-index="{{ index }}"
+              data-parentindex="{{ parentIndex }}"
+              mode="aspectFit"
+            />
+          </view>
+
+          <view class="component-grid__info">
+            <text class="component-grid__name">{{ child.name }}</text>
+            <text class="component-grid__label">{{ child.label }}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>

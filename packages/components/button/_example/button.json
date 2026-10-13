@@ -1,0 +1,15 @@
+{
+  "navigationBarTitleText": "Button",
+  "usingComponents": {
+    "base": "./base",
+    "theme": "./theme",
+    "size": "./size",
+    "shape": "./shape",
+    "status": "./status",
+    "iconBtn": "./icon-btn",
+    "ghostBtn": "./ghost-btn",
+    "groupBtn": "./group-btn",
+    "blockBtn": "./block-btn",
+    "disabled": "./disabled"
+  }
+}

@@ -1,0 +1,43 @@
+<view class="button-example">
+  <xbd-button size="large" content="填充按钮" />
+  <xbd-button size="large" variant="outline" content="描边按钮" />
+  <xbd-button size="large" variant="text" content="文字按钮" />
+</view>
+
+<view class="button-example">
+  <xbd-button size="large" theme="primary" content="填充按钮" />
+  <xbd-button
+    size="large"
+    theme="primary"
+    variant="outline"
+    content="描边按钮"
+  />
+  <xbd-button
+    size="large"
+    theme="primary"
+    variant="text"
+    content="文字按钮"
+  />
+</view>
+
+<view class="button-example">
+  <xbd-button size="large" theme="danger" content="填充按钮" />
+  <xbd-button
+    size="large"
+    theme="danger"
+    variant="outline"
+    content="描边按钮"
+  />
+  <xbd-button size="large" theme="danger" variant="text" content="文字按钮" />
+</view>
+
+<view class="button-example">
+  <xbd-button size="large" theme="light" content="填充按钮" />
+  <xbd-button
+    size="large"
+    theme="light"
+    variant="outline"
+    content="描边按钮"
+  />
+  <xbd-button size="large" theme="light" variant="text" content="文字按钮" />
+</view>

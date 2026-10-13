@@ -1,0 +1,15 @@
+<xbd-tabs defaultValue="{{ 0 }}">
+  <xbd-tab-item label="小尺寸" value="0" />
+  <xbd-tab-item label="选项" value="1" />
+  <xbd-tab-item label="选项" value="2" />
+  <xbd-tab-item label="选项" value="3" />
+</xbd-tabs>
+
+<view style="height: 32rpx" />
+
+<xbd-tabs class="bigger" defaultValue="{{ 0 }}">
+  <xbd-tab-item label="大尺寸" value="0" />
+  <xbd-tab-item label="选项" value="1" />
+  <xbd-tab-item label="选项" value="2" />
+  <xbd-tab-item label="选项" value="3" />
+</xbd-tabs>

@@ -1,0 +1,45 @@
+<view class="demo-desc">圆形徽标</view>
+<view class="demo-wrapper">
+  <xbd-badge count="2" offset="{{ [2, -2] }}">
+    <xbd-icon name="chevron-right" size="48rpx" aria-label="通知" />
+  </xbd-badge>
+</view>
+
+<view class="demo-desc">方形徽标</view>
+<view class="demo-wrapper">
+  <xbd-badge count="2" shape="square" offset="{{ [2, -2] }}">
+    <xbd-icon name="chevron-right" size="48rpx" aria-label="通知" />
+  </xbd-badge>
+</view>
+
+<view class="demo-desc">气泡徽标</view>
+<view class="demo-wrapper">
+  <xbd-badge count="领积分" shape="bubble" aria-role="button">
+    <xbd-button
+      icon="chevron-right"
+      aria-label="积分"
+      shape="square"
+      size="large"
+    />
+  </xbd-badge>
+</view>
+
+<view class="demo-desc">角标</view>
+<view class="demo-card">
+  <view class="demo-card__title">单行标题</view>
+  <xbd-badge count="NEW" shape="ribbon-left" />
+</view>
+<view class="demo-card">
+  <view class="demo-card__title">单行标题</view>
+  <xbd-badge count="NEW" shape="ribbon" />
+</view>
+
+<view class="demo-desc">三角角标</view>
+<view class="demo-card">
+  <view class="demo-card__title">单行标题</view>
+  <xbd-badge count="NEW" shape="triangle-left" />
+</view>
+<view class="demo-card">
+  <view class="demo-card__title">单行标题</view>
+  <xbd-badge count="NEW" shape="triangle-right" />
+</view>

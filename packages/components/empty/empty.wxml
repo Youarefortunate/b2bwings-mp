@@ -1,0 +1,37 @@
+<import src="../common/template/icon.wxml" />
+<wxs src="../common/wxs/utils.wxs" module="_" />
+
+<view
+  style="{{ _._style([style, customStyle]) }}"
+  class="{{ classPrefix }} class {{ prefix }}-class"
+  aria-hidden="{{ ariaHidden }}"
+  aria-label="{{ ariaLabel }}"
+  aria-role="{{ ariaRole || 'status' }}"
+>
+  <!-- 图片区域 -->
+  <view class="{{ classPrefix }}__thumb" aria-hidden="true">
+    <image
+      wx:if="{{ image }}"
+      class="{{ classPrefix }}__image {{ prefix }}-class-image"
+      src="{{ image }}"
+      mode="aspectFit"
+    />
+    <template
+      wx:elif="{{ iconName || _.isNoEmptyObj(iconData) }}"
+      is="icon"
+      data="{{ xbdClass: classPrefix + '__icon ' + prefix + '-class-image', name: iconName, ariaHidden: true, ...iconData }}"
+    />
+    <slot wx:else name="image" />
+  </view>
+
+  <!-- 描述内容 -->
+  <view class="{{ classPrefix }}__description {{ prefix }}-class-description">
+    <text wx:if="{{ description }}">{{ description }}</text>
+    <slot wx:else name="description" />
+  </view>
+
+  <!-- 操作内容 -->
+  <view class="{{ classPrefix }}__actions {{ prefix }}-class-actions">
+    <slot name="action" />
+  </view>
+</view>

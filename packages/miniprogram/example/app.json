@@ -1,0 +1,29 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/home/navigateFail/navigateFail",
+    "pages/gulp-error/index",
+    "pages/icon/icon",
+    "pages/button/button",
+    "pages/input/input",
+    "pages/badge/badge",
+    "pages/empty/empty",
+    "pages/sticky/sticky",
+    "pages/tabs/tabs",
+    "pages/popup/popup",
+    "pages/modal/modal"
+  ],
+  "usingComponents": {
+    "xbd-demo": "./components/demo-block/index",
+    "xbd-demo-header": "./components/demo-header/index",
+    "xbd-icon": "xbd-miniprogram/icon/icon",
+    "xbd-button": "xbd-miniprogram/button/button"
+  },
+  "window": {
+    "navigationBarTitleText": "B2B Wings UI",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

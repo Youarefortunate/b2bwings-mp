@@ -1,0 +1,5 @@
+<xbd-empty
+  xbd-class-image="empty-image"
+  image="{{ image }}"
+  description="描述文字"
+/>

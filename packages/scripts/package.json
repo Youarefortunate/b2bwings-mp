@@ -1,0 +1,31 @@
+{
+  "name": "xbd-scripts",
+  "version": "1.0.0",
+  "private": true,
+  "description": "通用小程序构建与开发脚本",
+  "author": "Youfortunate",
+  "devDependencies": {
+    "cross-env": "catalog:",
+    "esbuild": "0.25.12",
+    "gulp": "catalog:",
+    "gulp-changed": "catalog:",
+    "gulp-clean-css": "catalog:",
+    "gulp-htmlmin": "catalog:",
+    "gulp-if": "catalog:",
+    "gulp-insert": "catalog:",
+    "gulp-jsonminify": "catalog:",
+    "gulp-mp-npm": "catalog:",
+    "gulp-plumber": "catalog:",
+    "gulp-rename": "catalog:",
+    "gulp-replace": "catalog:",
+    "gulp-replace-task": "catalog:",
+    "gulp-sass": "catalog:",
+    "gulp-sourcemaps": "catalog:",
+    "gulp-terser": "catalog:",
+    "gulp-typescript": "catalog:",
+    "merge2": "catalog:",
+    "sass": "catalog:",
+    "tslib": "catalog:",
+    "typescript": "catalog:"
+  }
+}

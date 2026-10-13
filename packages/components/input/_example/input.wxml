@@ -1,0 +1,41 @@
+<view class="input-example">
+  <xbd-demo-header title="Input 输入框" desc="用于单行文本信息输入。" />
+  <xbd-demo title="01 组件类型" desc="基础输入框">
+    <base />
+  </xbd-demo>
+  <xbd-demo desc="带字数限制输入框">
+    <maxlength />
+  </xbd-demo>
+  <xbd-demo desc="带操作输入框">
+    <suffix />
+  </xbd-demo>
+  <xbd-demo desc="带图标输入框">
+    <prefix />
+  </xbd-demo>
+  <xbd-demo desc="特定类型输入框">
+    <special />
+  </xbd-demo>
+
+  <xbd-demo title="02 组件状态" desc="输入框状态">
+    <status />
+  </xbd-demo>
+  <xbd-demo desc="信息超长状态">
+    <labelDemo />
+  </xbd-demo>
+
+  <xbd-demo title="03 组件样式" desc="内容位置">
+    <align />
+  </xbd-demo>
+  <xbd-demo desc="竖排样式">
+    <layout />
+  </xbd-demo>
+  <xbd-demo desc="非通栏样式">
+    <banner />
+  </xbd-demo>
+  <xbd-demo desc="标签外置样式">
+    <bordered />
+  </xbd-demo>
+  <xbd-demo desc="自定义样式输入框">
+    <custom />
+  </xbd-demo>
+</view>

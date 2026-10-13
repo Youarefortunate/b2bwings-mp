@@ -1,0 +1,824 @@
+{
+  "key": "xbd-miniprogram",
+  "label": "xbd-miniprogram",
+  "components": {
+    "xbd-icon": {
+      "key": "xbd-icon",
+      "label": "图标",
+      "properties": [
+        {
+          "key": "color",
+          "type": ["String"],
+          "desc": "图标颜色",
+          "label": ""
+        },
+        {
+          "key": "name",
+          "type": ["String"],
+          "desc": "图标名称或图片链接",
+          "label": ""
+        },
+        {
+          "key": "prefix",
+          "type": ["String"],
+          "desc": "自定义图标前缀",
+          "label": ""
+        },
+        {
+          "key": "size",
+          "type": ["String", "Number"],
+          "desc": "图标大小，如 '20', '20px', '48rpx'",
+          "label": ""
+        }
+      ],
+      "externalClasses": ["xbd-class"],
+      "tpl": "<xbd-icon name=\"add-circle\" />",
+      "path": "./icon/icon"
+    },
+    "xbd-button": {
+      "key": "xbd-button",
+      "label": "按钮",
+      "properties": [
+        {
+          "key": "block",
+          "type": ["Boolean"],
+          "desc": "是否为块级元素",
+          "label": ""
+        },
+        {
+          "key": "content",
+          "type": ["String"],
+          "desc": "按钮内容",
+          "label": ""
+        },
+        {
+          "key": "customDataset",
+          "type": ["Object"],
+          "desc": "自定义 dataset，可通过 event.currentTarget.dataset.custom 获取",
+          "label": ""
+        },
+        {
+          "key": "disabled",
+          "type": ["Boolean"],
+          "desc": "是否禁用按钮",
+          "label": ""
+        },
+        {
+          "key": "ghost",
+          "type": ["Boolean"],
+          "desc": "是否为幽灵按钮（镂空按钮）",
+          "label": ""
+        },
+        {
+          "key": "icon",
+          "type": ["String"],
+          "desc": "图标名称",
+          "label": ""
+        },
+        {
+          "key": "loading",
+          "type": ["Boolean"],
+          "desc": "是否显示为加载状态",
+          "label": ""
+        },
+        {
+          "key": "shape",
+          "type": ["String"],
+          "desc": "按钮形状，有 4 种：rectangle、square、round、circle",
+          "label": ""
+        },
+        {
+          "key": "size",
+          "type": ["String"],
+          "desc": "组件尺寸",
+          "label": ""
+        },
+        {
+          "key": "theme",
+          "type": ["String"],
+          "desc": "组件风格，依次为 default、primary、danger、light",
+          "label": ""
+        },
+        {
+          "key": "type",
+          "type": ["String"],
+          "desc": "同小程序的 formType",
+          "label": ""
+        },
+        {
+          "key": "variant",
+          "type": ["String"],
+          "desc": "按钮形式，base、outline、text",
+          "label": ""
+        },
+        {
+          "key": "openType",
+          "type": ["String"],
+          "desc": "微信开放能力",
+          "label": ""
+        }
+      ],
+      "externalClasses": ["xbd-class", "xbd-class-icon"],
+      "events": [
+        {
+          "key": "bind:tap",
+          "desc": "点击时触发",
+          "label": ""
+        },
+        {
+          "key": "bind:getuserinfo",
+          "desc": "用户点击该按钮时，会返回获取到的用户信息",
+          "label": ""
+        },
+        {
+          "key": "bind:contact",
+          "desc": "客服消息回调",
+          "label": ""
+        },
+        {
+          "key": "bind:getphonenumber",
+          "desc": "获取用户手机号回调",
+          "label": ""
+        },
+        {
+          "key": "bind:error",
+          "desc": "当使用开放能力时，发生错误的回调",
+          "label": ""
+        },
+        {
+          "key": "bind:opensetting",
+          "desc": "在打开授权设置页后回调",
+          "label": ""
+        }
+      ],
+      "tpl": "<xbd-button theme=\"primary\" content=\"强按钮\"></xbd-button>",
+      "path": "./button/button"
+    },
+    "xbd-input": {
+      "key": "xbd-input",
+      "label": "输入框",
+      "properties": [
+        {
+          "key": "align",
+          "type": ["String"],
+          "desc": "文本内容位置，居左/居中/居右",
+          "label": ""
+        },
+        {
+          "key": "borderless",
+          "type": ["Boolean"],
+          "desc": "是否开启无边框模式",
+          "label": ""
+        },
+        {
+          "key": "clearable",
+          "type": ["Boolean"],
+          "desc": "是否可清空",
+          "label": ""
+        },
+        {
+          "key": "disabled",
+          "type": ["Boolean"],
+          "desc": "是否禁用输入框",
+          "label": ""
+        },
+        {
+          "key": "format",
+          "type": ["String"],
+          "desc": "指定输入框展示值的格式",
+          "label": ""
+        },
+        {
+          "key": "label",
+          "type": ["String"],
+          "desc": "左侧文本",
+          "label": ""
+        },
+        {
+          "key": "maxcharacter",
+          "type": ["Number"],
+          "desc": "用户最多可以输入的字符个数，一个中文汉字表示两个字符长度",
+          "label": ""
+        },
+        {
+          "key": "maxlength",
+          "type": ["Number"],
+          "desc": "用户最多可以输入的文本长度，一个中文等于一个计数长度。值小于等于 0 的时候，则表示不限制输入长度",
+          "label": ""
+        },
+        {
+          "key": "placeholder",
+          "type": ["String"],
+          "desc": "占位符",
+          "label": ""
+        },
+        {
+          "key": "prefixIcon",
+          "type": ["String"],
+          "desc": "组件前置图标，值为字符串则表示图标名称",
+          "label": ""
+        },
+        {
+          "key": "readonly",
+          "type": ["Boolean"],
+          "desc": "只读状态",
+          "label": ""
+        },
+        {
+          "key": "size",
+          "type": ["String"],
+          "desc": "输入框尺寸",
+          "label": ""
+        },
+        {
+          "key": "status",
+          "type": ["String"],
+          "desc": "输入框状态",
+          "label": ""
+        },
+        {
+          "key": "suffix",
+          "type": ["String"],
+          "desc": "后置图标前的后置内容",
+          "label": ""
+        },
+        {
+          "key": "suffixIcon",
+          "type": ["String"],
+          "desc": "后置文本内容，值为字符串则表示图标名称",
+          "label": ""
+        },
+        {
+          "key": "tips",
+          "type": ["String"],
+          "desc": "输入框下方提示文本，会根据不同的 `status` 呈现不同的样式",
+          "label": ""
+        },
+        {
+          "key": "value",
+          "type": ["String", "Number"],
+          "desc": "输入框的值",
+          "label": ""
+        }
+      ],
+      "externalClasses": [
+        "xbd-class",
+        "xbd-class-input",
+        "xbd-class-placeholder",
+        "xbd-class-error-msg"
+      ],
+      "events": [
+        {
+          "key": "bind:blur",
+          "desc": "失去焦点时触发",
+          "label": ""
+        },
+        {
+          "key": "bind:change",
+          "desc": "输入框值发生变化时触发",
+          "label": ""
+        },
+        {
+          "key": "bind:clear",
+          "desc": "清空按钮点击时触发",
+          "label": ""
+        },
+        {
+          "key": "bind:enter",
+          "desc": "回车键按下时触发",
+          "label": ""
+        },
+        {
+          "key": "bind:focus",
+          "desc": "获得焦点时触发",
+          "label": ""
+        }
+      ],
+      "tpl": "<xbd-input placeholder=\"请输入文字\" />",
+      "path": "./input/input"
+    },
+    "xbd-badge": {
+      "key": "xbd-badge",
+      "label": "徽标",
+      "properties": [
+        {
+          "key": "color",
+          "type": ["String"],
+          "desc": "徽标颜色",
+          "label": ""
+        },
+        {
+          "key": "content",
+          "type": ["String"],
+          "desc": "徽标包裹内容",
+          "label": ""
+        },
+        {
+          "key": "count",
+          "type": ["String", "Number", "Null"],
+          "desc": "徽标内容",
+          "label": ""
+        },
+        {
+          "key": "dot",
+          "type": ["Boolean"],
+          "desc": "是否为红点徽标",
+          "label": ""
+        },
+        {
+          "key": "maxCount",
+          "type": ["Number"],
+          "desc": "数字封顶值",
+          "label": ""
+        },
+        {
+          "key": "offset",
+          "type": ["Array"],
+          "desc": "徽标位置偏移",
+          "label": ""
+        },
+        {
+          "key": "shape",
+          "type": ["String"],
+          "desc": "徽标形状",
+          "label": ""
+        },
+        {
+          "key": "showZero",
+          "type": ["Boolean"],
+          "desc": "count 为 0 时是否显示徽标",
+          "label": ""
+        },
+        {
+          "key": "size",
+          "type": ["String"],
+          "desc": "徽标尺寸",
+          "label": ""
+        }
+      ],
+      "externalClasses": ["xbd-class", "xbd-class-count", "xbd-class-content"],
+      "tpl": "<xbd-badge count=\"8\"><view>消息</view></xbd-badge>",
+      "path": "./badge/badge"
+    },
+    "xbd-empty": {
+      "key": "xbd-empty",
+      "label": "空状态",
+      "properties": [
+        {
+          "key": "description",
+          "type": ["String"],
+          "desc": "空状态描述文字",
+          "label": ""
+        },
+        {
+          "key": "icon",
+          "type": ["String", "Object"],
+          "desc": "图标名称或图标配置对象",
+          "label": ""
+        },
+        {
+          "key": "image",
+          "type": ["String"],
+          "desc": "空状态图片地址，优先级高于 icon",
+          "label": ""
+        }
+      ],
+      "externalClasses": [
+        "xbd-class",
+        "xbd-class-image",
+        "xbd-class-description",
+        "xbd-class-actions"
+      ],
+      "tpl": "<xbd-empty icon=\"close-circle-fill\" description=\"暂无数据\" />",
+      "path": "./empty/empty"
+    },
+    "xbd-tab-item": {
+      "key": "xbd-tab-item",
+      "label": "选项卡子项",
+      "properties": [
+        {
+          "key": "badgeProps",
+          "type": ["Object"],
+          "desc": "透传给页签徽标的配置",
+          "label": ""
+        },
+        {
+          "key": "disabled",
+          "type": ["Boolean"],
+          "desc": "是否禁用当前选项卡",
+          "label": ""
+        },
+        {
+          "key": "icon",
+          "type": ["String", "Object"],
+          "desc": "页签图标",
+          "label": ""
+        },
+        {
+          "key": "label",
+          "type": ["String"],
+          "desc": "选项卡名称",
+          "label": ""
+        },
+        {
+          "key": "lazy",
+          "type": ["Boolean"],
+          "desc": "是否启用面板懒加载",
+          "label": ""
+        },
+        {
+          "key": "panel",
+          "type": ["String"],
+          "desc": "面板文本内容",
+          "label": ""
+        },
+        {
+          "key": "value",
+          "type": ["String", "Number"],
+          "desc": "选项卡的值，作为唯一标识",
+          "label": ""
+        }
+      ],
+      "externalClasses": ["xbd-class"],
+      "tpl": "<xbd-tab-item label=\"选项 A\" value=\"a\">选项 A 内容</xbd-tab-item>",
+      "path": "./tab-item/tab-item"
+    },
+    "xbd-tabs": {
+      "key": "xbd-tabs",
+      "label": "选项卡",
+      "properties": [
+        {
+          "key": "animation",
+          "type": ["Object"],
+          "desc": "动画效果设置",
+          "label": ""
+        },
+        {
+          "key": "bottomLineMode",
+          "type": ["String"],
+          "desc": "激活下划线的模式",
+          "label": ""
+        },
+        {
+          "key": "showBottomLine",
+          "type": ["Boolean"],
+          "desc": "是否展示底部激活线条",
+          "label": ""
+        },
+        {
+          "key": "spaceEvenly",
+          "type": ["Boolean"],
+          "desc": "选项卡头部空间是否均分",
+          "label": ""
+        },
+        {
+          "key": "split",
+          "type": ["Boolean"],
+          "desc": "是否展示分割线",
+          "label": ""
+        },
+        {
+          "key": "sticky",
+          "type": ["Boolean"],
+          "desc": "是否开启粘性布局",
+          "label": ""
+        },
+        {
+          "key": "stickyProps",
+          "type": ["Object"],
+          "desc": "透传至 Sticky 组件",
+          "label": ""
+        },
+        {
+          "key": "swipeable",
+          "type": ["Boolean"],
+          "desc": "是否可以滑动切换",
+          "label": ""
+        },
+        {
+          "key": "theme",
+          "type": ["String"],
+          "desc": "标签的样式",
+          "label": ""
+        },
+        {
+          "key": "value",
+          "type": ["String", "Number"],
+          "desc": "激活的选项卡值",
+          "label": ""
+        },
+        {
+          "key": "defaultValue",
+          "type": ["String", "Number"],
+          "desc": "激活的选项卡默认值，非受控属性",
+          "label": ""
+        }
+      ],
+      "externalClasses": [
+        "xbd-class",
+        "xbd-class-item",
+        "xbd-class-active",
+        "xbd-class-track",
+        "xbd-class-content"
+      ],
+      "tpl": "<xbd-tabs defaultValue=\"0\"><xbd-tab-item label=\"选项 A\" value=\"0\">选项 A 内容</xbd-tab-item></xbd-tabs>",
+      "path": "./tabs/tabs"
+    },
+    "xbd-popup": {
+      "key": "xbd-popup",
+      "label": "弹出层",
+      "properties": [
+        {
+          "key": "closeBtn",
+          "type": ["Boolean"],
+          "desc": "是否显示关闭按钮",
+          "label": ""
+        },
+        {
+          "key": "closeOnOverlayClick",
+          "type": ["Boolean"],
+          "desc": "点击遮罩层是否关闭",
+          "label": ""
+        },
+        {
+          "key": "content",
+          "type": ["String"],
+          "desc": "浮层内容",
+          "label": ""
+        },
+        {
+          "key": "customHeader",
+          "type": ["Boolean"],
+          "desc": "是否使用完整自定义头部插槽",
+          "label": ""
+        },
+        {
+          "key": "customHeaderTitle",
+          "type": ["Boolean"],
+          "desc": "是否使用自定义头部标题插槽",
+          "label": ""
+        },
+        {
+          "key": "customHeaderClose",
+          "type": ["Boolean"],
+          "desc": "是否使用自定义头部关闭图标插槽",
+          "label": ""
+        },
+        {
+          "key": "headerTitle",
+          "type": ["String"],
+          "desc": "头部标题",
+          "label": ""
+        },
+        {
+          "key": "headerSubtitle",
+          "type": ["String"],
+          "desc": "头部副标题",
+          "label": ""
+        },
+        {
+          "key": "headerAlign",
+          "type": ["String"],
+          "desc": "头部标题对齐方式，可选值为 left、center、right",
+          "label": ""
+        },
+        {
+          "key": "headerBorder",
+          "type": ["Boolean"],
+          "desc": "是否显示头部分割线",
+          "label": ""
+        },
+        {
+          "key": "headerClosePosition",
+          "type": ["String"],
+          "desc": "头部关闭图标位置，可选值为 left、right",
+          "label": ""
+        },
+        {
+          "key": "showHeader",
+          "type": ["Boolean"],
+          "desc": "是否显示内置头部",
+          "label": ""
+        },
+        {
+          "key": "duration",
+          "type": ["Number"],
+          "desc": "动画过渡时间",
+          "label": ""
+        },
+        {
+          "key": "overlayProps",
+          "type": ["Object"],
+          "desc": "内置遮罩层配置",
+          "label": ""
+        },
+        {
+          "key": "placement",
+          "type": ["String"],
+          "desc": "浮层出现位置，可选值为 top、left、right、bottom、center",
+          "label": ""
+        },
+        {
+          "key": "preventScrollThrough",
+          "type": ["Boolean"],
+          "desc": "是否阻止背景滚动",
+          "label": ""
+        },
+        {
+          "key": "showOverlay",
+          "type": ["Boolean"],
+          "desc": "是否显示遮罩层",
+          "label": ""
+        },
+        {
+          "key": "visible",
+          "type": ["Boolean", "Null"],
+          "desc": "是否显示浮层",
+          "label": ""
+        },
+        {
+          "key": "defaultVisible",
+          "type": ["Boolean"],
+          "desc": "是否显示浮层，非受控属性",
+          "label": ""
+        },
+        {
+          "key": "zIndex",
+          "type": ["Number"],
+          "desc": "组件层级",
+          "label": ""
+        }
+      ],
+      "externalClasses": [
+        "xbd-class",
+        "xbd-class-content",
+        "xbd-class-header",
+        "xbd-class-header-body",
+        "xbd-class-header-title",
+        "xbd-class-header-subtitle",
+        "xbd-class-header-close"
+      ],
+      "events": [
+        {
+          "key": "bind:visible-change",
+          "desc": "显示状态变化时触发",
+          "label": ""
+        }
+      ],
+      "tpl": "<xbd-popup visible=\"{{ visible }}\" placement=\"bottom\">弹出层内容</xbd-popup>",
+      "path": "./popup/popup"
+    },
+    "xbd-modal": {
+      "key": "xbd-modal",
+      "label": "模态框",
+      "properties": [
+        {
+          "key": "actions",
+          "type": ["Array"],
+          "desc": "自定义底部操作按钮列表",
+          "label": ""
+        },
+        {
+          "key": "buttonLayout",
+          "type": ["String"],
+          "desc": "底部按钮布局方式",
+          "label": ""
+        },
+        {
+          "key": "cancelBtn",
+          "type": ["String", "Object"],
+          "desc": "取消按钮配置",
+          "label": ""
+        },
+        {
+          "key": "closeBtn",
+          "type": ["Boolean", "Object"],
+          "desc": "是否显示右上角关闭按钮或关闭按钮配置",
+          "label": ""
+        },
+        {
+          "key": "closeOnOverlayClick",
+          "type": ["Boolean"],
+          "desc": "点击遮罩层是否关闭模态框",
+          "label": ""
+        },
+        {
+          "key": "confirmBtn",
+          "type": ["String", "Object"],
+          "desc": "确认按钮配置",
+          "label": ""
+        },
+        {
+          "key": "content",
+          "type": ["String"],
+          "desc": "模态框正文内容",
+          "label": ""
+        },
+        {
+          "key": "overlayProps",
+          "type": ["Object"],
+          "desc": "内置遮罩层配置",
+          "label": ""
+        },
+        {
+          "key": "preventScrollThrough",
+          "type": ["Boolean"],
+          "desc": "是否阻止背景滚动穿透",
+          "label": ""
+        },
+        {
+          "key": "showOverlay",
+          "type": ["Boolean"],
+          "desc": "是否显示遮罩层",
+          "label": ""
+        },
+        {
+          "key": "title",
+          "type": ["String"],
+          "desc": "模态框标题",
+          "label": ""
+        },
+        {
+          "key": "usingCustomNavbar",
+          "type": ["Boolean"],
+          "desc": "是否使用自定义导航栏场景",
+          "label": ""
+        },
+        {
+          "key": "visible",
+          "type": ["Boolean", "Null"],
+          "desc": "是否显示模态框",
+          "label": ""
+        },
+        {
+          "key": "defaultVisible",
+          "type": ["Boolean"],
+          "desc": "非受控默认显示状态",
+          "label": ""
+        },
+        {
+          "key": "zIndex",
+          "type": ["Number"],
+          "desc": "模态框层级",
+          "label": ""
+        }
+      ],
+      "externalClasses": [
+        "xbd-class",
+        "xbd-class-content",
+        "xbd-class-confirm",
+        "xbd-class-cancel",
+        "xbd-class-action"
+      ],
+      "events": [
+        {
+          "key": "bind:confirm",
+          "desc": "点击确认按钮时触发",
+          "label": ""
+        },
+        {
+          "key": "bind:cancel",
+          "desc": "点击取消按钮时触发",
+          "label": ""
+        },
+        {
+          "key": "bind:close",
+          "desc": "模态框请求关闭时触发",
+          "label": ""
+        },
+        {
+          "key": "bind:overlay-click",
+          "desc": "点击遮罩层时触发",
+          "label": ""
+        },
+        {
+          "key": "bind:action",
+          "desc": "点击自定义操作按钮时触发",
+          "label": ""
+        },
+        {
+          "key": "bind:visible-change",
+          "desc": "显示状态变化时触发",
+          "label": ""
+        },
+        {
+          "key": "bind:open-type-event",
+          "desc": "按钮开放能力调用成功或产生回调时触发",
+          "label": ""
+        },
+        {
+          "key": "bind:open-type-error-event",
+          "desc": "按钮开放能力调用失败时触发",
+          "label": ""
+        }
+      ],
+      "tpl": "<xbd-modal visible=\"{{true}}\" title=\"模态框标题\" content=\"提示内容\" confirm-btn=\"我知道了\" />",
+      "path": "./modal/modal"
+    }
+  },
+  "common": {
+    "properties": {},
+    "events": {}
+  },
+  "menu": []
+}

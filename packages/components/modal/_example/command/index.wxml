@@ -1,0 +1,10 @@
+<xbd-button
+  size="large"
+  variant="outline"
+  theme="primary"
+  bind:tap="showModal"
+  block
+>
+  命令式调用
+</xbd-button>
+<xbd-modal id="xbd-modal" />

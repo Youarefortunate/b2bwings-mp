@@ -1,0 +1,25 @@
+<xbd-popup
+  visible="{{ visible }}"
+  bind:visible-change="onVisibleChange"
+  placement="center"
+>
+  <view class="block">
+    <xbd-icon
+      xbd-class="close-btn"
+      name="close-circle"
+      size="64rpx"
+      color="#fff"
+      bind:tap="onClose"
+    />
+  </view>
+</xbd-popup>
+
+<xbd-button
+  block
+  size="large"
+  variant="outline"
+  theme="primary"
+  bind:tap="handlePopup"
+>
+  居中弹出层-带自定义关闭按钮
+</xbd-button>

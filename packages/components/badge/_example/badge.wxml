@@ -1,0 +1,16 @@
+<xbd-demo-header
+  title="Badge 徽标"
+  desc="用于告知用户当前区域的状态变化或待处理任务数量"
+/>
+
+<xbd-demo title="01 组件类型">
+  <base />
+</xbd-demo>
+
+<xbd-demo title="02 组件样式">
+  <theme />
+</xbd-demo>
+
+<xbd-demo title="03 组件尺寸">
+  <size />
+</xbd-demo>
