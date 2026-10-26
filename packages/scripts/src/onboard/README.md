@@ -1,5 +1,7 @@
 # 项目初始化
 
+[架构与构建](../../../../docs/ARCHITECTURE.md) · [首页](../../../../README.md)
+
 在仓库根目录运行 `pnpm onboard`，依次完成四个阶段：
 
 1. 安装依赖：执行 `pnpm install`。

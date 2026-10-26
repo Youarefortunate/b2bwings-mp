@@ -28,17 +28,30 @@ pnpm build:ce
 框架中的 `project.config.json` 不预置真实 AppID；未配置时不保证能直接启动模拟器。
 自建应用需独立导入微信开发者工具，并通过“工具 → 构建 npm”完成 npm 构建。
 
+## 文档导航
+
+建议先完成快速开始，再阅读架构构建说明，最后按需要进入模块与专题 API。
+
+| 入口                                                 | 阅读内容                             |
+| ---------------------------------------------------- | ------------------------------------ |
+| [架构与构建](docs/ARCHITECTURE.md)                   | 包职责、产物流向、构建与监听命令区别 |
+| [组件索引](packages/components/README.md)            | 9 个已有组件的用法与 API             |
+| [工具索引](packages/utils/README.md)                 | 公开子模块、请求/上传接入与 API      |
+| [环境切换](packages/mp-env/README.md)                | 自建应用的环境声明与配置生成         |
+| [项目初始化](packages/scripts/src/onboard/README.md) | onboard 阶段、跳过条件与失败重试     |
+| [代码校验与格式化](docs/LINTING.md)                  | 检查工具职责与常用命令               |
+
 ## 目录
 
-| 目录 | 职责 |
-| --- | --- |
-| `packages/components` | TypeScript 组件源码及组件示例 |
-| `packages/miniprogram` | 组件产物与预览工程模板 |
-| `packages/utils` | 请求、导航、金额、上传等公共工具 |
-| `packages/scripts` | 公共构建脚本 |
-| `packages/testing` | 本地测试辅助能力 |
-| `packages/tsconfig` | 共享 TypeScript 配置 |
-| [packages/mp-env](packages/mp-env/README.md) | 原生小程序环境切换工具 |
+| 目录                                                         | 职责                             |
+| ------------------------------------------------------------ | -------------------------------- |
+| [packages/components](packages/components/README.md)         | TypeScript 组件源码及组件示例    |
+| [packages/miniprogram](docs/ARCHITECTURE.md#组件与预览)      | 组件产物与预览工程模板           |
+| [packages/utils](packages/utils/README.md)                   | 请求、导航、金额、上传等公共工具 |
+| [packages/scripts](docs/ARCHITECTURE.md#命令如何选择)        | 公共构建脚本                     |
+| [packages/testing](docs/ARCHITECTURE.md#测试与共享编译配置)  | 本地测试辅助能力                 |
+| [packages/tsconfig](docs/ARCHITECTURE.md#测试与共享编译配置) | 共享 TypeScript 配置             |
+| [packages/mp-env](packages/mp-env/README.md)                 | 原生小程序环境切换工具           |
 
 `apps/*` 已注册为工作区，供后续添加独立应用；仓库不附带业务应用。
 公共工具优先使用具体子模块入口，例如 `xbd-utils/request`、

@@ -1,5 +1,7 @@
 # 小程序接入与使用
 
+[工具索引](README.md) · [首页](../../README.md)
+
 在小程序中配置 `xbd-utils` 的请求与上传，并通过 Hook 在页面里使用。各模块完整 API 见 
 - [request 请求工具](./src/request/README.md)。
 - [upload 上传工具](./src/upload/README.md)。

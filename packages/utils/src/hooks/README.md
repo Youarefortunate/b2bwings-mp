@@ -1,5 +1,7 @@
 # hooks 请求 Hook
 
+[工具索引](../../README.md) · [首页](../../../../README.md)
+
 `xbd-utils/hooks` 公开导出 Hook 工厂。先创建请求或上传实例，再通过工厂生成业务侧使用的 Hook。
 
 ## 工具列表

@@ -1,5 +1,7 @@
 # 代码校验与格式化
 
+[首页](../README.md) · [架构与构建](ARCHITECTURE.md)
+
 | 工具 | 职责 |
 | --- | --- |
 | Oxlint | JavaScript、TypeScript 校验 |
