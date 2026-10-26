@@ -16,16 +16,19 @@ const CONFIG_EXTENSIONS = [".ts", ".js"] as const;
 
 /**
  * 扫描 apps 目录，返回所有存在 env.config.ts / env.config.js 的应用
- * 目录不存在返回空数组，结果按名称排序保证输出稳定
+ * 可限制配置扩展名；目录不存在返回空数组，结果按名称排序保证输出稳定
  */
-export function discoverApps(appsDir: string): DiscoveredApp[] {
+export function discoverApps(
+  appsDir: string,
+  extensions: readonly string[] = CONFIG_EXTENSIONS,
+): DiscoveredApp[] {
   if (!fs.existsSync(appsDir)) return [];
 
   const apps: DiscoveredApp[] = [];
   for (const entry of fs.readdirSync(appsDir, { withFileTypes: true })) {
     if (!entry.isDirectory()) continue;
     const appDir = path.join(appsDir, entry.name);
-    for (const ext of CONFIG_EXTENSIONS) {
+    for (const ext of extensions) {
       const configFile = path.join(appDir, `env.config${ext}`);
       if (fs.existsSync(configFile)) {
         apps.push({ name: entry.name, dir: appDir, configFile });

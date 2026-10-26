@@ -1,5 +1,7 @@
 // 忽略校验与格式化的文件模式
 const ignorePatterns = [
+  /^pnpm-lock\.yaml$/,
+  /^package-lock\.json$/,
   /unocss\.wxss$/,
   /echarts\.js$/,
   /echarts\.d\.ts$/,

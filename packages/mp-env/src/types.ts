@@ -24,4 +24,6 @@ export type MpEnvs<TEnvs> = {
 export interface MpEnvConfig<TEnvs> {
   /** 按环境名称组织的配置项 */
   envs: MpEnvs<TEnvs>;
+  /** 初始化时使用的默认环境，排除公共配置与批量切换保留字 */
+  defaultEnv?: Exclude<Extract<keyof TEnvs, string>, "common" | "all">;
 }

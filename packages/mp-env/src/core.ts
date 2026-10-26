@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 import type { DiscoveredApp } from "./discover";
-import type { MpEnvConfig, MpEnvItem } from "./types";
+import type { MpEnvConfig } from "./types";
 
 type RuntimeEnvConfig = MpEnvConfig<Record<string, Record<string, unknown>>>;
 
@@ -53,6 +53,8 @@ export async function loadEnvConfig(
   }
   return {
     envs: envs as Record<string, Record<string, unknown>>,
+    defaultEnv:
+      typeof data.defaultEnv === "string" ? data.defaultEnv : undefined,
   };
 }
 
@@ -111,28 +113,60 @@ export function readCurrentEnv(appDir: string): string | null {
 
 /**
  * 执行一次环境切换：加载校验 → 合并 → 生成 config.ts →
- * 清理 config.js → 按 APPID 字段同步 project.config.json
+ * 按 APPID 字段同步 project.config.json → 清理 config.js
  */
 export async function switchEnv(
   app: DiscoveredApp,
   env: string,
 ): Promise<SwitchResult> {
   const config = await loadEnvConfig(app.configFile);
-  const merged = mergeEnv(config, env);
+  return applyPreparedEnv(app, prepareEnv(config, env));
+}
 
+/** 已完成校验、合并与渲染的环境配置 */
+export interface PreparedEnv {
+  content: string;
+  merged: Record<string, unknown>;
+}
+
+/** 在写入前完成环境校验、公共配置合并及内容渲染 */
+export function prepareEnv(config: RuntimeEnvConfig, env: string): PreparedEnv {
+  const merged = mergeEnv(config, env);
+  return { content: renderConfigFile(merged, env), merged };
+}
+
+/** 写入已准备的配置，同步 AppID 后清理旧产物 */
+export function applyPreparedEnv(
+  app: DiscoveredApp,
+  prepared: PreparedEnv,
+  configFd?: number,
+): SwitchResult {
   const configFilePath = path.join(app.dir, "config.ts");
-  fs.writeFileSync(configFilePath, renderConfigFile(merged, env), "utf-8");
+  fs.writeFileSync(configFd ?? configFilePath, prepared.content, "utf-8");
+  const appidSync = syncAppid(app.dir, prepared.merged);
 
   const legacyJsPath = path.join(app.dir, "config.js");
   const removedLegacyJs = fs.existsSync(legacyJsPath);
   if (removedLegacyJs) {
-    fs.unlinkSync(legacyJsPath);
+    try {
+      fs.unlinkSync(legacyJsPath);
+    } catch (error) {
+      try {
+        appidSync?.restore();
+      } catch (restoreError) {
+        throw new AggregateError(
+          [error, restoreError],
+          "清理 config.js 失败，且恢复 project.config.json 失败",
+        );
+      }
+      throw error;
+    }
   }
 
   return {
     configFile: configFilePath,
     removedLegacyJs,
-    appidSync: syncAppid(app.dir, merged),
+    appidSync: appidSync ? { from: appidSync.from, to: appidSync.to } : null,
   };
 }
 
@@ -140,16 +174,18 @@ export async function switchEnv(
 function syncAppid(
   appDir: string,
   merged: Record<string, unknown>,
-): { from: string; to: string } | null {
+): { from: string; to: string; restore: () => void } | null {
   const appid = merged.APPID;
   if (typeof appid !== "string") return null;
 
   const projectConfigPath = path.join(appDir, "project.config.json");
   if (!fs.existsSync(projectConfigPath)) return null;
 
+  let originalContent: Buffer;
   let projectConfig: unknown;
   try {
-    projectConfig = JSON.parse(fs.readFileSync(projectConfigPath, "utf-8"));
+    originalContent = fs.readFileSync(projectConfigPath);
+    projectConfig = JSON.parse(originalContent.toString("utf-8"));
   } catch (err) {
     console.warn(
       `警告: 解析 ${projectConfigPath} 失败，跳过 appid 同步: ${(err as Error).message}`,
@@ -168,7 +204,11 @@ function syncAppid(
     JSON.stringify(projectConfig, null, 2),
     "utf-8",
   );
-  return { from, to: appid };
+  return {
+    from,
+    to: appid,
+    restore: () => fs.writeFileSync(projectConfigPath, originalContent),
+  };
 }
 
 /** 是否为普通对象（非 null、非数组） */

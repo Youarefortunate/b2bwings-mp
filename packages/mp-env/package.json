@@ -12,6 +12,7 @@
   },
   "scripts": {
     "env": "tsx src/cli.ts",
+    "env:init": "tsx src/init.ts",
     "test": "vitest run --passWithNoTests",
     "type-check": "tsc --noEmit"
   },
