@@ -11,13 +11,22 @@
 ## 快速开始
 
 ```bash
-pnpm install --frozen-lockfile
-pnpm build
+pnpm onboard
+
+# 仅在需要组件预览时执行
+pnpm build:ce
 ```
 
-构建会生成公共工具库和组件产物，以及根目录 `_example/` 预览工程。
-在微信开发者工具中导入 `_example/`，选择自己的 AppID 或由工具提供的测试方式。
+`onboard` 依次完成四个阶段：安装依赖、初始化环境、准备工具库产物、准备组件产物。
+公共产物齐全时跳过对应构建；源码变更后仍需主动构建或开启监听。
+仓库不附带业务应用，没有 `apps/` 初始化任务也会成功；接入应用后，
+仅为缺少 `config.ts` 的应用按 `defaultEnv` 生成配置，已有文件不覆盖。
+失败修复后可重新执行，详见 [初始化说明](packages/scripts/src/onboard/README.md)。
+
+`onboard` 不生成完整预览工程。`pnpm build:ce` 才会生成根目录 `_example/`，
+随后在微信开发者工具中导入该目录，选择自己的 AppID 或由工具提供的测试方式。
 框架中的 `project.config.json` 不预置真实 AppID；未配置时不保证能直接启动模拟器。
+自建应用需独立导入微信开发者工具，并通过“工具 → 构建 npm”完成 npm 构建。
 
 ## 目录
 

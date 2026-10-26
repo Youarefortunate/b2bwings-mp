@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "onboard": "node packages/scripts/src/onboard/index.mjs",
     "dev:u": "turbo run dev --filter xbd-utils",
     "dev:c": "turbo run dev --filter xbd-components",
     "env:switch": "pnpm --filter xbd-mp-env run env",
